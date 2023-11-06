@@ -7,5 +7,4 @@ urlpatterns = [
     path('signup/', views.signup),
     path('<int:user.pk>/delete/', views.delete),
     path('<int:user.pk>/profile/', views.profile),
-    path('<int:user.pk>/reviews/<int:review.pk>/likes/', views.likes),
 ]
