@@ -23,7 +23,7 @@
 
 <br/>
 
-## ERD
+## 💾 ERD
 
 ![Movie](https://github.com/movie-team/BackEnd/assets/116432941/853afd17-ce96-4b4c-9345-105f86d30cb3)
 
