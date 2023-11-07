@@ -11,8 +11,8 @@
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/sirlyun"><b>sirlyun</b></a></td>
-    <td align="center"><a href="https://github.com/tooyul"><b>samgakjisam</b></a></td>
-    <td align="center"><a href="https://github.com/ssafykwon"><b>amsan2</b></a></td>
+    <td align="center"><a href="https://github.com/tooyul"><b>tooyul</b></a></td>
+    <td align="center"><a href="https://github.com/ssafykwon"><b>ssafykwon</b></a></td>
   </tr>
 </table>
 
