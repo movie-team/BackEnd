@@ -3,11 +3,12 @@ from .models import User
 from .serializers import UserSerializer
 from django.contrib.auth import get_user_model
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework import status
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.contrib.auth import authenticate
-
+# JWT 토큰 검증 모듈
+from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 
 # 회원가입
@@ -72,3 +73,12 @@ def login(request):
         return res
     else:
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+# jwt 토큰 인증 후 사용 가능한 서비스 테스트
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def test(request):
+    User = get_user_model()
+    accounts = get_list_or_404(User)
+    serializer = UserSerializer(accounts, many=True)
+    return Response(serializer.data)
