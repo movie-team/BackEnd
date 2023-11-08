@@ -25,7 +25,8 @@
 
 ## 💾 ERD
 
-![Movie](https://github.com/movie-team/BackEnd/assets/116432941/853afd17-ce96-4b4c-9345-105f86d30cb3)
+![Movie (1)](https://github.com/movie-team/BackEnd/assets/116432941/204367eb-8e96-4786-9aca-c8ad609e81c6)
+
 
 <br/>
 
