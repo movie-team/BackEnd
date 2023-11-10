@@ -199,7 +199,6 @@ SITE_ID = 1  # Django-allauth를 사용할 때 필요한 설정
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 LOGIN_REDIRECT_URL = '/'  # 로그인 후 리다이렉트될 URL
 
-CORS_ALLOWED_ORIGINS = [
-    # 허용할 클라이언트 주소
-    "http://localhost:5173",  
-]
+
+CORS_ORIGIN_WHITELIST = ["http://localhost:5173"]
+CORS_ALLOW_CREDENTIALS = True
