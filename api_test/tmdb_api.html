@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="movies"></ul>
+    <img src="" alt="">
+    <script>
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NjhjZTg3MzRmNGEyMTU5NzdiNjkwODljYzg3M2JjYSIsInN1YiI6IjY1M2IxZWE4NzE5YWViMDEzODdiOWRkYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.13M9hB1WM65LBn_iCieFJ9GWRzRn0dEA61JPrNBKazg'
+            }
+            };
+        for (i = 1; i < 6; i++){
+            const temp = i
+            fetch(`https://api.themoviedb.org/3/movie/popular?language=ko-US&page=${i}`, options)
+            .then(response => {
+                console.log('Page:', temp)
+                return response.json()})
+                .then(response => {
+                    console.log('json response',response)
+                    const movieList = response.results
+                    const ul = document.querySelector('#movies')
+                    movieList.forEach(movie => {
+                        console.log(movie)
+                        const li = document.createElement('li')
+                li.textContent = movie.title
+                const img = document.createElement('img')
+                img.src = 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2'+movie.poster_path
+                ul.appendChild(li)
+                li.appendChild(img)
+            }
+            );
+        })
+        .catch(err => console.error(err));
+        }
+    </script>
+</body>
+</html>
