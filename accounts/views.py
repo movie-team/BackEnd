@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate
 from rest_framework.permissions import IsAuthenticated
 # refresh_token 객체 생성
 from rest_framework_simplejwt.tokens import RefreshToken
+from django.contrib.auth.hashers import check_password
 
 # 회원가입
 @api_view(['POST'])
@@ -73,34 +74,34 @@ def signout(request):
 @api_view(['POST'])
 def login(request):
     # 유저 인증
-    user = authenticate(
-        email=request.data.get('email'), password=request.data.get('password')
-    )
+    
     User = get_user_model()
-    print(User.objects.get(email=request.data.get('email')))
+    user = User.objects.get(email=request.data.get('email'))
 
-    print(user)
     if user is not None:
-        serializer = UserSerializer(user)
-        # jwt 토큰 접근
-        token = TokenObtainPairSerializer.get_token(user)
-        refresh_token = str(token)
-        access_token = str(token.access_token)
-        res = Response(
-            {
-                'user': serializer.data,
-                'message': 'login success',
-                'token': {
-                    'access': access_token,
-                    'refresh': refresh_token,
+        if check_password(request.data.get('password'), user.password):
+            serializer = UserSerializer(user)
+            # jwt 토큰 접근
+            token = TokenObtainPairSerializer.get_token(user)
+            refresh_token = str(token)
+            access_token = str(token.access_token)
+            res = Response(
+                {
+                    'user': serializer.data,
+                    'message': 'login success',
+                    'token': {
+                        'access': access_token,
+                        'refresh': refresh_token,
+                    },
                 },
-            },
-            status=status.HTTP_200_OK,
-        )
-        # jwt 토큰 쿠키에 저장
-        res.set_cookie('access', access_token, httponly=True)
-        res.set_cookie('refresh', refresh_token, httponly=True)
-        return res
+                status=status.HTTP_200_OK,
+            )
+            # jwt 토큰 쿠키에 저장
+            res.set_cookie('access', access_token, httponly=True)
+            res.set_cookie('refresh', refresh_token, httponly=True)
+            return res
+        else:
+            return Response({'message': 'wrong password'}, status=status.HTTP_400_BAD_REQUEST)
     else:
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
