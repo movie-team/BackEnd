@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate
 from rest_framework.permissions import IsAuthenticated
 # refresh_token 객체 생성
 from rest_framework_simplejwt.tokens import RefreshToken
+# 비밀번호 비교 모듈
 from django.contrib.auth.hashers import check_password
 
 # 회원가입
@@ -45,7 +46,7 @@ def signup(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # 회원 삭제
-@api_view(['POST'])
+@api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def signout(request):
     user = request.user
@@ -125,7 +126,7 @@ def logout(request):
         return Response({'message': str(e)}, status=500)
     
 # 유저 정보 변경    
-@api_view(['POST'])
+@api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def update(request):
     User = get_user_model()
@@ -149,7 +150,7 @@ def update(request):
 
 
 # 비밀번호 변경
-@api_view(['POST'])
+@api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def password(request):
     new_password = request.data.get('password')
