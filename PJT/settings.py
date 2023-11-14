@@ -13,17 +13,18 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 import os
+from decouple import config
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-hfp9%fhn_!(nyrah9-8qqv5+(16edymqje3ahs5aq^th6e^g^0'
-
+SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -39,10 +40,11 @@ INSTALLED_APPS = [
     # jwt 라이브러리
     'rest_framework_simplejwt',
     # 소셜 로그인 라이브러리
+    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.kakao',
     # cors 설정
     'corsheaders',
     'django.contrib.admin',
@@ -79,6 +81,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -192,13 +195,18 @@ SIMPLE_JWT = {
 }
 
 AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 SITE_ID = 1  # Django-allauth를 사용할 때 필요한 설정
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-LOGIN_REDIRECT_URL = '/'  # 로그인 후 리다이렉트될 URL
-
+SOCIALACCOUNT_LOGIN_ON_GET = True
+ACCOUNT_LOGOUT_ON_GET = True 
+SOCIAL_OUTH_CONFIG = {
+    'KAKAO_REST_API_KEY': config('KAKAO_REST_API_KEY'),
+    "KAKAO_REDIRECT_URI": config('KAKAO_REDIRECT_URI'),
+    "KAKAO_SECRET_KEY": config('KAKAO_SECRET_KEY')
+}
 
 CORS_ORIGIN_WHITELIST = ["http://localhost:5173"]
 CORS_ALLOW_CREDENTIALS = True
