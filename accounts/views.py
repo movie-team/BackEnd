@@ -1,4 +1,4 @@
-from django.shortcuts import get_list_or_404, get_object_or_404
+from django.shortcuts import get_list_or_404, get_object_or_404, redirect
 from .models import User
 from .serializers import UserSerializer
 from django.contrib.auth import get_user_model
@@ -14,11 +14,15 @@ from rest_framework_simplejwt.tokens import RefreshToken
 # 비밀번호 비교 모듈
 from django.contrib.auth.hashers import check_password
 
+from rest_framework.permissions import AllowAny
+from PJT.settings import SOCIAL_OUTH_CONFIG
+import requests
+
 # 회원가입
 @api_view(['POST'])
+@permission_classes([AllowAny, ])
 def signup(request):
     serializer = UserSerializer(data=request.data)
-
     if serializer.is_valid():
         user = serializer.save()
         
@@ -77,7 +81,7 @@ def login(request):
     # 유저 인증
     
     User = get_user_model()
-    user = User.objects.get(email=request.data.get('email'))
+    user = User.objects.get(username=request.data.get('username'))
 
     if user is not None:
         if check_password(request.data.get('password'), user.password):
@@ -130,7 +134,7 @@ def logout(request):
 @permission_classes([IsAuthenticated])
 def update(request):
     User = get_user_model()
-    user = User.objects.get(email=request.user.email)
+    user = User.objects.get(username=request.user.username)
     serializer = UserSerializer(user, data=request.data)
 
     if serializer.is_valid():
@@ -192,6 +196,96 @@ def password(request):
 @permission_classes([IsAuthenticated])
 def profile(request):
     User = get_user_model()
-    user = get_object_or_404(User, email=request.user.email)
+    user = get_object_or_404(User, username=request.user.username)
     serializer = UserSerializer(user)
     return Response(serializer.data)
+
+
+# 카카오 소셜 로그인 코드
+# 1. 인가 코드 요청 후 리다이렉트
+@api_view(['GET'])
+@permission_classes([AllowAny, ])
+def kakaoGetLogin(request):
+    CLIENT_ID = SOCIAL_OUTH_CONFIG['KAKAO_REST_API_KEY']
+    REDIRET_URL = SOCIAL_OUTH_CONFIG['KAKAO_REDIRECT_URI']
+    return redirect(
+        f"https://kauth.kakao.com/oauth/authorize?client_id={CLIENT_ID}&redirect_uri={REDIRET_URL}&response_type=code"
+    )
+
+# 2. 인가 코드 기반 토큰 요청
+# 3. 토큰 발급 후 토큰 기반 카카오 회원 정보 확인
+# 4. 확인된 회원 정보로 회원 생성
+@api_view(['GET'])
+@permission_classes([AllowAny, ])
+def getUserInfo(request):
+    CODE = request.query_params['code']
+    url = "https://kauth.kakao.com/oauth/token"
+    res = {
+            'grant_type': 'authorization_code',
+            'client_id': SOCIAL_OUTH_CONFIG['KAKAO_REST_API_KEY'],
+            'redirect_url': SOCIAL_OUTH_CONFIG['KAKAO_REDIRECT_URI'],
+            'client_secret': SOCIAL_OUTH_CONFIG['KAKAO_SECRET_KEY'],
+            'code': CODE
+        }
+    headers = {
+        'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+    }
+    response = requests.post(url, data=res, headers=headers)
+    tokenJson = response.json()
+    userUrl = "https://kapi.kakao.com/v2/user/me"
+    auth = "Bearer "+tokenJson['access_token']
+    
+    HEADER = {
+        "Authorization": auth,
+        "Content-type": "application/x-www-form-urlencoded;charset=utf-8"
+    }
+    res = requests.get(userUrl, headers=HEADER)
+    
+    KAKAO_USER_INFO = res.json()
+    
+    email = KAKAO_USER_INFO.get('kakao_account', {}).get('email')
+    username = KAKAO_USER_INFO.get('kakao_account', {}).get('profile', {}).get('nickname')
+    id = KAKAO_USER_INFO.get('id')
+
+    User = get_user_model()
+
+    try:
+        User.objects.get(username=username)
+    except User.DoesNotExist:
+        data = {
+            'username': username,
+            'email': email,
+            'password': str(id)
+        }
+        serializer = UserSerializer(data=data)
+        if serializer.is_valid():
+            user = serializer.save()
+            
+            # jwt 토큰 접근
+            token = TokenObtainPairSerializer.get_token(user)
+            refresh_token = str(token)
+            access_token = str(token.access_token)
+            response = Response(
+                {
+                    'user': serializer.data,
+                    'message': 'signup successs',
+                    'token': {
+                        'access': access_token,
+                        'refresh': refresh_token,
+                    },
+                },
+                status=status.HTTP_200_OK,
+            )
+            
+            # jwt 토큰 쿠키에 저장
+            response.set_cookie('access', access_token, httponly=True)
+            response.set_cookie('refresh', refresh_token, httponly=True)
+            
+            return response
+        
+    return Response(
+            {
+                'message': 'same username already exsists'
+            },
+            status=status.HTTP_400_BAD_REQUEST
+        )
