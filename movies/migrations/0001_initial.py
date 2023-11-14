@@ -53,6 +53,7 @@ class Migration(migrations.Migration):
             name='Test_model',
             fields=[
                 ('id', models.IntegerField(primary_key=True, serialize=False)),
+<<<<<<< HEAD
                 ('adult', models.BooleanField(blank=True, default=True)),
                 ('title', models.CharField(max_length=200)),
                 ('original_title', models.CharField(blank=True, default=None, max_length=200)),
@@ -63,6 +64,18 @@ class Migration(migrations.Migration):
                 ('vote_average', models.FloatField(blank=True)),
                 ('vote_count', models.IntegerField(blank=True)),
                 ('genres', models.ManyToManyField(to='movies.genre', verbose_name='test_movie')),
+=======
+                ('adult', models.BooleanField(default=True)),
+                ('title', models.CharField(max_length=200)),
+                ('original_title', models.CharField(max_length=200)),
+                ('overview', models.TextField()),
+                ('popularity', models.FloatField()),
+                ('poster', models.TextField()),
+                ('release_date', models.DateField()),
+                ('vote_average', models.FloatField()),
+                ('vote_count', models.IntegerField()),
+                ('genres', models.ManyToManyField(to='movies.Movie', verbose_name='test_movie')),
+>>>>>>> 9e83e5bedf4656dd83638095323942b6ac48336a
             ],
         ),
         migrations.CreateModel(

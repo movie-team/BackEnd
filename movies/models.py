@@ -13,11 +13,17 @@ class Movie(models.Model):
     title = models.CharField(blank=True, max_length=200)
     original_title = models.CharField(max_length=200)
     overview = models.TextField(blank=True)
+<<<<<<< HEAD
     popularity = models.FloatField(blank=True)
     poster = models.TextField(blank=True, null=True)
     release_date = models.DateField()
     vote_average = models.FloatField()
     vote_count = models.IntegerField()
+=======
+    poster = models.ImageField(blank=True)
+    id = models.IntegerField(primary_key=True)
+    adult = models.BooleanField()
+>>>>>>> 9e83e5bedf4656dd83638095323942b6ac48336a
     created_at = models.DateField(auto_now_add=True)
     genres = models.ManyToManyField(Genre, verbose_name='test_movie', unique=False)
 
