@@ -47,3 +47,4 @@ class Test_model(models.Model):
     vote_average = models.FloatField(blank=True)
     vote_count = models.IntegerField(blank=True)
     genres = models.ManyToManyField(Genre, verbose_name='test_movie', unique=False)
+    
