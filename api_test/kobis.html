@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="movies"></ul>
+    <img src="" alt="">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // const URL = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=c94330bbeb730c1641fe10ab4165ccc4&targetDt=20120101"
+        const URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=c94330bbeb730c1641fe10ab4165ccc4&targetDt=20231023"
+        axios({
+            method: 'GET',
+            url: URL,
+            })
+        .then(response => {
+            console.log('1', response)
+            return response})
+        .catch(err => console.error(err));
+    </script>
+</body>
+</html>
