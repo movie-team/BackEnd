@@ -31,6 +31,7 @@ pycparser==2.21
 Pygments==2.8.1
 PyJWT==2.8.0
 python-dateutil==2.8.1
+python-decouple==3.8
 python3-openid==3.2.0
 pytz==2021.1
 requests==2.31.0
