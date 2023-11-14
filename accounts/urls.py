@@ -16,5 +16,4 @@ urlpatterns = [
     path('password/', views.password),
     path('', views.profile),
 
-    # path('google/')
 ]
