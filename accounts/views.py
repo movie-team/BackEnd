@@ -77,6 +77,7 @@ def signout(request):
 
 # 로그인
 @api_view(['POST'])
+@permission_classes([AllowAny, ])
 def login(request):
     # 유저 인증
     
@@ -193,6 +194,7 @@ def password(request):
 
 # 사용자 정보 제공
 @api_view(['GET'])
+@permission_classes([AllowAny, ])
 @permission_classes([IsAuthenticated])
 def profile(request):
     User = get_user_model()
