@@ -82,9 +82,9 @@ def login(request):
     # 유저 인증
     
     User = get_user_model()
-    user = User.objects.get(username=request.data.get('username'))
 
-    if user is not None:
+    try:
+        user = User.objects.get(username=request.data.get('username'))
         if check_password(request.data.get('password'), user.password):
             serializer = UserSerializer(user)
             # jwt 토큰 접근
@@ -108,8 +108,9 @@ def login(request):
             return res
         else:
             return Response({'message': 'wrong password'}, status=status.HTTP_400_BAD_REQUEST)
-    else:
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    except User.DoesNotExist:
+        return Response({'message': 'wrong username'}, status=status.HTTP_400_BAD_REQUEST)
 
 # 로그아웃    
 @api_view(['POST'])
