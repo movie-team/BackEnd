@@ -35,15 +35,21 @@ def movie_detail(request, movie_pk):
         print(serializer.data)
         return Response(serializer.data)
     
+@api_view(['GET'])
+@permission_classes([AllowAny,])
+def review(request, movie_pk):
+    movie = get_object_or_404(Movie, id=movie_pk)
+    reviews = movie.review_set.all()
+    serializer = ReviewSerializer(reviews, many=True)
+    return Response(serializer.data)
+
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated, ])
-def review_create(request, username, movie_pk):
-    movie = get_object_or_404(Movie, pk=movie_pk)
-    User = get_user_model()
-    user = User.objects.get(username=username)
-    print(request.user)
-    print(user)
+def review_create(request, movie_pk):
+    movie = get_object_or_404(Movie, id=movie_pk)
+    user = request.user
     serializer = ReviewSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save(movie=movie, user=user)
