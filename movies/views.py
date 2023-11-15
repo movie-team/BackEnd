@@ -2,9 +2,11 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from django.shortcuts import get_object_or_404, get_list_or_404
-
-from .serializers import MovieSerializer, TestSerializer, GenreSerializer, MovieListSerializer
+from django.contrib.auth import get_user_model
+from .serializers import MovieSerializer, TestSerializer, GenreSerializer, ReviewSerializer
 from .models import Movie, Genre, Test_model
+
+from rest_framework import status
 
 import requests
 import json
@@ -32,6 +34,21 @@ def movie_detail(request, movie_pk):
         serializer = MovieSerializer(movie)
         print(serializer.data)
         return Response(serializer.data)
+    
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated, ])
+def review_create(request, username, movie_pk):
+    movie = get_object_or_404(Movie, id=movie_pk)
+    User = get_user_model()
+    user = User.objects.get(username=username)
+    serializer = ReviewSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save(movie_pk=movie, user_pk=user)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+
     
 @api_view(['GET', 'POST'])
 def add_data(request):
