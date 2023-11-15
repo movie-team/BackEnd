@@ -3,8 +3,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.contrib.auth import get_user_model
-from .serializers import MovieSerializer, TestSerializer, GenreSerializer, ReviewSerializer
-from .models import Movie, Genre, Test_model
+from .serializers import MovieSerializer, TestSerializer, GenreSerializer, ReviewSerializer, ReviewLikesSerializer
+from .models import Movie, Genre, Test_model, Review, Review_likes
 
 from rest_framework import status
 
@@ -39,16 +39,34 @@ def movie_detail(request, movie_pk):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated, ])
 def review_create(request, username, movie_pk):
-    movie = get_object_or_404(Movie, id=movie_pk)
+    movie = get_object_or_404(Movie, pk=movie_pk)
     User = get_user_model()
     user = User.objects.get(username=username)
+    print(request.user)
+    print(user)
     serializer = ReviewSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save(movie=movie, user=user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-
+@api_view(['POST',])
+@permission_classes([IsAuthenticated,])
+def review_likes(request, review_pk):
+    review = get_object_or_404(Review, pk=review_pk)
+    User = get_user_model()
+    print(request.user.pk)
+    user = User.objects.get(username=request.user)
+    if Review_likes.objects.filter(review=review, user=user):
+        likes = get_object_or_404(Review_likes, review=review, user=user)
+        print(likes)
+        likes.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+        # return Response({'message': 'You already like this review'}, status=status.HTTP_409_CONFLICT)
+    serializer = ReviewLikesSerializer(data=request.data)
+    if serializer.is_valid(raise_exception=True):
+        serializer.save(review=review, user=user)
+        return Response(serializer.data, status.HTTP_201_CREATED)
     
 @api_view(['GET', 'POST'])
 def add_data(request):

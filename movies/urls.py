@@ -11,7 +11,7 @@ urlpatterns = [
     path('<str:username>/<int:movie_pk>/', views.review_create),
 
 
-    # path('review/<int:review.pk>/likes/', views.likes, name='likes'),
+    path('review/<int:review_pk>/likes/', views.review_likes, name='likes'),
     # path('<int:movie.pk>/ticketing/', views.ticketing, name='ticketing'),
     # path('worldcup/', views.worldcup, name='worldcup'),\
 
