@@ -1,14 +1,38 @@
 from django.shortcuts import render
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
-from .serializers import MovieSerializer, TestSerializer, GenreSerializer
+from rest_framework.decorators import api_view, permission_classes
+from django.shortcuts import get_object_or_404, get_list_or_404
+
+from .serializers import MovieSerializer, TestSerializer, GenreSerializer, MovieListSerializer
 from .models import Movie, Genre, Test_model
+
 import requests
 import json
+from rest_framework.permissions import AllowAny, IsAuthenticated
+
 from pprint import pprint
 from time import sleep
 
 # Create your views here.
+
+@api_view(['GET',])
+@permission_classes([AllowAny,])
+def movie_list(request):
+    if request.method == 'GET':
+        movies = get_list_or_404(Movie)
+        serializer = MovieSerializer(movies, many=True)
+        return Response(serializer.data)
+
+
+@api_view(['GET',])
+@permission_classes([AllowAny,])
+def movie_detail(request, movie_pk):
+    movie = get_object_or_404(Movie, id=movie_pk)
+    if request.method == 'GET':
+        serializer = MovieSerializer(movie)
+        print(serializer.data)
+        return Response(serializer.data)
+    
 @api_view(['GET', 'POST'])
 def add_data(request):
     # url = "https://api.themoviedb.org/3/movie/now_playing?language=ko-US&page=1&region=KR"
