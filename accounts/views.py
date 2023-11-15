@@ -257,20 +257,21 @@ def getUserInfo(request):
         data = {
             'username': username,
             'email': email,
-            'password': str(id)
+            'password': str(id),
+            'social': True
         }
         serializer = UserSerializer(data=data)
         if serializer.is_valid():
-            user = serializer.save()
+            serializer.save()
             
             # jwt 토큰 접근
-            token = TokenObtainPairSerializer.get_token(user)
-            refresh_token = str(token)
-            access_token = str(token.access_token)
+            refresh_token = str(tokenJson['refresh_token'])
+            access_token = str(tokenJson['access_token'])
             response = Response(
                 {
                     'user': serializer.data,
                     'message': 'signup successs',
+                    'tokenJson': tokenJson,
                     'token': {
                         'access': access_token,
                         'refresh': refresh_token,
@@ -291,3 +292,30 @@ def getUserInfo(request):
             },
             status=status.HTTP_400_BAD_REQUEST
         )
+
+def kakaoRefresh(request):
+    url = "https://kauth.kakao.com/oauth/token"
+    res = {
+            'grant_type': 'refresh_token',
+            'client_id': SOCIAL_OUTH_CONFIG['KAKAO_REST_API_KEY'],
+            'refresh_token': request.COOKIES.get('refresh'),
+            'client_secret': SOCIAL_OUTH_CONFIG['KAKAO_SECRET_KEY']
+        }
+    headers = {
+        'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+    }
+    res = requests.post(url, data=res, headers=headers)
+    
+    return Response(res.json())
+
+def kakaoLogout(request):
+    url = "https://kapi.kakao.com/v1/user/logout"
+
+    auth = "Bearer "+ request.COOKIES.get('refresh')
+    
+    HEADER = {
+        "Authorization": auth,
+        "Content-type": "application/x-www-form-urlencoded;charset=utf-8"
+    }
+    res = requests.POST(url, headers=HEADER)
+    return res
