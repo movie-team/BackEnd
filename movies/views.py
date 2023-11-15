@@ -44,7 +44,7 @@ def review_create(request, username, movie_pk):
     user = User.objects.get(username=username)
     serializer = ReviewSerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save(movie_pk=movie, user_pk=user)
+        serializer.save(movie=movie, user=user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
