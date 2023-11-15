@@ -8,8 +8,9 @@ urlpatterns = [
     path('<int:movie_pk>/', views.movie_detail, name='detail'),
 
     # 리뷰 api
-    path('<str:username>/<int:movie_pk>/', views.review_create),
-
+    path('<int:movie_pk>/review/', views.review),
+    path('<int:movie_pk>/reviewCreate/', views.review_create),
+    path('<int:movie_pk>/<int:review_pk>/', views.review_control),
 
     # path('review/<int:review.pk>/likes/', views.likes, name='likes'),
     # path('<int:movie.pk>/ticketing/', views.ticketing, name='ticketing'),
