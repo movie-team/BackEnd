@@ -18,6 +18,8 @@ from rest_framework.permissions import AllowAny
 from PJT.settings import SOCIAL_OUTH_CONFIG
 import requests
 
+from django.middleware.csrf import get_token
+
 # 회원가입
 @api_view(['POST'])
 @permission_classes([AllowAny, ])
@@ -110,7 +112,7 @@ def login(request):
             return Response({'message': 'wrong password'}, status=status.HTTP_400_BAD_REQUEST)
 
     except User.DoesNotExist:
-        return Response({'message': 'wrong username'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'message': 'user not exists'}, status=status.HTTP_400_BAD_REQUEST)
 
 # 로그아웃    
 @api_view(['POST'])
@@ -332,12 +334,13 @@ def kakaoRefresh(request):
 
 def kakaoLogout(request):
     url = "https://kapi.kakao.com/v1/user/logout"
-
-    auth = "Bearer "+ request.COOKIES.get('refresh')
+    csrf_token = get_token(request)
+    auth = "Bearer "+ request.COOKIES.get('access')
     
     HEADER = {
         "Authorization": auth,
-        "Content-type": "application/x-www-form-urlencoded;charset=utf-8"
+        "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
+        "X-CSRFToken": csrf_token
     }
     res = requests.POST(url, headers=HEADER)
     return res
