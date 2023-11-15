@@ -44,7 +44,6 @@ def review(request, movie_pk):
     return Response(serializer.data)
 
 
-
 @api_view(['POST'])
 @permission_classes([IsAuthenticated, ])
 def review_create(request, movie_pk):
@@ -54,6 +53,40 @@ def review_create(request, movie_pk):
     if serializer.is_valid():
         serializer.save(movie=movie, user=user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+@api_view(['PUT', 'DELETE'])
+@permission_classes([IsAuthenticated, ])
+def review_control(request, movie_pk, review_pk):
+    user = request.user
+    review = Review.objects.get(pk=review_pk)
+
+    check_user = review.user_id
+
+    if user.id == check_user:
+        if request.method == 'PUT':
+            serializer = ReviewSerializer(review, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+
+        elif request.method == 'DELETE':
+            review.delete()
+            return Response(
+                {
+                    "message": "delete success"
+                },
+                status = status.HTTP_204_NO_CONTENT
+            )
+
+    else:
+        return Response(
+            {
+                "message": "diffrent user"
+            },
+            status = status.HTTP_400_BAD_REQUEST
+        )
+
 
 
 @api_view(['POST',])
