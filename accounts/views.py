@@ -252,7 +252,29 @@ def getUserInfo(request):
     User = get_user_model()
 
     try:
-        User.objects.get(username=username)
+        user = User.objects.get(username=username)
+        if user.social:
+            refresh_token = str(tokenJson['refresh_token'])
+            access_token = str(tokenJson['access_token'])
+            data = {
+                'username': username,
+                'email': email,
+                'password': str(id),
+                'social': True
+            }
+
+            response = Response(
+                    {
+                        'message': 'login successs',
+                        'token': {
+                            'access': access_token,
+                            'refresh': refresh_token,
+                        },
+                    },
+                    status=status.HTTP_200_OK,
+                )
+            return response
+
     except User.DoesNotExist:
         data = {
             'username': username,
@@ -271,7 +293,6 @@ def getUserInfo(request):
                 {
                     'user': serializer.data,
                     'message': 'signup successs',
-                    'tokenJson': tokenJson,
                     'token': {
                         'access': access_token,
                         'refresh': refresh_token,
