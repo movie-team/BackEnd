@@ -12,7 +12,7 @@ urlpatterns = [
     path('<int:movie_pk>/reviewCreate/', views.review_create),
     path('<int:movie_pk>/<int:review_pk>/', views.review_control),
 
-    # path('review/<int:review.pk>/likes/', views.likes, name='likes'),
+    path('review/<int:review_pk>/likes/', views.review_likes, name='likes'),
     # path('<int:movie.pk>/ticketing/', views.ticketing, name='ticketing'),
     # path('worldcup/', views.worldcup, name='worldcup'),\
 
