@@ -20,4 +20,8 @@ urlpatterns = [
     path('password/reset/', views.rest_password),
     path('password/reset/confirm/', views.rest_password_confirm),
 
+    # 회원가입 시 이메일 인증
+    path('confirm/', views.confirm),
+    path('emailVerify/', views.verify_email),
+
 ]
