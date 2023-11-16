@@ -19,7 +19,7 @@ class Movie(models.Model):
     vote_average = models.FloatField()
     vote_count = models.IntegerField()
     created_at = models.DateField(auto_now_add=True)
-    genres = models.ManyToManyField(Genre, verbose_name='test_movie', unique=False)
+    genres = models.ManyToManyField(Genre, verbose_name='test_movie', related_name='genres' ,unique=False)
 
 
 class Review(models.Model):
@@ -32,7 +32,7 @@ class Review(models.Model):
 
 class Review_likes(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    review = models.ForeignKey(Review, on_delete=models.CASCADE)
+    review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name='likes')
     review_likes = models.BooleanField()
 
 class Test_model(models.Model):

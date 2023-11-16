@@ -15,17 +15,21 @@ class MovieSerializer(serializers.ModelSerializer):
         model = Movie
         fields = '__all__'
 
-class ReviewSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Review
-        fields = '__all__'
-        read_only_fields = ('movie', 'user')
-
 class ReviewLikesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review_likes
         fields = '__all__'
         read_only_fields = ('user', 'review')
+
+class ReviewSerializer(serializers.ModelSerializer):
+    likes = ReviewLikesSerializer(many=True, read_only=True)
+    likes_count = serializers.IntegerField(source='likes.count', read_only=True)
+
+    class Meta:
+        model = Review
+        fields = '__all__'
+        read_only_fields = ('movie', 'user')
+
 
 
 class GenreSerializer(serializers.ModelSerializer):
