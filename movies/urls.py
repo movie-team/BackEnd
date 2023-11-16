@@ -6,6 +6,7 @@ urlpatterns = [
     # 영화 정보 받아오기
     path('', views.movie_list, name='index'),
     path('<int:movie_pk>/', views.movie_detail, name='detail'),
+    path('genre/<int:genre_pk>/', views.genre_movie, name='genre_movie'),
 
     # 리뷰 api
     path('<int:movie_pk>/review/', views.review),
