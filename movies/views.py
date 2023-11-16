@@ -15,6 +15,8 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from pprint import pprint
 from time import sleep
 
+from django.db.models import Avg
+
 # Create your views here.
 
 # 영화 전체 조회
@@ -60,6 +62,46 @@ def popular_movie(request):
     movies = get_list_or_404(Movie.objects.order_by('-popularity'))
     serializer = MovieSerializer(movies, many=True)
     return Response(serializer.data)
+            
+
+# 장르 유사도 기반 추천 알고리즘
+@api_view(['GET'])
+@permission_classes([AllowAny,])
+def genre_recommend(request, movie_pk):
+    movie = get_object_or_404(Movie, id=movie_pk)
+    movies = get_list_or_404(Movie.objects.order_by('-popularity'))
+
+    # # popularity 중간값 및 분포 확인
+    # median_popularity = movies[len(movies)//2].popularity
+    # print(f'median: {median_popularity}')
+    # for m in movies:
+    #     print(m.popularity, end=' ')
+
+    # 목표 유사도를 만족하는 인기도 최상위 영화 리스트를 반환하는 함수
+    def similarity(genres, targets):
+        genres_length = len(genres)
+        similar_list = []
+
+        target_similarity = 0.4 # 목표 유사도
+        target_num_of_movies = 10 # 목표 영화 개수
+        num_of_movie = 0
+        for i, target in enumerate(targets):
+            target_queryset = target.genres.all()
+            count = 0
+            for genre in genres:
+                if genre in target_queryset:
+                    count += 1
+            if count/genres_length > target_similarity:
+                similar_list.append(target)
+                num_of_movie += 1
+                if num_of_movie >= target_num_of_movies:
+                    break
+        return similar_list
+    
+    print('???',similarity(movie.genres.all(), movies))
+    serializer = MovieSerializer(similarity(movie.genres.all(), movies), many=True)
+    return Response(serializer.data)
+
 
 
 @api_view(['GET'])
@@ -94,8 +136,9 @@ def review_create(request, movie_pk):
             print(request.data['rating'])
             origin_rating = movie.vote_average
             origin_nums = movie.vote_count
+            user_rating = float(request.data['rating'])
             
-            new_rating = origin_rating*origin_nums+request.data['rating']
+            new_rating = origin_rating*origin_nums+user_rating
             new_nums = origin_nums+1
 
             movie.vote_average = round(new_rating / new_nums,  1)
@@ -168,6 +211,8 @@ def review_likes(request, review_pk):
     User = get_user_model()
     print(request.user.pk)
     user = User.objects.get(username=request.user)
+    if review.user == request.user:
+        return Response({ 'message': 'you can`t press likes your review'})
     if Review_likes.objects.filter(review=review, user=user):
         likes = get_object_or_404(Review_likes, review=review, user=user)
         print(likes)

@@ -9,6 +9,9 @@ urlpatterns = [
     path('genre/', views.genre),
     path('genre/<int:genre_pk>/', views.genre_movie, name='genre_movie'),
     path('popularity/', views.popular_movie, name='popular_movie'),
+    # path('gender/', views.gender_movie, name='gender_movie'),
+    # path('age/', views.age_movie, name='age_movie'),
+    path('<int:movie_pk>/genre_recommendation/', views.genre_recommend, name='genre_recommend'),
 
     # 리뷰 api
     path('<int:movie_pk>/review/', views.review),
