@@ -16,4 +16,8 @@ urlpatterns = [
     path('password/', views.password),
     path('', views.profile),
 
+    # 비밀번호 찾기 api
+    path('password/reset/', views.rest_password),
+    path('password/reset/confirm/', views.rest_password_confirm),
+
 ]
