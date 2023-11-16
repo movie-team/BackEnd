@@ -17,6 +17,7 @@ from time import sleep
 
 # Create your views here.
 
+# 영화 전체 조회
 @api_view(['GET',])
 @permission_classes([AllowAny,])
 def movie_list(request):
@@ -25,7 +26,7 @@ def movie_list(request):
         serializer = MovieSerializer(movies, many=True)
         return Response(serializer.data)
 
-
+# 영화 상세 조회
 @api_view(['GET',])
 @permission_classes([AllowAny,])
 def movie_detail(request, movie_pk):
@@ -34,7 +35,8 @@ def movie_detail(request, movie_pk):
         serializer = MovieSerializer(movie)
         print(serializer.data)
         return Response(serializer.data)
-    
+
+# 영화 당 리뷰 조회    
 @api_view(['GET'])
 @permission_classes([AllowAny,])
 def review(request, movie_pk):
@@ -44,22 +46,53 @@ def review(request, movie_pk):
     return Response(serializer.data)
 
 
+# 리뷰 생성
+# 영화 당 사용자는 리뷰 한 개만 작성 가능
 @api_view(['POST'])
 @permission_classes([IsAuthenticated, ])
 def review_create(request, movie_pk):
     movie = get_object_or_404(Movie, id=movie_pk)
     user = request.user
-    serializer = ReviewSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save(movie=movie, user=user)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    try:
+        Review.objects.get(movie=movie, user=user)
+        return Response(
+            {
+                'message': 'you already wrote review'
+            },
+            status = status.HTTP_400_BAD_REQUEST
+        )
+
+    except Review.DoesNotExist:
+        serializer = ReviewSerializer(data=request.data)
+        if serializer.is_valid():
+            print(request.data['rating'])
+            origin_rating = movie.vote_average
+            origin_nums = movie.vote_count
+            
+            new_rating = origin_rating*origin_nums+request.data['rating']
+            new_nums = origin_nums+1
+
+            movie.vote_average = round(new_rating / new_nums,  1)
+            movie.vote_count = new_nums
+            movie.save()
 
 
+            serializer.save(movie=movie, user=user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    
+
+
+# 리뷰 수정 및 삭제
 @api_view(['PUT', 'DELETE'])
 @permission_classes([IsAuthenticated, ])
 def review_control(request, movie_pk, review_pk):
     user = request.user
     review = Review.objects.get(pk=review_pk)
+    movie = get_object_or_404(Movie, id=movie_pk)
+    origin_rating = movie.vote_average
+    origin_nums = movie.vote_count
 
     check_user = review.user_id
 
@@ -67,10 +100,24 @@ def review_control(request, movie_pk, review_pk):
         if request.method == 'PUT':
             serializer = ReviewSerializer(review, data=request.data)
             if serializer.is_valid():
+                if(request.data['rating'] != review.rating):
+                    new_rating = origin_rating*origin_nums-review.rating+request.data['rating']
+                
+                    movie.vote_average = round(new_rating / origin_nums,  1)
+                    
+                    movie.save()
+
                 serializer.save()
                 return Response(serializer.data)
 
         elif request.method == 'DELETE':
+            new_rating = origin_rating*origin_nums-review.rating
+            new_nums = origin_nums-1
+
+            movie.vote_average = round(new_rating / new_nums,  1)
+            
+            movie.save()
+
             review.delete()
             return Response(
                 {
@@ -88,7 +135,7 @@ def review_control(request, movie_pk, review_pk):
         )
 
 
-
+# 리뷰 좋아요/싫어요
 @api_view(['POST',])
 @permission_classes([IsAuthenticated,])
 def review_likes(request, review_pk):
@@ -106,7 +153,11 @@ def review_likes(request, review_pk):
     if serializer.is_valid(raise_exception=True):
         serializer.save(review=review, user=user)
         return Response(serializer.data, status.HTTP_201_CREATED)
-    
+
+
+
+# 후에 주석 처리할 내용들
+# 초기 데이터 가져온 함수
 @api_view(['GET', 'POST'])
 def add_data(request):
     # url = "https://api.themoviedb.org/3/movie/now_playing?language=ko-US&page=1&region=KR"
