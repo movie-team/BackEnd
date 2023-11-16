@@ -33,6 +33,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     social = models.BooleanField(default=False)
+    gender = models.BooleanField(blank=True)
+    age = models.IntegerField(blank=True)
+
 
 	# 헬퍼 클래스 사용
     objects = UserManager()
