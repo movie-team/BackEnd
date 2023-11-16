@@ -1,12 +1,30 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from datetime import datetime
 
 class UserManager(BaseUserManager):
-    def create_user(self, username, password, **extra_fields):
+    def create_user(self, username, password, gender, birth, **extra_fields):
         if not username:
             raise ValueError('Users must have an username address')
+        if not gender:
+            raise ValueError('Users must have an gender address')
+        if not birth:
+            raise ValueError('Users must have an birth address')
+        
+        current_date = datetime.now()
+
+        date_format = "%Y-%m-%d"
+        user_birth = datetime.strptime(birth, date_format)
+
+        date_diff = current_date - user_birth
+
+        user_age = date_diff.days / 365.25
+
         user = self.model(
             username=username,
+            gender=gender,
+            birth=birth,
+            age=user_age,
             **extra_fields
         )
         user.set_password(password)
@@ -33,9 +51,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     social = models.BooleanField(default=False)
-    gender = models.BooleanField(blank=True)
+    gender = models.BooleanField(blank=False)
+    birth = models.CharField(max_length=40, blank=False)
     age = models.IntegerField(blank=True)
-
 
 	# 헬퍼 클래스 사용
     objects = UserManager()
