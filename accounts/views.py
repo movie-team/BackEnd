@@ -25,6 +25,27 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_text
 from django.core.mail import send_mail
 
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def confirm(request):
+    return Response({
+        'message': 'ok'
+    })
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def verify_email(request):
+    email = request.data['email']
+    subject = '사용자 이메일 인증'
+    message = f'사용자 이메일을 인증해주세요: \n{BASE_URL}/api/confirm/?check=ok'
+    from_email = EMAIL_HOST_USER
+    recipient_list = [email]
+
+    send_mail(subject, message, from_email, recipient_list)
+
+    return Response(
+        status=status.HTTP_200_OK
+    )
 
 # 회원가입
 @api_view(['POST'])
@@ -32,6 +53,7 @@ from django.core.mail import send_mail
 def signup(request):
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
+
         user = serializer.save()
         
         # jwt 토큰 접근
@@ -55,6 +77,7 @@ def signup(request):
         response.set_cookie('refresh', refresh_token, httponly=True)
         
         return response
+    
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # 회원 삭제
