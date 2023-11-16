@@ -47,6 +47,16 @@ def genre_movie(request, genre_pk):
     serializer = MovieSerializer(movies, many=True)
     return Response(serializer.data)
 
+
+# 인기도 별 영화 정렬
+@api_view(['GET',])
+@permission_classes([AllowAny,])
+def popular_movie(request):
+    movies = get_list_or_404(Movie.objects.order_by('-popularity'))
+    serializer = MovieSerializer(movies, many=True)
+    return Response(serializer.data)
+
+
 @api_view(['GET'])
 @permission_classes([AllowAny,])
 def review(request, movie_pk):
