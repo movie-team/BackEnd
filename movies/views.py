@@ -36,7 +36,12 @@ def movie_detail(request, movie_pk):
         print(serializer.data)
         return Response(serializer.data)
 
-    
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def genre(request):
+    genre = get_list_or_404(Genre)
+    serializer = GenreSerializer(genre, many=True)
+    return Response(serializer.data)
 
 # 장르 별 영화 추천
 @api_view(['GET',])
