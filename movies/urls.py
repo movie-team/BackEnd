@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.movie_list, name='index'),
     path('<int:movie_pk>/', views.movie_detail, name='detail'),
     path('genre/<int:genre_pk>/', views.genre_movie, name='genre_movie'),
+    path('popularity/', views.popular_movie, name='popular_movie'),
 
     # 리뷰 api
     path('<int:movie_pk>/review/', views.review),
