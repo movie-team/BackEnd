@@ -36,7 +36,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'accounts',
     'movies',
-    'theater',
     'rest_framework',
     # jwt 라이브러리
     'rest_framework_simplejwt',

@@ -28,16 +28,26 @@ from django.core.mail import send_mail
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def confirm(request):
-    return Response({
-        'message': 'ok'
-    })
+    uidb64 = request.data['uidb64']
+    uid = force_text(urlsafe_base64_decode(uidb64))
+
+    if request.data('username') == uid:
+        return Response({
+            'message': 'ok'
+        }, status=status.HTTP_200_OK)
+    else:
+        return Response({
+            'message': 'unverify code'
+        }, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def verify_email(request):
     email = request.data['email']
+    uidb64 = urlsafe_base64_encode(force_text(request.data('username')).encode())
+    
     subject = '사용자 이메일 인증'
-    message = f'사용자 이메일을 인증해주세요: \n{BASE_URL}/api/confirm/?check=ok'
+    message = f'인증 번호: \n{uidb64}'
     from_email = EMAIL_HOST_USER
     recipient_list = [email]
 

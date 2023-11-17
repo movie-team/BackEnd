@@ -9,7 +9,7 @@ urlpatterns = [
     # jwt 토큰 재발급
     path('auth/refresh/', TokenRefreshView.as_view()),
     # jwt 토큰 유효성 진단
-    path('auth/verify', TokenVerifyView.as_view()),
+    path('auth/verify/', TokenVerifyView.as_view()),
 
     path('signout/', views.signout),
     path('update/', views.update),
