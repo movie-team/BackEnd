@@ -30,7 +30,7 @@ from django.core.mail import send_mail
 def confirm(request):
     uidb64 = request.data['uidb64']
     uid = force_text(urlsafe_base64_decode(uidb64))
-    
+
     if request.data['username'] == uid:
         return Response({
             'message': 'ok'
@@ -428,12 +428,11 @@ def rest_password(request):
         user = User.objects.get(email=email, social=False)
         # 비밀번호 초기화 토큰 생성
         token_generator = PasswordResetTokenGenerator()
-        uidb64 = urlsafe_base64_encode(force_text(user.username).encode())
         token = token_generator.make_token(user)
 
         # 비밀번호 초기화 이메일 전송
         subject = '비밀번호 초기화'
-        message = f'비밀번호를 초기화하려면 다음 링크를 클릭하세요: \n{BASE_URL}/api/password/reset/confirm/'
+        message = f'비밀번호 초기화 코드: \n{token}'
         from_email = EMAIL_HOST_USER
         recipient_list = [user.email]
 
@@ -441,14 +440,6 @@ def rest_password(request):
 
         return Response(
             {
-                'user': {
-                    "username": user.username,
-                    "email": user.email,
-                    "birth": user.birth,
-                    "gender": user.gender
-                },
-                'uidb64': uidb64,
-                'token': token,
                 'message': 'check email please'
                 }, 
                 status=status.HTTP_200_OK
@@ -463,12 +454,10 @@ def rest_password(request):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def rest_password_confirm(request):
-    uidb64 = request.data['uidb64']
     token = request.data['token']
 
-    uid = force_text(urlsafe_base64_decode(uidb64))
     User = get_user_model()
-    user = User.objects.get(username=uid)
+    user = User.objects.get(email=request.data['email'], social=False)
 
     token_generator = PasswordResetTokenGenerator()
     if not token_generator.check_token(user, token):
