@@ -30,8 +30,8 @@ from django.core.mail import send_mail
 def confirm(request):
     uidb64 = request.data['uidb64']
     uid = force_text(urlsafe_base64_decode(uidb64))
-
-    if request.data('username') == uid:
+    
+    if request.data['username'] == uid:
         return Response({
             'message': 'ok'
         }, status=status.HTTP_200_OK)
@@ -44,7 +44,7 @@ def confirm(request):
 @permission_classes([AllowAny])
 def verify_email(request):
     email = request.data['email']
-    uidb64 = urlsafe_base64_encode(force_text(request.data('username')).encode())
+    uidb64 = urlsafe_base64_encode(force_text(request.data['username']).encode())
     
     subject = '사용자 이메일 인증'
     message = f'인증 번호: \n{uidb64}'
