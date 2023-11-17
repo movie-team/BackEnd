@@ -109,7 +109,7 @@ def user_group_rating(request, movie_pk):
     user_gender = request.user.gender
     user_age_group = (request.user.age//10)*10
     print(user_gender, user_age_group)
-    reviews = Review.objects.filter(user__gender=user_gender, user__age__gte=user_age_group, user__age__lt=user_age_group+10)
+    reviews = Review.objects.filter(movie=movie_pk, user__gender=user_gender, user__age__gte=user_age_group, user__age__lt=user_age_group+10)
     rating = reviews.aggregate(Avg("rating"))
     print(reviews)
     print(rating)
@@ -127,11 +127,11 @@ def group_rating(request, movie_pk):
     for gender in genders:
         for age_group in age_groups:
             if age_group == 10:
-                reviews = Review.objects.filter(user__gender=gender, user__age__lt=age_group+10)
+                reviews = Review.objects.filter(movie=movie_pk, user__gender=gender, user__age__lt=age_group+10)
             elif age_group == 50:
-                reviews = Review.objects.filter(user__gender=gender, user__age__gte=age_group)
+                reviews = Review.objects.filter(movie=movie_pk, user__gender=gender, user__age__gte=age_group)
             else:
-                reviews = Review.objects.filter(user__gender=gender, user__age__gte=age_group, user__age__lt=age_group+10)
+                reviews = Review.objects.filter(movie=movie_pk, user__gender=gender, user__age__gte=age_group, user__age__lt=age_group+10)
             group = reviews.aggregate(Avg("rating"))
             group['gender'] = gender
             group['age_group'] = age_group
