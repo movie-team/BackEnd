@@ -3,8 +3,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.contrib.auth import get_user_model
-from .serializers import MovieSerializer, TestSerializer, GenreSerializer, ReviewSerializer, ReviewLikesSerializer
-from .models import Movie, Genre, Test_model, Review, Review_likes
+from .serializers import MovieSerializer, TestSerializer, GenreSerializer, ReviewSerializer, ReviewLikesSerializer, TheaterSerializer, SeatSerializer
+from .models import Movie, Genre, Test_model, Review, Review_likes, Theater, Seat
 
 from rest_framework import status
 
@@ -133,7 +133,6 @@ def review_create(request, movie_pk):
     except Review.DoesNotExist:
         serializer = ReviewSerializer(data=request.data)
         if serializer.is_valid():
-            print(request.data['rating'])
             origin_rating = movie.vote_average
             origin_nums = movie.vote_count
             user_rating = float(request.data['rating'])
@@ -305,3 +304,11 @@ def add_genres(request):
         print('???')
         # 유효하지 않은 경우 에러 메시지를 반환합니다.
         return Response({"error": serializer.errors}, status=400)
+    
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def theater_detail(request, theater_pk):
+    theater = Theater.objects.get(pk=theater_pk)
+    serializer = TheaterSerializer(theater)
+    
+    return Response(serializer.data, status=status.HTTP_200_OK)
