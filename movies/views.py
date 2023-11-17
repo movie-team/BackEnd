@@ -103,6 +103,40 @@ def genre_recommend(request, movie_pk):
     return Response(serializer.data)
 
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated,])
+def user_group_rating(request, movie_pk):
+    user_gender = request.user.gender
+    user_age_group = (request.user.age//10)*10
+    print(user_gender, user_age_group)
+    reviews = Review.objects.filter(user__gender=user_gender, user__age__gte=user_age_group, user__age__lt=user_age_group+10)
+    rating = reviews.aggregate(Avg("rating"))
+    print(reviews)
+    print(rating)
+    rating['gender'] = user_gender
+    rating['age_group'] = user_age_group
+    return Response(rating)
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny,])
+def group_rating(request, movie_pk):
+    genders = [ True, False ]
+    age_groups = [10, 20, 30, 40, 50]
+    rating_list = []
+    for gender in genders:
+        for age_group in age_groups:
+            if age_group == 10:
+                reviews = Review.objects.filter(user__gender=gender, user__age__lt=age_group+10)
+            elif age_group == 50:
+                reviews = Review.objects.filter(user__gender=gender, user__age__gte=age_group)
+            else:
+                reviews = Review.objects.filter(user__gender=gender, user__age__gte=age_group, user__age__lt=age_group+10)
+            group = reviews.aggregate(Avg("rating"))
+            group['gender'] = gender
+            group['age_group'] = age_group
+            rating_list.append(group)
+    return Response(rating_list)
 
 @api_view(['GET'])
 @permission_classes([AllowAny,])
@@ -212,7 +246,7 @@ def review_likes(request, review_pk):
     print(request.user.pk)
     user = User.objects.get(username=request.user)
     if review.user == request.user:
-        return Response({ 'message': 'you can`t press likes your review'})
+        return Response({ 'message': 'you can`t press likes your review'}, status=status.HTTP_400_BAD_REQUEST)
     if Review_likes.objects.filter(review=review, user=user):
         likes = get_object_or_404(Review_likes, review=review, user=user)
         print(likes)
