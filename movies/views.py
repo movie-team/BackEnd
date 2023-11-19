@@ -3,8 +3,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.contrib.auth import get_user_model
-from .serializers import MovieSerializer, TestSerializer, GenreSerializer, ReviewSerializer, ReviewLikesSerializer, TheaterSerializer, SeatSerializer
-from .models import Movie, Genre, Test_model, Review, Review_likes, Theater, Seat
+from .serializers import MovieSerializer, TestSerializer, GenreSerializer, ReviewSerializer, ReviewLikesSerializer, TheaterSerializer, SeatSerializer, TicketSerializer
+from .models import Movie, Genre, Test_model, Review, Review_likes, Theater, Seat, Ticket
 
 from rest_framework import status
 
@@ -16,6 +16,7 @@ from pprint import pprint
 from time import sleep
 
 from django.db.models import Avg
+from django.db import transaction
 
 # Create your views here.
 
@@ -242,7 +243,6 @@ def review_control(request, movie_pk, review_pk):
 def review_likes(request, review_pk):
     review = get_object_or_404(Review, pk=review_pk)
     User = get_user_model()
-    print(request.user.pk)
     user = User.objects.get(username=request.user)
     if review.user == request.user:
         return Response({ 'message': 'you can`t press likes your review'}, status=status.HTTP_400_BAD_REQUEST)
@@ -259,86 +259,7 @@ def review_likes(request, review_pk):
 
 
 
-# 후에 주석 처리할 내용들
-# 초기 데이터 가져온 함수
-@api_view(['GET', 'POST'])
-def add_data(request):
-    # url = "https://api.themoviedb.org/3/movie/now_playing?language=ko-US&page=1&region=KR"
-    url = "https://api.themoviedb.org/3/movie/now_playing"
-    for page in range(1, 11):
-        params = {
-            'language':'ko-US',
-            'page':page,
-            'region':'KR',
-        }
-        header = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NjhjZTg3MzRmNGEyMTU5NzdiNjkwODljYzg3M2JjYSIsInN1YiI6IjY1M2IxZWE4NzE5YWViMDEzODdiOWRkYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.13M9hB1WM65LBn_iCieFJ9GWRzRn0dEA61JPrNBKazg',
-                'accept': 'application/json',
-                'append_to_response': 'images'
-                }
-
-        # 전송된 JSON 데이터를 받아옵니다.
-        data = requests.get(url, headers=header, params=params).json()
-        print(f'page: {page}')
-        result_data = data['results']
-        length = len(result_data)
-        data_lst=[]
-
-        for obj in result_data:
-            # print(obj)
-            if Movie.objects.filter(id=obj['id']).exists():
-                continue
-            data_lst.append({
-                'adult': obj['adult'],
-                'title': obj['title'],
-                'id': obj['id'], 
-                'original_title': obj['original_title'],
-                'overview': obj['overview'],
-                'popularity': obj['popularity'],
-                'poster': obj['poster_path'],
-                'release_date': obj['release_date'],
-                'vote_average': obj['vote_average'],
-                'vote_count': obj['vote_count'],
-                'genres': obj['genre_ids']
-            })
-            # print(data_lst[i])
-        print('i:', page ,'len:', len(result_data))
-        # sleep(1)
-        # Serializer를 사용하여 데이터를 파싱합니다.
-        serializer = MovieSerializer(data=data_lst, many=True)
-        if serializer.is_valid():
-            # 데이터가 유효하면 저장합니다.
-            serializer.save()
-        else:
-            break
-    else:
-        return Response({"message": "데이터가 성공적으로 추가되었습니다."})
-    print('???')
-    # 유효하지 않은 경우 에러 메시지를 반환합니다.
-    return Response({"error": serializer.errors}, status=400)
-    
-
-
-@api_view(['GET'])
-def add_genres(request):
-    url = "https://api.themoviedb.org/3/genre/movie/list?language=ko"
-    headers = {
-    "accept": "application/json",
-    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NjhjZTg3MzRmNGEyMTU5NzdiNjkwODljYzg3M2JjYSIsInN1YiI6IjY1M2IxZWE4NzE5YWViMDEzODdiOWRkYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.13M9hB1WM65LBn_iCieFJ9GWRzRn0dEA61JPrNBKazg"
-    }
-    data = requests.get(url, headers=headers).json()['genres']
-    print(data)
-    # Serializer를 사용하여 데이터를 파싱합니다.
-    serializer = GenreSerializer(data=data, many=True)
-
-    if serializer.is_valid():
-        # 데이터가 유효하면 저장합니다.
-        serializer.save()
-        return Response({"message": "데이터가 성공적으로 추가되었습니다."})
-    else:
-        print('???')
-        # 유효하지 않은 경우 에러 메시지를 반환합니다.
-        return Response({"error": serializer.errors}, status=400)
-    
+# 상영관 상세
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def theater_detail(request, theater_pk):
@@ -346,3 +267,116 @@ def theater_detail(request, theater_pk):
     serializer = TheaterSerializer(theater)
     
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+# 티켓 생성
+# req body에 좌석 번호 필요
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def ticket_create(request):
+    user = request.user
+    seats = request.data.get('seat', [])
+
+    with transaction.atomic():
+        tickets = []
+        for seat in seats:
+            seat_instance = Seat.objects.get(pk=seat)
+            if seat_instance.check:
+                return Response({'message': 'already reserved'}, status=status.HTTP_400_BAD_REQUEST)
+            data = {'seat': seat_instance, 'user': user}
+            serializer = TicketSerializer(data=data)
+            if serializer.is_valid():
+                seat_instance.check = True
+                seat_instance.save()
+                ticket = serializer.save(seat=seat_instance, user=user)
+                ticket_serializer = TicketSerializer(ticket)
+                tickets.append(ticket_serializer.data)
+            else:
+                return Response({'message': 'Invalid request. Check your data.'}, status=status.HTTP_400_BAD_REQUEST)
+
+    return Response({'tickets': tickets, 'message': 'Tickets created successfully'}, status=status.HTTP_201_CREATED)
+
+
+
+# 후에 주석 처리할 내용들
+# 초기 데이터 가져온 함수
+# @api_view(['GET', 'POST'])
+# def add_data(request):
+#     # url = "https://api.themoviedb.org/3/movie/now_playing?language=ko-US&page=1&region=KR"
+#     url = "https://api.themoviedb.org/3/movie/now_playing"
+#     for page in range(1, 11):
+#         params = {
+#             'language':'ko-US',
+#             'page':page,
+#             'region':'KR',
+#         }
+#         header = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NjhjZTg3MzRmNGEyMTU5NzdiNjkwODljYzg3M2JjYSIsInN1YiI6IjY1M2IxZWE4NzE5YWViMDEzODdiOWRkYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.13M9hB1WM65LBn_iCieFJ9GWRzRn0dEA61JPrNBKazg',
+#                 'accept': 'application/json',
+#                 'append_to_response': 'images'
+#                 }
+
+#         # 전송된 JSON 데이터를 받아옵니다.
+#         data = requests.get(url, headers=header, params=params).json()
+#         print(f'page: {page}')
+#         result_data = data['results']
+#         length = len(result_data)
+#         data_lst=[]
+
+#         for obj in result_data:
+#             # print(obj)
+#             if Movie.objects.filter(id=obj['id']).exists():
+#                 continue
+#             data_lst.append({
+#                 'adult': obj['adult'],
+#                 'title': obj['title'],
+#                 'id': obj['id'], 
+#                 'original_title': obj['original_title'],
+#                 'overview': obj['overview'],
+#                 'popularity': obj['popularity'],
+#                 'poster': obj['poster_path'],
+#                 'release_date': obj['release_date'],
+#                 'vote_average': obj['vote_average'],
+#                 'vote_count': obj['vote_count'],
+#                 'genres': obj['genre_ids']
+#             })
+#             # print(data_lst[i])
+#         print('i:', page ,'len:', len(result_data))
+#         # sleep(1)
+#         # Serializer를 사용하여 데이터를 파싱합니다.
+#         serializer = MovieSerializer(data=data_lst, many=True)
+#         if serializer.is_valid():
+#             # 데이터가 유효하면 저장합니다.
+#             serializer.save()
+#         else:
+#             break
+#     else:
+#         return Response({"message": "데이터가 성공적으로 추가되었습니다."})
+#     print('???')
+#     # 유효하지 않은 경우 에러 메시지를 반환합니다.
+#     return Response({"error": serializer.errors}, status=400)
+    
+
+
+# @api_view(['GET'])
+# def add_genres(request):
+#     url = "https://api.themoviedb.org/3/genre/movie/list?language=ko"
+#     headers = {
+#     "accept": "application/json",
+#     "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NjhjZTg3MzRmNGEyMTU5NzdiNjkwODljYzg3M2JjYSIsInN1YiI6IjY1M2IxZWE4NzE5YWViMDEzODdiOWRkYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.13M9hB1WM65LBn_iCieFJ9GWRzRn0dEA61JPrNBKazg"
+#     }
+#     data = requests.get(url, headers=headers).json()['genres']
+#     print(data)
+#     # Serializer를 사용하여 데이터를 파싱합니다.
+#     serializer = GenreSerializer(data=data, many=True)
+
+#     if serializer.is_valid():
+#         # 데이터가 유효하면 저장합니다.
+#         serializer.save()
+#         return Response({"message": "데이터가 성공적으로 추가되었습니다."})
+#     else:
+#         print('???')
+#         # 유효하지 않은 경우 에러 메시지를 반환합니다.
+#         return Response({"error": serializer.errors}, status=400)
+    
+
+

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Movie, Test_model, Genre, Review, Review_likes, Theater, Seat
+from .models import Movie, Test_model, Genre, Review, Review_likes, Theater, Seat, Ticket
 from accounts.serializers import UserSerializer
 
 class SeatSerializer(serializers.ModelSerializer):
@@ -28,6 +28,15 @@ class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = '__all__'
+
+
+class TicketSerializer(serializers.ModelSerializer):
+    seat = SeatSerializer()
+    class Meta:
+        model = Ticket
+        fields = '__all__'
+        read_only_fields = ('seat', 'user',)
+
 
 class ReviewLikesSerializer(serializers.ModelSerializer):
     class Meta:

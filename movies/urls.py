@@ -28,6 +28,10 @@ urlpatterns = [
     # 상영관 당 좌석 상태
     path('theater/<int:theater_pk>/', views.theater_detail),
 
+    # 티켓 관련 api
+    # 티켓 생성
+    path('ticket/', views.ticket_create),
+
     # 삭제 예정
-    path('add/genres/', views.add_genres, name='add_genres'),
+    # path('add/genres/', views.add_genres, name='add_genres'),
 ]
