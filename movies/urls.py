@@ -22,7 +22,8 @@ urlpatterns = [
 
     path('review/<int:review_pk>/likes/', views.review_likes, name='likes'),
     # path('<int:movie.pk>/ticketing/', views.ticketing, name='ticketing'),
-    # path('worldcup/', views.worldcup, name='worldcup'),\
+    
+    path('worldcup/', views.worldcup, name='worldcup'),
 
 
     # 삭제 예정

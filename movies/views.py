@@ -16,6 +16,7 @@ from pprint import pprint
 from time import sleep
 
 from django.db.models import Avg
+import numpy as np
 
 # Create your views here.
 
@@ -97,7 +98,7 @@ def genre_recommend(request, movie_pk):
     serializer = MovieSerializer(similarity(movie.genres.all(), movies), many=True)
     return Response(serializer.data)
 
-
+# 유저가 속한 연령대, 성별의 평점을 반환하는 함수
 @api_view(['GET'])
 @permission_classes([IsAuthenticated,])
 def user_group_rating(request, movie_pk):
@@ -112,7 +113,7 @@ def user_group_rating(request, movie_pk):
     rating['age_group'] = user_age_group
     return Response(rating)
 
-
+# 연령대, 성별에 따른 평점을 반환하는 함수
 @api_view(['GET'])
 @permission_classes([AllowAny,])
 def group_rating(request, movie_pk):
@@ -254,6 +255,67 @@ def review_likes(request, review_pk):
         return Response(serializer.data, status.HTTP_201_CREATED)
 
 
+# 월드컵
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated,])
+def worldcup(request):
+    if request.method == 'GET':
+        # 추천할 만한 영화를 추출 (16개)
+        unreviewed_movies = Movie.objects.exclude(reviews__user=request.user).order_by('?')[:16]
+        # print('?', len(unreviewed_movies), unreviewed_movies)
+        serializer = MovieSerializer(unreviewed_movies, many=True)
+        return Response(serializer.data)
+    
+    # 월드컵 결과를 기반으로 장르의 코사인 유사도를 통한 추천 알고리즘
+    elif request.method == 'POST':
+        genres = Genre.objects.values('id')
+        vector = { genre['id']: { 'wins': 0, 'matches': 0 } for genre in genres}
+        # 총 승리수 / 총 매치수로 벡터를 설정
+        for k, v in request.data.items():
+            movie = get_object_or_404(Movie, id=k)
+            movie_genres = [genre['id'] for genre in movie.genres.values('id')]
+            v = int(v)
+            for genre in movie_genres:
+                vector[genre]['wins'] = v
+                if v == 4:
+                    vector[genre]['matches'] = v
+                else:
+                    vector[genre]['matches'] = v + 1
+        for k, v in vector.items():
+            if v['matches'] == 0:
+                vector[k] = 0
+                continue
+            vector[k] = v['wins']/v['matches']
+        vector = list(vector.values())
+
+        # 모든 영화의 코사인 유사도 계산
+        movies_similarity = {}
+        movies = Movie.objects.all()
+        for movie in movies:
+            movies_similarity[movie.id] = 0
+            movie_genres = [genre['id'] for genre in movie.genres.values('id')]
+            movie_vector = { genre['id']: 0 for genre in genres}
+            for movie_genre in movie_genres:
+                movie_vector[movie_genre] = 1
+            movie_vector = list(movie_vector.values())
+            similarity = np.dot(vector,movie_vector)/(np.linalg.norm(vector)*np.linalg.norm(movie_vector))
+            movies_similarity[movie.id] = similarity
+        
+        # 유사도 내림차순으로 정렬
+        sorted_similarity = sorted(movies_similarity.items(), key= lambda item: item[1], reverse=True)
+        movies_list = []
+
+        # 월드컵에 나오지 않은 영화 중 가장 코사인 유사도가 높은 영화 5개를 추출
+        count = 0
+        while len(movies_list) < 5:
+            id = sorted_similarity[count][0]
+            if str(id) in request.data.keys():
+                count += 1
+                continue
+            movies_list.append(get_object_or_404(Movie, id=id))
+            count += 1
+        serializer = MovieSerializer(movies_list, many=True)
+        return Response(serializer.data)
 
 # 후에 주석 처리할 내용들
 # 초기 데이터 가져온 함수
