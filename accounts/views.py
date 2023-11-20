@@ -100,7 +100,7 @@ def signout(request):
     user.delete()
     
     # 유저의 토큰을 블랙리스트에 추가
-    refresh_token = request.COOKIES.get('refresh')
+    refresh_token = request.data['refresh']
     try:
         token = RefreshToken(refresh_token)
         token.blacklist()
@@ -109,8 +109,6 @@ def signout(request):
             "message": "signout success"
         }, status=status.HTTP_200_OK)
 
-        response.delete_cookie('access')
-        response.delete_cookie('refresh')
 
         return response
     except Exception as e:
@@ -426,8 +424,19 @@ def kakaoLogout(request):
         "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
         "X-CSRFToken": csrf_token
     }
-    res = requests.POST(url, headers=HEADER)
-    return res
+    res = requests.post(url, headers=HEADER)
+    return Response(res.json())
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def kakaoSignout(request):
+    KAKAO_REST_API_KEY = SOCIAL_OUTH_CONFIG["KAKAO_REST_API_KEY"]
+    LOGOUT_REDIRECT_URI = SOCIAL_OUTH_CONFIG["LOGOUT_REDIRECT_URI"]
+    REFRESH_TOKEN = request.data['refresh']
+
+    
+    return redirect(f'https://kauth.kakao.com/oauth/logout?client_id={KAKAO_REST_API_KEY}&&logout_redirect_uri={LOGOUT_REDIRECT_URI}&&state={REFRESH_TOKEN}')
+
 
 
 # 비밀번호 초기화 전 이메일 인증
