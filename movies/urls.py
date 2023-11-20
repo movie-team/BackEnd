@@ -32,6 +32,8 @@ urlpatterns = [
     # 티켓 관련 api
     # 티켓 생성
     path('ticket/', views.ticket_create),
+    # 티켓 삭제 (좌석 별)
+    path('ticket/<int:seat_pk>/', views.ticket_delete),
 
     # 삭제 예정
     # path('add/genres/', views.add_genres, name='add_genres'),

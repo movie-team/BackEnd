@@ -347,7 +347,7 @@ def theater_detail(request, theater_pk):
 # 티켓 생성
 # req body에 좌석 번호 필요
 @api_view(['POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def ticket_create(request):
     user = request.user
     seats = request.data.get('seat', [])
@@ -370,6 +370,32 @@ def ticket_create(request):
                 return Response({'message': 'Invalid request. Check your data.'}, status=status.HTTP_400_BAD_REQUEST)
 
     return Response({'tickets': tickets, 'message': 'Tickets created successfully'}, status=status.HTTP_201_CREATED)
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def ticket_delete(request, seat_pk):
+    user = request.user
+    ticket = Ticket.objects.get(seat_id=seat_pk)
+    check_user = ticket.user_id
+
+    if user.id == check_user:
+        if request.method == 'DELETE':
+
+            ticket.delete()
+            return Response(
+                {
+                    "message": "delete success"
+                },
+                status = status.HTTP_204_NO_CONTENT
+            )
+
+    else:
+        return Response(
+            {
+                "message": "diffrent user"
+            },
+            status = status.HTTP_400_BAD_REQUEST
+        )
 
 
 
