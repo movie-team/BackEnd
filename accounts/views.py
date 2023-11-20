@@ -295,8 +295,11 @@ def getUserInfo(request):
 
     try:
         user = User.objects.get(username='kakao '+username)
-        refresh_token = str(tokenJson['refresh_token'])
-        access_token = str(tokenJson['access_token'])
+        token = TokenObtainPairSerializer.get_token(user)
+        refresh_token = str(token)
+        access_token = str(token.access_token)
+        kakao_refresh_token = str(tokenJson['refresh_token'])
+        kakao_access_token = str(tokenJson['access_token'])
 
         response = Response(
                 {
@@ -310,7 +313,7 @@ def getUserInfo(request):
             )
         response.set_cookie('access', access_token, httponly=True)
         response.set_cookie('refresh', refresh_token, httponly=True)
-        return response
+        return redirect(f'http://localhost:5173/?k_a={kakao_access_token}&&k_r={kakao_refresh_token}&&a={access_token}&&r={refresh_token}')
     except User.DoesNotExist:
         
         try:
@@ -329,8 +332,11 @@ def getUserInfo(request):
                 serializer.save()
                 
                 # jwt 토큰 접근
-                refresh_token = str(tokenJson['refresh_token'])
-                access_token = str(tokenJson['access_token'])
+                token = TokenObtainPairSerializer.get_token(user)
+                refresh_token = str(token)
+                access_token = str(token.access_token)
+                kakao_refresh_token = str(tokenJson['refresh_token'])
+                kakao_access_token = str(tokenJson['access_token'])
                 response = Response(
                     {
                         'user': serializer.data,
@@ -347,7 +353,7 @@ def getUserInfo(request):
                 response.set_cookie('access', access_token, httponly=True)
                 response.set_cookie('refresh', refresh_token, httponly=True)
                 
-                return response
+                return redirect(f'http://localhost:5173/?k_a={kakao_access_token}&&k_r={kakao_refresh_token}&&a={access_token}&&r={refresh_token}')
 
 
         except User.DoesNotExist:
@@ -364,8 +370,11 @@ def getUserInfo(request):
                 serializer.save()
                 
                 # jwt 토큰 접근
-                refresh_token = str(tokenJson['refresh_token'])
-                access_token = str(tokenJson['access_token'])
+                token = TokenObtainPairSerializer.get_token(user)
+                refresh_token = str(token)
+                access_token = str(token.access_token)
+                kakao_refresh_token = str(tokenJson['refresh_token'])
+                kakao_access_token = str(tokenJson['access_token'])
                 response = Response(
                     {
                         'user': serializer.data,
@@ -378,11 +387,12 @@ def getUserInfo(request):
                     status=status.HTTP_200_OK,
                 )
                 
+                
                 # jwt 토큰 쿠키에 저장
                 response.set_cookie('access', access_token, httponly=True)
                 response.set_cookie('refresh', refresh_token, httponly=True)
                 
-                return response
+                return redirect(f'http://localhost:5173/?k_a={kakao_access_token}&&k_r={kakao_refresh_token}&&a={access_token}&&r={refresh_token}')
             return Response({'message': 'already exsist email'},status=status.HTTP_400_BAD_REQUEST)
         
 
@@ -393,7 +403,7 @@ def kakaoRefresh(request):
     res = {
             'grant_type': 'refresh_token',
             'client_id': SOCIAL_OUTH_CONFIG['KAKAO_REST_API_KEY'],
-            'refresh_token': request.COOKIES.get('refresh'),
+            'refresh_token': request.data['refresh'],
             'client_secret': SOCIAL_OUTH_CONFIG['KAKAO_SECRET_KEY']
         }
     headers = {
@@ -409,7 +419,7 @@ def kakaoRefresh(request):
 def kakaoLogout(request):
     url = "https://kapi.kakao.com/v1/user/logout"
     csrf_token = get_token(request)
-    auth = "Bearer "+ request.COOKIES.get('access')
+    auth = "Bearer "+ request.data['access']
     
     HEADER = {
         "Authorization": auth,
