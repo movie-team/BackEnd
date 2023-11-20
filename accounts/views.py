@@ -427,7 +427,7 @@ def kakaoLogout(request):
         "X-CSRFToken": csrf_token
     }
     res = requests.POST(url, headers=HEADER)
-    return res
+    return Response(res.json())
 
 
 # 비밀번호 초기화 전 이메일 인증
