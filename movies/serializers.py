@@ -31,7 +31,7 @@ class MovieSerializer(serializers.ModelSerializer):
 
 
 class TicketSerializer(serializers.ModelSerializer):
-    seat = SeatSerializer()
+    # seat = SeatSerializer()
     class Meta:
         model = Ticket
         fields = '__all__'
