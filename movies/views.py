@@ -245,14 +245,27 @@ def review_likes(request, review_pk):
     review = get_object_or_404(Review, pk=review_pk)
     User = get_user_model()
     user = User.objects.get(username=request.user)
+
+    # 리뷰 작성자와 요청자가 같은 경우
     if review.user == request.user:
         return Response({ 'message': 'you can`t press likes your review'}, status=status.HTTP_400_BAD_REQUEST)
+    
+    # 이미 좋아요/싫어요를 누른 경우
     if Review_likes.objects.filter(review=review, user=user):
         likes = get_object_or_404(Review_likes, review=review, user=user)
-        print(likes)
-        likes.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-        # return Response({'message': 'You already like this review'}, status=status.HTTP_409_CONFLICT)
+        # print(request.data['review_likes'] == str(likes.review_likes))
+
+        # 취소하는 경우
+        if request.data['review_likes'] == str(likes.review_likes):
+            likes.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        # 바꾸는 경우
+        else:
+            serializer = ReviewLikesSerializer(likes, data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+    
     serializer = ReviewLikesSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
         serializer.save(review=review, user=user)
