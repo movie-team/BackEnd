@@ -19,7 +19,8 @@ class Movie(models.Model):
     vote_average = models.FloatField()
     vote_count = models.IntegerField()
     created_at = models.DateField(auto_now_add=True)
-    genres = models.ManyToManyField(Genre, verbose_name='test_movie', related_name='genres' ,unique=False)
+    genres = models.ManyToManyField(Genre, verbose_name='test_movie', related_name='movies' ,unique=False)
+  
 
 
 class Review(models.Model):
@@ -49,3 +50,20 @@ class Test_model(models.Model):
     genres = models.ManyToManyField(Genre, verbose_name='test_movie', unique=False)
     
 
+
+class Theater(models.Model):
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    num = models.IntegerField()
+    max_seat = models.IntegerField()
+    rest_seat = models.IntegerField()
+    start = models.TimeField()
+    end = models.TimeField()
+
+class Seat(models.Model):
+    theater = models.ForeignKey(Theater, on_delete=models.CASCADE)
+    num = models.IntegerField()
+    check = models.BooleanField(default=False)
+
+class Ticket(models.Model):
+    seat = models.ForeignKey(Seat, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

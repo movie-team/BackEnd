@@ -15,10 +15,47 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth.hashers import check_password
 
 from rest_framework.permissions import AllowAny
-from PJT.settings import SOCIAL_OUTH_CONFIG
+from PJT.settings import SOCIAL_OUTH_CONFIG, EMAIL_HOST_USER, BASE_URL
 import requests
 
 from django.middleware.csrf import get_token
+
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_text
+from django.core.mail import send_mail
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def confirm(request):
+    uidb64 = request.data['uidb64']
+    uid = force_text(urlsafe_base64_decode(uidb64))
+
+    if request.data['username'] == uid:
+        return Response({
+            'message': 'ok'
+        }, status=status.HTTP_200_OK)
+    else:
+        return Response({
+            'message': 'unverify code'
+        }, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def verify_email(request):
+    email = request.data['email']
+    uidb64 = urlsafe_base64_encode(force_text(request.data['username']).encode())
+    
+    subject = '사용자 이메일 인증'
+    message = f'인증 번호: \n{uidb64}'
+    from_email = EMAIL_HOST_USER
+    recipient_list = [email]
+
+    send_mail(subject, message, from_email, recipient_list)
+
+    return Response(
+        status=status.HTTP_200_OK
+    )
 
 # 회원가입
 @api_view(['POST'])
@@ -26,6 +63,7 @@ from django.middleware.csrf import get_token
 def signup(request):
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
+
         user = serializer.save()
         
         # jwt 토큰 접근
@@ -41,7 +79,7 @@ def signup(request):
                     'refresh': refresh_token,
                 },
             },
-            status=status.HTTP_200_OK,
+            status=status.HTTP_201_CREATED,
         )
         
         # jwt 토큰 쿠키에 저장
@@ -49,6 +87,7 @@ def signup(request):
         response.set_cookie('refresh', refresh_token, httponly=True)
         
         return response
+    
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # 회원 삭제
@@ -276,7 +315,42 @@ def getUserInfo(request):
                     },
                     status=status.HTTP_200_OK,
                 )
+            response.set_cookie('access', access_token, httponly=True)
+            response.set_cookie('refresh', refresh_token, httponly=True)
             return response
+
+        else:
+            data = {
+                'username': username,
+                'email': email,
+                'password': str(id),
+                'social': True
+            }
+            serializer = UserSerializer(data=data)
+            if serializer.is_valid():
+                serializer.save()
+                
+                # jwt 토큰 접근
+                refresh_token = str(tokenJson['refresh_token'])
+                access_token = str(tokenJson['access_token'])
+                response = Response(
+                    {
+                        'user': serializer.data,
+                        'message': 'signup successs',
+                        'token': {
+                            'access': access_token,
+                            'refresh': refresh_token,
+                        },
+                    },
+                    status=status.HTTP_200_OK,
+                )
+                
+                # jwt 토큰 쿠키에 저장
+                response.set_cookie('access', access_token, httponly=True)
+                response.set_cookie('refresh', refresh_token, httponly=True)
+                
+                return response
+
 
     except User.DoesNotExist:
         data = {
@@ -309,14 +383,9 @@ def getUserInfo(request):
             response.set_cookie('refresh', refresh_token, httponly=True)
             
             return response
-        
-    return Response(
-            {
-                'message': 'same username already exsists'
-            },
-            status=status.HTTP_400_BAD_REQUEST
-        )
 
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def kakaoRefresh(request):
     url = "https://kauth.kakao.com/oauth/token"
     res = {
@@ -332,6 +401,9 @@ def kakaoRefresh(request):
     
     return Response(res.json())
 
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def kakaoLogout(request):
     url = "https://kapi.kakao.com/v1/user/logout"
     csrf_token = get_token(request)
@@ -344,3 +416,65 @@ def kakaoLogout(request):
     }
     res = requests.POST(url, headers=HEADER)
     return res
+
+
+# 비밀번호 초기화 전 이메일 인증
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def rest_password(request):
+    email = request.data['email']
+    User = get_user_model()
+    try:
+        user = User.objects.get(email=email, social=False)
+        # 비밀번호 초기화 토큰 생성
+        token_generator = PasswordResetTokenGenerator()
+        token = token_generator.make_token(user)
+
+        # 비밀번호 초기화 이메일 전송
+        subject = '비밀번호 초기화'
+        message = f'비밀번호 초기화 코드: \n{token}'
+        from_email = EMAIL_HOST_USER
+        recipient_list = [user.email]
+
+        send_mail(subject, message, from_email, recipient_list)
+
+        return Response(
+            {
+                'message': 'check email please'
+                }, 
+                status=status.HTTP_200_OK
+            )
+    
+    except User.DoesNotExist:
+
+        return Response({'message': 'user is not exist'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+# 비밀번호 초기화 및 변경
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def rest_password_confirm(request):
+    token = request.data['token']
+
+    User = get_user_model()
+    user = User.objects.get(email=request.data['email'], social=False)
+
+    token_generator = PasswordResetTokenGenerator()
+    if not token_generator.check_token(user, token):
+        return Response(
+            {
+            'message': 'token is not valid'
+            },
+            status = status.HTTP_400_BAD_REQUEST
+        )
+    else:
+        user.set_password(request.data['password'])
+        user.save()
+        response = Response(
+            {
+                'message': 'change success, try login',
+            },
+            status=status.HTTP_200_OK,
+        )
+
+        return response

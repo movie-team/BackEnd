@@ -4,8 +4,9 @@ app_name = 'movies'
 
 urlpatterns = [
     # 영화 정보 받아오기
-    path('', views.movie_list, name='index'),
+    path('', views.movie_list),
     path('<int:movie_pk>/', views.movie_detail, name='detail'),
+    path('genre/', views.genre),
     path('genre/<int:genre_pk>/', views.genre_movie, name='genre_movie'),
     path('popularity/', views.popular_movie, name='popular_movie'),
     # path('gender/', views.gender_movie, name='gender_movie'),
@@ -25,8 +26,13 @@ urlpatterns = [
     
     path('worldcup/', views.worldcup, name='worldcup'),
 
+    # 상영관 당 좌석 상태
+    path('theater/<int:theater_pk>/', views.theater_detail),
+
+    # 티켓 관련 api
+    # 티켓 생성
+    path('ticket/', views.ticket_create),
 
     # 삭제 예정
-    path('add/', views.add_data, name='add'),
-    path('add/genres/', views.add_genres, name='add_genres'),
+    # path('add/genres/', views.add_genres, name='add_genres'),
 ]
