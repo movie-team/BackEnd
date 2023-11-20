@@ -25,7 +25,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_text
 from django.core.mail import send_mail
 
-@api_view(['GET'])
+@api_view(['POST'])
 @permission_classes([AllowAny])
 def confirm(request):
     uidb64 = request.data['uidb64']
@@ -40,7 +40,7 @@ def confirm(request):
             'message': 'unverify code'
         }, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET'])
+@api_view(['POST'])
 @permission_classes([AllowAny])
 def verify_email(request):
     email = request.data['email']
@@ -79,7 +79,7 @@ def signup(request):
                     'refresh': refresh_token,
                 },
             },
-            status=status.HTTP_200_OK,
+            status=status.HTTP_201_OK,
         )
         
         # jwt 토큰 쿠키에 저장
