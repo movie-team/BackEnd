@@ -23,7 +23,8 @@ urlpatterns = [
 
     path('review/<int:review_pk>/likes/', views.review_likes, name='likes'),
     # path('<int:movie.pk>/ticketing/', views.ticketing, name='ticketing'),
-    # path('worldcup/', views.worldcup, name='worldcup'),\
+    
+    path('worldcup/', views.worldcup, name='worldcup'),
 
     # 상영관 당 좌석 상태
     path('theater/<int:theater_pk>/', views.theater_detail),

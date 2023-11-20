@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.kakao',
+    # 추천 알고리즘
+    'numpy',
     # cors 설정
     'corsheaders',
     'django.contrib.admin',

@@ -24,7 +24,7 @@ class Movie(models.Model):
 
 
 class Review(models.Model):
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name="reviews")
     content = models.TextField()
     rating = models.FloatField(
         validators=[MinValueValidator(0.0), MaxValueValidator(10.0)]
