@@ -18,6 +18,7 @@ from time import sleep
 from django.db.models import Avg
 import numpy as np
 from django.db import transaction
+from PJT.settings import SOCIAL_OUTH_CONFIG, BASE_URL
 
 # Create your views here.
 
@@ -361,8 +362,6 @@ def ticket_create(request):
             data = {'seat': seat_instance, 'user': user}
             serializer = TicketSerializer(data=data)
             if serializer.is_valid():
-                seat_instance.check = True
-                seat_instance.save()
                 ticket = serializer.save(seat=seat_instance, user=user)
                 ticket_serializer = TicketSerializer(ticket)
                 tickets.append(ticket_serializer.data)
@@ -396,6 +395,69 @@ def ticket_delete(request, seat_pk):
             },
             status = status.HTTP_400_BAD_REQUEST
         )
+
+# 결제 요청
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def ticket_pay(request):
+    tickets = request.user.ticket_set.all()
+    if len(tickets) > 0:
+        data = {
+                'cid': 'TC0ONETIME',
+                'partner_order_id': request.user.id,
+                'partner_user_id': request.user.username,
+                'item_name': 'ticket',
+                'quantity': len(tickets),
+                'total_amount': 10000*len(tickets),
+                'tax_free_amount': 0,
+                'approval_url': f'{BASE_URL}/api/movies/success/',
+                'fail_url': f'{BASE_URL}/api/movies/fail/',
+                'cancel_url': f'{BASE_URL}/api/movies/cancel/'
+            }
+        headers = {
+            'Authorization': f'KakaoAK {SOCIAL_OUTH_CONFIG["SERVICE_APP_ADMIN_KEY"]}',
+            'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+        }
+        url = 'https://kapi.kakao.com/v1/payment/ready'
+        response = requests.post(url, data=data, headers=headers)
+        res = response.json()
+
+        return Response(res, status=status.HTTP_200_OK)
+    else:
+        return Response({
+            'message': 'nothing to pay'
+        }, status=status.HTTP_400_BAD_REQUEST)
+
+# 결제 승인
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def payConfirm(request):
+    data = {
+            'cid': 'TC0ONETIME',
+            'tid': request.data['tid'],
+            'partner_order_id': request.user.id,
+            'partner_user_id': request.user.username,
+            'pg_token': request.data['pg_token']
+        }
+    url = "https://kapi.kakao.com/v1/payment/approve"
+
+    headers = {
+        'Authorization': f'KakaoAK {SOCIAL_OUTH_CONFIG["SERVICE_APP_ADMIN_KEY"]}',
+        'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+    }
+    response = requests.post(url, data=data, headers=headers)
+
+    tickets = request.user.ticket_set.all()
+    for ticket in tickets:
+        ticket.seat.check = True
+        ticket.seat.save()
+        ticket.delete()
+
+    return Response(response.json())
+
+
+
+
 
 
 
