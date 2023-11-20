@@ -79,7 +79,7 @@ def signup(request):
                     'refresh': refresh_token,
                 },
             },
-            status=status.HTTP_201_OK,
+            status=status.HTTP_201_CREATED,
         )
         
         # jwt 토큰 쿠키에 저장
