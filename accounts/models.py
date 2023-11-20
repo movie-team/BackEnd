@@ -3,13 +3,10 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from datetime import datetime
 
 class UserManager(BaseUserManager):
-    def create_user(self, username, password, gender, birth, **extra_fields):
+    def create_user(self, username, password, birth, **extra_fields):
         if not username:
             raise ValueError('Users must have an username address')
-        if not gender:
-            raise ValueError('Users must have an gender address')
-        if not birth:
-            raise ValueError('Users must have an birth address')
+        
         
         current_date = datetime.now()
 
@@ -22,7 +19,6 @@ class UserManager(BaseUserManager):
 
         user = self.model(
             username=username,
-            gender=gender,
             birth=birth,
             age=user_age,
             **extra_fields
@@ -35,6 +31,8 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('email', 'sirlyun23@gmail.com')
+        extra_fields.setdefault('birth', '1999-12-24'),
+        extra_fields.setdefault('gender', True)
 
         return self.create_user(username, password, **extra_fields)
 
@@ -50,7 +48,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    social = models.BooleanField(default=False)
+    social = models.BooleanField(default=False, blank=True)
     gender = models.BooleanField(blank=False)
     birth = models.CharField(max_length=40, blank=False)
     age = models.IntegerField(blank=True)

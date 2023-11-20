@@ -178,7 +178,7 @@ def logout(request):
 def update(request):
     User = get_user_model()
     user = User.objects.get(username=request.user.username)
-    serializer = UserSerializer(user, data=request.data)
+    serializer = UserSerializer(user, data=request.data, partial=True)
 
     if serializer.is_valid():
         serializer.save()
@@ -294,36 +294,34 @@ def getUserInfo(request):
     User = get_user_model()
 
     try:
-        user = User.objects.get(username=username)
-        if user.social:
-            refresh_token = str(tokenJson['refresh_token'])
-            access_token = str(tokenJson['access_token'])
-            data = {
-                'username': username,
-                'email': email,
-                'password': str(id),
-                'social': True
-            }
+        user = User.objects.get(username='kakao '+username)
+        refresh_token = str(tokenJson['refresh_token'])
+        access_token = str(tokenJson['access_token'])
 
-            response = Response(
-                    {
-                        'message': 'login successs',
-                        'token': {
-                            'access': access_token,
-                            'refresh': refresh_token,
-                        },
+        response = Response(
+                {
+                    'message': 'login successs',
+                    'token': {
+                        'access': access_token,
+                        'refresh': refresh_token,
                     },
-                    status=status.HTTP_200_OK,
-                )
-            response.set_cookie('access', access_token, httponly=True)
-            response.set_cookie('refresh', refresh_token, httponly=True)
-            return response
+                },
+                status=status.HTTP_200_OK,
+            )
+        response.set_cookie('access', access_token, httponly=True)
+        response.set_cookie('refresh', refresh_token, httponly=True)
+        return response
+    except User.DoesNotExist:
+        
+        try:
+            user = User.objects.get(username=username)
 
-        else:
             data = {
-                'username': username,
+                'username': 'kakao '+username,
                 'email': email,
                 'password': str(id),
+                'birth': '2023-11-20',
+                'gender': False,
                 'social': True
             }
             serializer = UserSerializer(data=data)
@@ -352,37 +350,41 @@ def getUserInfo(request):
                 return response
 
 
-    except User.DoesNotExist:
-        data = {
-            'username': username,
-            'email': email,
-            'password': str(id),
-            'social': True
-        }
-        serializer = UserSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            
-            # jwt 토큰 접근
-            refresh_token = str(tokenJson['refresh_token'])
-            access_token = str(tokenJson['access_token'])
-            response = Response(
-                {
-                    'user': serializer.data,
-                    'message': 'signup successs',
-                    'token': {
-                        'access': access_token,
-                        'refresh': refresh_token,
+        except User.DoesNotExist:
+            data = {
+                'username': 'kakao '+username,
+                'email': email,
+                'password': str(id),
+                'birth': '2023-11-20',
+                'gender': False,
+                'social': True
+            }
+            serializer = UserSerializer(data=data)
+            if serializer.is_valid():
+                serializer.save()
+                
+                # jwt 토큰 접근
+                refresh_token = str(tokenJson['refresh_token'])
+                access_token = str(tokenJson['access_token'])
+                response = Response(
+                    {
+                        'user': serializer.data,
+                        'message': 'signup successs',
+                        'token': {
+                            'access': access_token,
+                            'refresh': refresh_token,
+                        },
                     },
-                },
-                status=status.HTTP_200_OK,
-            )
-            
-            # jwt 토큰 쿠키에 저장
-            response.set_cookie('access', access_token, httponly=True)
-            response.set_cookie('refresh', refresh_token, httponly=True)
-            
-            return response
+                    status=status.HTTP_200_OK,
+                )
+                
+                # jwt 토큰 쿠키에 저장
+                response.set_cookie('access', access_token, httponly=True)
+                response.set_cookie('refresh', refresh_token, httponly=True)
+                
+                return response
+            return Response({'message': 'already exsist email'},status=status.HTTP_400_BAD_REQUEST)
+        
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -422,10 +424,10 @@ def kakaoLogout(request):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def rest_password(request):
-    email = request.data['email']
+    username = request.data['username']
     User = get_user_model()
     try:
-        user = User.objects.get(email=email, social=False)
+        user = User.objects.get(username=username, social=False)
         # 비밀번호 초기화 토큰 생성
         token_generator = PasswordResetTokenGenerator()
         token = token_generator.make_token(user)
@@ -457,7 +459,7 @@ def rest_password_confirm(request):
     token = request.data['token']
 
     User = get_user_model()
-    user = User.objects.get(email=request.data['email'], social=False)
+    user = User.objects.get(username=request.data['username'], social=False)
 
     token_generator = PasswordResetTokenGenerator()
     if not token_generator.check_token(user, token):
