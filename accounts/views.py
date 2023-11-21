@@ -366,7 +366,7 @@ def getUserInfo(request):
             }
             serializer = UserSerializer(data=data)
             if serializer.is_valid():
-                serializer.save()
+                user = serializer.save()
                 
                 # jwt 토큰 접근
                 token = TokenObtainPairSerializer.get_token(user)
@@ -414,8 +414,8 @@ def kakaoRefresh(request):
 
 
 
-@api_view(['POST'])
-@permission_classes([IsAuthenticated])
+@api_view(['GET'])
+@permission_classes([AllowAny])
 def kakaoSignout(request):
     KAKAO_REST_API_KEY = SOCIAL_OUTH_CONFIG["KAKAO_REST_API_KEY"]
     LOGOUT_REDIRECT_URI = SOCIAL_OUTH_CONFIG["LOGOUT_REDIRECT_URI"]
