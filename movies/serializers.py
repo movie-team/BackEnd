@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Movie, Test_model, Genre, Review, Review_likes, Theater, Seat, Ticket, Payment
-from accounts.serializers import UserSerializer
+
 class SeatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Seat
