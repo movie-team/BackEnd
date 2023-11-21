@@ -34,6 +34,12 @@ urlpatterns = [
     # 티켓 관련 api
     # 티켓 생성
     path('ticket/', views.ticket_create),
+    # 티켓 삭제 (좌석 별)
+    path('ticket/<int:seat_pk>/', views.ticket_delete),
+    # 티켓 결제 요청(카카오페이)
+    path('ticket/pay/', views.ticket_pay),
+    # 티켓 결제 완료
+    path('success/', views.payConfirm),
 
     # 삭제 예정
     # path('add/genres/', views.add_genres, name='add_genres'),

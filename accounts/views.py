@@ -100,7 +100,7 @@ def signout(request):
     user.delete()
     
     # 유저의 토큰을 블랙리스트에 추가
-    refresh_token = request.COOKIES.get('refresh')
+    refresh_token = request.data['refresh']
     try:
         token = RefreshToken(refresh_token)
         token.blacklist()
@@ -109,8 +109,6 @@ def signout(request):
             "message": "signout success"
         }, status=status.HTTP_200_OK)
 
-        response.delete_cookie('access')
-        response.delete_cookie('refresh')
 
         return response
     except Exception as e:
@@ -178,7 +176,7 @@ def logout(request):
 def update(request):
     User = get_user_model()
     user = User.objects.get(username=request.user.username)
-    serializer = UserSerializer(user, data=request.data)
+    serializer = UserSerializer(user, data=request.data, partial=True)
 
     if serializer.is_valid():
         serializer.save()
@@ -294,36 +292,37 @@ def getUserInfo(request):
     User = get_user_model()
 
     try:
-        user = User.objects.get(username=username)
-        if user.social:
-            refresh_token = str(tokenJson['refresh_token'])
-            access_token = str(tokenJson['access_token'])
-            data = {
-                'username': username,
-                'email': email,
-                'password': str(id),
-                'social': True
-            }
+        user = User.objects.get(username='kakao '+username)
+        token = TokenObtainPairSerializer.get_token(user)
+        refresh_token = str(token)
+        access_token = str(token.access_token)
+        kakao_refresh_token = str(tokenJson['refresh_token'])
+        kakao_access_token = str(tokenJson['access_token'])
 
-            response = Response(
-                    {
-                        'message': 'login successs',
-                        'token': {
-                            'access': access_token,
-                            'refresh': refresh_token,
-                        },
+        response = Response(
+                {
+                    'message': 'login successs',
+                    'token': {
+                        'access': access_token,
+                        'refresh': refresh_token,
                     },
-                    status=status.HTTP_200_OK,
-                )
-            response.set_cookie('access', access_token, httponly=True)
-            response.set_cookie('refresh', refresh_token, httponly=True)
-            return response
+                },
+                status=status.HTTP_200_OK,
+            )
+        response.set_cookie('access', access_token, httponly=True)
+        response.set_cookie('refresh', refresh_token, httponly=True)
+        return redirect(f'http://localhost:5173/?k_a={kakao_access_token}&&k_r={kakao_refresh_token}&&a={access_token}&&r={refresh_token}')
+    except User.DoesNotExist:
+        
+        try:
+            user = User.objects.get(username=username)
 
-        else:
             data = {
-                'username': username,
+                'username': 'kakao '+username,
                 'email': email,
                 'password': str(id),
+                'birth': '2023-11-20',
+                'gender': False,
                 'social': True
             }
             serializer = UserSerializer(data=data)
@@ -331,8 +330,11 @@ def getUserInfo(request):
                 serializer.save()
                 
                 # jwt 토큰 접근
-                refresh_token = str(tokenJson['refresh_token'])
-                access_token = str(tokenJson['access_token'])
+                token = TokenObtainPairSerializer.get_token(user)
+                refresh_token = str(token)
+                access_token = str(token.access_token)
+                kakao_refresh_token = str(tokenJson['refresh_token'])
+                kakao_access_token = str(tokenJson['access_token'])
                 response = Response(
                     {
                         'user': serializer.data,
@@ -349,40 +351,48 @@ def getUserInfo(request):
                 response.set_cookie('access', access_token, httponly=True)
                 response.set_cookie('refresh', refresh_token, httponly=True)
                 
-                return response
+                return redirect(f'http://localhost:5173/?k_a={kakao_access_token}&&k_r={kakao_refresh_token}&&a={access_token}&&r={refresh_token}')
 
 
-    except User.DoesNotExist:
-        data = {
-            'username': username,
-            'email': email,
-            'password': str(id),
-            'social': True
-        }
-        serializer = UserSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            
-            # jwt 토큰 접근
-            refresh_token = str(tokenJson['refresh_token'])
-            access_token = str(tokenJson['access_token'])
-            response = Response(
-                {
-                    'user': serializer.data,
-                    'message': 'signup successs',
-                    'token': {
-                        'access': access_token,
-                        'refresh': refresh_token,
+        except User.DoesNotExist:
+            data = {
+                'username': 'kakao '+username,
+                'email': email,
+                'password': str(id),
+                'birth': '2023-11-20',
+                'gender': False,
+                'social': True
+            }
+            serializer = UserSerializer(data=data)
+            if serializer.is_valid():
+                serializer.save()
+                
+                # jwt 토큰 접근
+                token = TokenObtainPairSerializer.get_token(user)
+                refresh_token = str(token)
+                access_token = str(token.access_token)
+                kakao_refresh_token = str(tokenJson['refresh_token'])
+                kakao_access_token = str(tokenJson['access_token'])
+                response = Response(
+                    {
+                        'user': serializer.data,
+                        'message': 'signup successs',
+                        'token': {
+                            'access': access_token,
+                            'refresh': refresh_token,
+                        },
                     },
-                },
-                status=status.HTTP_200_OK,
-            )
-            
-            # jwt 토큰 쿠키에 저장
-            response.set_cookie('access', access_token, httponly=True)
-            response.set_cookie('refresh', refresh_token, httponly=True)
-            
-            return response
+                    status=status.HTTP_200_OK,
+                )
+                
+                
+                # jwt 토큰 쿠키에 저장
+                response.set_cookie('access', access_token, httponly=True)
+                response.set_cookie('refresh', refresh_token, httponly=True)
+                
+                return redirect(f'http://localhost:5173/?k_a={kakao_access_token}&&k_r={kakao_refresh_token}&&a={access_token}&&r={refresh_token}')
+            return Response({'message': 'already exsist email'},status=status.HTTP_400_BAD_REQUEST)
+        
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -391,7 +401,7 @@ def kakaoRefresh(request):
     res = {
             'grant_type': 'refresh_token',
             'client_id': SOCIAL_OUTH_CONFIG['KAKAO_REST_API_KEY'],
-            'refresh_token': request.COOKIES.get('refresh'),
+            'refresh_token': request.data['refresh'],
             'client_secret': SOCIAL_OUTH_CONFIG['KAKAO_SECRET_KEY']
         }
     headers = {
@@ -407,25 +417,36 @@ def kakaoRefresh(request):
 def kakaoLogout(request):
     url = "https://kapi.kakao.com/v1/user/logout"
     csrf_token = get_token(request)
-    auth = "Bearer "+ request.COOKIES.get('access')
+    auth = "Bearer "+ request.data['access']
     
     HEADER = {
         "Authorization": auth,
         "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
         "X-CSRFToken": csrf_token
     }
-    res = requests.POST(url, headers=HEADER)
-    return res
+    res = requests.post(url, headers=HEADER)
+    return Response(res.json())
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def kakaoSignout(request):
+    KAKAO_REST_API_KEY = SOCIAL_OUTH_CONFIG["KAKAO_REST_API_KEY"]
+    LOGOUT_REDIRECT_URI = SOCIAL_OUTH_CONFIG["LOGOUT_REDIRECT_URI"]
+    REFRESH_TOKEN = request.data['refresh']
+
+    
+    return redirect(f'https://kauth.kakao.com/oauth/logout?client_id={KAKAO_REST_API_KEY}&&logout_redirect_uri={LOGOUT_REDIRECT_URI}&&state={REFRESH_TOKEN}')
+
 
 
 # 비밀번호 초기화 전 이메일 인증
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def rest_password(request):
-    email = request.data['email']
+    username = request.data['username']
     User = get_user_model()
     try:
-        user = User.objects.get(email=email, social=False)
+        user = User.objects.get(username=username, social=False)
         # 비밀번호 초기화 토큰 생성
         token_generator = PasswordResetTokenGenerator()
         token = token_generator.make_token(user)
@@ -457,7 +478,7 @@ def rest_password_confirm(request):
     token = request.data['token']
 
     User = get_user_model()
-    user = User.objects.get(email=request.data['email'], social=False)
+    user = User.objects.get(username=request.data['username'], social=False)
 
     token_generator = PasswordResetTokenGenerator()
     if not token_generator.check_token(user, token):
