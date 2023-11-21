@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from .models import Movie, Test_model, Genre, Review, Review_likes, Theater, Seat, Ticket
-from accounts.serializers import UserSerializer
+from .models import Movie, Test_model, Genre, Review, Review_likes, Theater, Seat, Ticket, Payment
 
 class SeatSerializer(serializers.ModelSerializer):
     class Meta:
@@ -31,11 +30,17 @@ class MovieSerializer(serializers.ModelSerializer):
 
 
 class TicketSerializer(serializers.ModelSerializer):
-    # seat = SeatSerializer()
+    seat = SeatSerializer(read_only=True)
     class Meta:
         model = Ticket
         fields = '__all__'
         read_only_fields = ('seat', 'user',)
+
+class PaymentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Payment
+        fields = '__all__'
+        read_only_fields = ('ticket', )
 
 
 class ReviewLikesSerializer(serializers.ModelSerializer):
@@ -47,7 +52,7 @@ class ReviewLikesSerializer(serializers.ModelSerializer):
 class ReviewSerializer(serializers.ModelSerializer):
     likes = ReviewLikesSerializer(many=True, read_only=True)
     likes_count = serializers.IntegerField(source='likes.count', read_only=True)
-    user = UserSerializer(read_only=True)
+    user_username = serializers.CharField(source='user.username', read_only=True)
     class Meta:
         model = Review
         fields = '__all__'

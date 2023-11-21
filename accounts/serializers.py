@@ -1,7 +1,9 @@
 from rest_framework import serializers
 from .models import User
+from movies.serializers import TicketSerializer
 
 class UserSerializer(serializers.ModelSerializer):
+    ticket_set = TicketSerializer(many=True, read_only=True)
     class Meta:
         model = User
         fields = '__all__'
