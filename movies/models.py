@@ -29,7 +29,7 @@ class Review(models.Model):
     rating = models.FloatField(
         validators=[MinValueValidator(0.0), MaxValueValidator(10.0)]
     )
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='reviews', on_delete=models.CASCADE)
 
 class Review_likes(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
