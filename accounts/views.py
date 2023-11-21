@@ -292,7 +292,8 @@ def getUserInfo(request):
     User = get_user_model()
 
     try:
-        user = User.objects.get(username='kakao '+username)
+        tmp = 'kakao '+username
+        user = User.objects.get(username=tmp)
         token = TokenObtainPairSerializer.get_token(user)
         refresh_token = str(token)
         access_token = str(token.access_token)
@@ -412,30 +413,15 @@ def kakaoRefresh(request):
     return Response(res.json())
 
 
-@api_view(['POST'])
-@permission_classes([IsAuthenticated])
-def kakaoLogout(request):
-    url = "https://kapi.kakao.com/v1/user/logout"
-    csrf_token = get_token(request)
-    auth = "Bearer "+ request.data['access']
-    
-    HEADER = {
-        "Authorization": auth,
-        "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
-        "X-CSRFToken": csrf_token
-    }
-    res = requests.post(url, headers=HEADER)
-    return Response(res.json())
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def kakaoSignout(request):
     KAKAO_REST_API_KEY = SOCIAL_OUTH_CONFIG["KAKAO_REST_API_KEY"]
     LOGOUT_REDIRECT_URI = SOCIAL_OUTH_CONFIG["LOGOUT_REDIRECT_URI"]
-    REFRESH_TOKEN = request.data['refresh']
 
     
-    return redirect(f'https://kauth.kakao.com/oauth/logout?client_id={KAKAO_REST_API_KEY}&&logout_redirect_uri={LOGOUT_REDIRECT_URI}&&state={REFRESH_TOKEN}')
+    return redirect(f'https://kauth.kakao.com/oauth/logout?client_id={KAKAO_REST_API_KEY}&&logout_redirect_uri={LOGOUT_REDIRECT_URI}')
 
 
 

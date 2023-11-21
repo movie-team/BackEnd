@@ -39,7 +39,9 @@ urlpatterns = [
     # 티켓 결제 요청(카카오페이)
     path('ticket/pay/', views.ticket_pay),
     # 티켓 결제 완료
-    path('success/', views.payConfirm),
+    path('success/', views.success),
+    path('confirm/', views.payConfirm),
+    path('cancel/', views.payCancel),
 
     # 삭제 예정
     # path('add/genres/', views.add_genres, name='add_genres'),

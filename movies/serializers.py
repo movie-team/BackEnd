@@ -1,7 +1,6 @@
 from rest_framework import serializers
-from .models import Movie, Test_model, Genre, Review, Review_likes, Theater, Seat, Ticket
+from .models import Movie, Test_model, Genre, Review, Review_likes, Theater, Seat, Ticket, Payment
 from accounts.serializers import UserSerializer
-
 class SeatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Seat
@@ -31,11 +30,17 @@ class MovieSerializer(serializers.ModelSerializer):
 
 
 class TicketSerializer(serializers.ModelSerializer):
-    # seat = SeatSerializer()
+    seat = SeatSerializer(read_only=True)
     class Meta:
         model = Ticket
         fields = '__all__'
         read_only_fields = ('seat', 'user',)
+
+class PaymentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Payment
+        fields = '__all__'
+        read_only_fields = ('ticket', )
 
 
 class ReviewLikesSerializer(serializers.ModelSerializer):
@@ -49,10 +54,12 @@ class ReviewSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
     likes_count = serializers.SerializerMethodField()
     dislikes_count = serializers.SerializerMethodField()
+    user_username = serializers.CharField(source='user.username', read_only=True)
 
     def get_likes_count(self, review):
         true_likes_count = review.likes.filter(review_likes=True).count()
         return true_likes_count
+
     def get_dislikes_count(self, review):
         false_likes_count = review.likes.filter(review_likes=False).count()
         return false_likes_count
