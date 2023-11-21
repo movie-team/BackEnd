@@ -51,7 +51,7 @@ class ReviewLikesSerializer(serializers.ModelSerializer):
 
 class ReviewSerializer(serializers.ModelSerializer):
     likes = ReviewLikesSerializer(many=True, read_only=True)
-    user = UserSerializer(read_only=True)
+    
     likes_count = serializers.SerializerMethodField()
     dislikes_count = serializers.SerializerMethodField()
     user_username = serializers.CharField(source='user.username', read_only=True)
