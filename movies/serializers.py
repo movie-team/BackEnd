@@ -46,8 +46,17 @@ class ReviewLikesSerializer(serializers.ModelSerializer):
 
 class ReviewSerializer(serializers.ModelSerializer):
     likes = ReviewLikesSerializer(many=True, read_only=True)
-    likes_count = serializers.IntegerField(source='likes.count', read_only=True)
     user = UserSerializer(read_only=True)
+    likes_count = serializers.SerializerMethodField()
+    dislikes_count = serializers.SerializerMethodField()
+
+    def get_likes_count(self, review):
+        true_likes_count = review.likes.filter(review_likes=True).count()
+        return true_likes_count
+    def get_dislikes_count(self, review):
+        false_likes_count = review.likes.filter(review_likes=False).count()
+        return false_likes_count
+    
     class Meta:
         model = Review
         fields = '__all__'
