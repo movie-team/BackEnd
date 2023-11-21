@@ -142,6 +142,58 @@ def group_rating(request, movie_pk):
     return Response(rating_list)
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated,])
+def user_recommend(request):
+    movies = Movie.objects.all()
+    User = get_user_model()
+    users = User.objects.all()
+
+    # 벡터 설정
+    vectors = {}
+    for user in users:
+        vectors[user.pk] = {movie.id: 0 for movie in movies}
+        for info in user.reviews.values('movie', 'rating'):
+            vectors[user.pk][info['movie']] = info['rating']
+    # print(vectors)
+
+    # 코사인 유사도 계산
+    user_vector = list(vectors[request.user.pk].values())
+    user_movies = [review['movie_id'] for review in request.user.reviews.values('movie_id')]
+    for key, vector in vectors.items():
+        if key == request.user.pk:
+            vectors[key] = -1
+            continue
+        vector = list(vector.values())
+        similarity = np.dot(user_vector,vector)/(np.linalg.norm(user_vector)*np.linalg.norm(vector))        
+        vectors[key] = similarity
+    sorted_vector = sorted(vectors.items(), key=lambda item: item[1], reverse=True)
+    # print(user_movies)
+
+
+    # 추천 리스트 생성
+    recommend_list = []
+    target_num_of_movies = 5 # 추천할 영화 개수
+    for su_pk, similarity in sorted_vector:
+        su = User(pk=su_pk)
+        su_avg = su.reviews.all().aggregate(Avg('rating'))['rating__avg']
+        su_movies = su.reviews.filter(rating__gte=su_avg).exclude(movie__id__in=user_movies).order_by('-rating').values('movie_id')
+        for su_movie in su_movies:
+            movie = get_object_or_404(Movie, id=su_movie['movie_id'])
+            if movie not in recommend_list:
+                recommend_list.append(movie)
+                target_num_of_movies -= 1
+                if target_num_of_movies <= 0:
+                    break
+        else:
+            continue
+        break
+    # print(recommend_list)
+
+    # serialize
+    serializer = MovieSerializer(recommend_list, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
 @permission_classes([AllowAny,])
 def review(request, movie_pk):
     movie = get_object_or_404(Movie, id=movie_pk)

@@ -11,7 +11,6 @@ urlpatterns = [
     path('popularity/', views.popular_movie, name='popular_movie'),
     # path('gender/', views.gender_movie, name='gender_movie'),
     # path('age/', views.age_movie, name='age_movie'),
-    path('<int:movie_pk>/genre_recommendation/', views.genre_recommend, name='genre_recommend'),
 
     # 리뷰 api
     path('<int:movie_pk>/review/', views.review),
@@ -24,7 +23,10 @@ urlpatterns = [
     path('review/<int:review_pk>/likes/', views.review_likes, name='likes'),
     # path('<int:movie.pk>/ticketing/', views.ticketing, name='ticketing'),
     
+    # 추천 알고리즘
+    path('<int:movie_pk>/genre_recommendation/', views.genre_recommend, name='genre_recommend'),
     path('worldcup/', views.worldcup, name='worldcup'),
+    path('user_based_recommendation/', views.user_recommend, name='user_recommend'),
 
     # 상영관 당 좌석 상태
     path('theater/<int:theater_pk>/', views.theater_detail),
