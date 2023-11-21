@@ -67,3 +67,9 @@ class Seat(models.Model):
 class Ticket(models.Model):
     seat = models.ForeignKey(Seat, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    check = models.BooleanField(default=False)
+
+class Payment(models.Model):
+    tid = models.CharField(max_length=50)
+    ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
+    check = models.BooleanField(default=False)

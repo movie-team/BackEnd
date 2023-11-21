@@ -3,8 +3,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.contrib.auth import get_user_model
-from .serializers import MovieSerializer, TestSerializer, GenreSerializer, ReviewSerializer, ReviewLikesSerializer, TheaterSerializer, SeatSerializer, TicketSerializer
-from .models import Movie, Genre, Test_model, Review, Review_likes, Theater, Seat, Ticket
+from .serializers import MovieSerializer, TestSerializer, GenreSerializer, ReviewSerializer, ReviewLikesSerializer, TheaterSerializer, SeatSerializer, TicketSerializer, PaymentSerializer
+from .models import Movie, Genre, Test_model, Review, Review_likes, Theater, Seat, Ticket, Payment
 
 from rest_framework import status
 
@@ -370,6 +370,7 @@ def ticket_create(request):
 
     return Response({'tickets': tickets, 'message': 'Tickets created successfully'}, status=status.HTTP_201_CREATED)
 
+# 티켓 삭제
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def ticket_delete(request, seat_pk):
@@ -401,14 +402,20 @@ def ticket_delete(request, seat_pk):
 @permission_classes([IsAuthenticated])
 def ticket_pay(request):
     tickets = request.user.ticket_set.all()
-    if len(tickets) > 0:
+    seat_set = []
+    cnt = 0
+    for ticket in tickets:
+        cnt += 1
+        seat_set.append(ticket.seat.id)
+
+    if cnt > 0:
         data = {
                 'cid': 'TC0ONETIME',
                 'partner_order_id': request.user.id,
                 'partner_user_id': request.user.username,
                 'item_name': 'ticket',
-                'quantity': len(tickets),
-                'total_amount': 10000*len(tickets),
+                'quantity': cnt,
+                'total_amount': 10000*cnt,
                 'tax_free_amount': 0,
                 'approval_url': f'{BASE_URL}/api/movies/success/',
                 'fail_url': f'{BASE_URL}/api/movies/fail/',
@@ -422,19 +429,41 @@ def ticket_pay(request):
         response = requests.post(url, data=data, headers=headers)
         res = response.json()
 
+        for s in seat_set:
+            seat = Seat.objects.get(id=s)
+        
+            req = {
+                'tid': res['tid']
+            }
+            serializer = PaymentSerializer(data=req)
+            if Payment.objects.filter(ticket=Ticket.objects.get(seat=seat)).exists():
+                return Response({
+                    'message': "already did"
+                }, status=status.HTTP_400_BAD_REQUEST)
+            if serializer.is_valid():
+                serializer.save(ticket=Ticket.objects.get(seat=seat))
+
         return Response(res, status=status.HTTP_200_OK)
     else:
         return Response({
             'message': 'nothing to pay'
         }, status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def success(request):
+    pg_token = request.GET.get('pg_token')
+    return Response({'pg_token': pg_token}, status=status.HTTP_200_OK)
 
 # 결제 승인
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def payConfirm(request):
+    ticket = Ticket.objects.filter(user=request.user, check=False)
+    payment = Payment.objects.get(ticket=ticket[0])
     data = {
             'cid': 'TC0ONETIME',
-            'tid': request.data['tid'],
+            'tid': payment.tid,
             'partner_order_id': request.user.id,
             'partner_user_id': request.user.username,
             'pg_token': request.data['pg_token']
@@ -447,15 +476,49 @@ def payConfirm(request):
     }
     response = requests.post(url, data=data, headers=headers)
 
-    tickets = request.user.ticket_set.all()
-    for ticket in tickets:
-        ticket.seat.check = True
-        ticket.seat.save()
-        ticket.delete()
+    
+    for tmp in Ticket.objects.filter(user=request.user):
+        for pay in tmp.payment_set.all():
+            pay.check = True
+            pay.save()
+        seat = tmp.seat
+        seat.check = True
+        seat.save()
+        tmp.check = True
+        tmp.save()
 
     return Response(response.json())
 
 
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def payCancel(request):
+    payment_pk = request.data['payment']
+    response = []
+    for pk in payment_pk:
+        payment = Payment.objects.get(pk=pk)
+        ticket = Ticket.objects.get(pk=payment.ticket_id)
+        if request.user == ticket.user:
+            url = 'https://kapi.kakao.com/v1/payment/cancel'
+            headers = {
+                'Authorization': f'KakaoAK {SOCIAL_OUTH_CONFIG["SERVICE_APP_ADMIN_KEY"]}',
+                'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+            }
+            data = {
+                'cid': 'TC0ONETIME',
+                'tid': payment.tid,
+                'cancel_amount': 10000,
+                'cancel_tax_free_amount': 0
+            }
+            res = requests.post(url, headers=headers, data=data)
+            response.append(res.json())
+            ticket.delete()
+            
+
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    return Response(response, status=status.HTTP_200_OK)
 
 
 
