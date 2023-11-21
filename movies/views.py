@@ -19,6 +19,7 @@ from django.db.models import Avg
 import numpy as np
 from django.db import transaction
 from PJT.settings import SOCIAL_OUTH_CONFIG, BASE_URL
+from konlpy.tag import Okt
 
 # Create your views here.
 
@@ -141,6 +142,7 @@ def group_rating(request, movie_pk):
             rating_list.append(group)
     return Response(rating_list)
 
+# 유저 협업필터링 추천 알고리즘
 @api_view(['GET'])
 @permission_classes([IsAuthenticated,])
 def user_recommend(request):
@@ -192,6 +194,9 @@ def user_recommend(request):
     # serialize
     serializer = MovieSerializer(recommend_list, many=True)
     return Response(serializer.data)
+
+
+
 
 @api_view(['GET'])
 @permission_classes([AllowAny,])
