@@ -427,7 +427,7 @@ def ticket_create(request):
 
     return Response({'tickets': tickets, 'message': 'Tickets created successfully'}, status=status.HTTP_201_CREATED)
 
-# 티켓 삭제
+# 티켓 좌석별 삭제
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def ticket_delete(request, seat_pk):
@@ -439,6 +439,36 @@ def ticket_delete(request, seat_pk):
         if request.method == 'DELETE':
 
             ticket.delete()
+            return Response(
+                {
+                    "message": "delete success"
+                },
+                status = status.HTTP_204_NO_CONTENT
+            )
+
+    else:
+        return Response(
+            {
+                "message": "diffrent user"
+            },
+            status = status.HTTP_400_BAD_REQUEST
+        )
+    
+# 티켓 전체 삭제
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def delete_all(request):
+    seats = request.data['seats']
+    user = request.user
+    
+    check_user = ticket.user_id
+
+    if user.id == check_user:
+        if request.method == 'DELETE':
+            for s in seats:
+                ticket = Ticket.objects.get(seat_id=s)
+
+                ticket.delete()
             return Response(
                 {
                     "message": "delete success"
