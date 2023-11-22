@@ -26,6 +26,7 @@ from django.utils.encoding import force_text
 from django.core.mail import send_mail
 
 from datetime import datetime
+import random
 
 @api_view(['POST'])
 @permission_classes([AllowAny])

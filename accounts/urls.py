@@ -24,4 +24,5 @@ urlpatterns = [
     path('confirm/', views.confirm),
     path('emailVerify/', views.verify_email),
 
+
 ]
