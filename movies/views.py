@@ -11,7 +11,7 @@ import requests
 import json
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
-from django.db.models import Avg
+from django.db.models import Avg, Count
 import numpy as np
 from django.db import transaction
 from PJT.settings import SOCIAL_OUTH_CONFIG, BASE_URL
@@ -130,7 +130,8 @@ def group_rating(request, movie_pk):
                 reviews = Review.objects.filter(movie=movie_pk, user__gender=gender, user__age__gte=age_group)
             else:
                 reviews = Review.objects.filter(movie=movie_pk, user__gender=gender, user__age__gte=age_group, user__age__lt=age_group+10)
-            group = reviews.aggregate(Avg("rating"))
+            group = reviews.aggregate(Avg("rating"),Count("rating"))
+            print(group)
             group['gender'] = gender
             group['age_group'] = age_group
             rating_list.append(group)
