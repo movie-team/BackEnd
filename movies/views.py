@@ -5,21 +5,16 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from django.contrib.auth import get_user_model
 from .serializers import MovieSerializer, TestSerializer, GenreSerializer, ReviewSerializer, ReviewLikesSerializer, TheaterSerializer, SeatSerializer, TicketSerializer, PaymentSerializer
 from .models import Movie, Genre, Test_model, Review, Review_likes, Theater, Seat, Ticket, Payment
-
 from rest_framework import status
 
 import requests
 import json
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
-from pprint import pprint
-from time import sleep
-
 from django.db.models import Avg
 import numpy as np
 from django.db import transaction
 from PJT.settings import SOCIAL_OUTH_CONFIG, BASE_URL
-from konlpy.tag import Okt
 
 # Create your views here.
 
@@ -57,7 +52,6 @@ def genre_movie(request, genre_pk):
     movies = get_list_or_404(Movie, genres = genre_pk)
     serializer = MovieSerializer(movies, many=True)
     return Response(serializer.data)
-
 
 # 인기도 별 영화 정렬
 @api_view(['GET',])
@@ -166,8 +160,12 @@ def user_recommend(request):
             vectors[key] = -1
             continue
         vector = list(vector.values())
+        if np.linalg.norm(vector) == 0:
+            vectors[key] = 0
+            continue
         similarity = np.dot(user_vector,vector)/(np.linalg.norm(user_vector)*np.linalg.norm(vector))        
         vectors[key] = similarity
+    # print(vectors)
     sorted_vector = sorted(vectors.items(), key=lambda item: item[1], reverse=True)
     # print(user_movies)
 
@@ -175,9 +173,13 @@ def user_recommend(request):
     # 추천 리스트 생성
     recommend_list = []
     target_num_of_movies = 5 # 추천할 영화 개수
+    # print(sorted_vector)
     for su_pk, similarity in sorted_vector:
         su = User(pk=su_pk)
         su_avg = su.reviews.all().aggregate(Avg('rating'))['rating__avg']
+        # print('??', su_avg)
+        if su_avg == None:
+            su_avg = 0
         su_movies = su.reviews.filter(rating__gte=su_avg).exclude(movie__id__in=user_movies).order_by('-rating').values('movie_id')
         for su_movie in su_movies:
             movie = get_object_or_404(Movie, id=su_movie['movie_id'])
@@ -194,8 +196,6 @@ def user_recommend(request):
     # serialize
     serializer = MovieSerializer(recommend_list, many=True)
     return Response(serializer.data)
-
-
 
 
 @api_view(['GET'])
