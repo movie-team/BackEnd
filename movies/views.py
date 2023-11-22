@@ -15,6 +15,7 @@ from django.db.models import Avg, Count
 import numpy as np
 from django.db import transaction
 from PJT.settings import SOCIAL_OUTH_CONFIG, BASE_URL
+import random
 
 # Create your views here.
 
@@ -691,6 +692,3 @@ def payCancel(request):
 #         print('???')
 #         # 유효하지 않은 경우 에러 메시지를 반환합니다.
 #         return Response({"error": serializer.errors}, status=400)
-    
-
-
