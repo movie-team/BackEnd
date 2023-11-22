@@ -25,6 +25,8 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_text
 from django.core.mail import send_mail
 
+from datetime import datetime
+
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def confirm(request):
@@ -180,6 +182,20 @@ def update(request):
 
     if serializer.is_valid():
         serializer.save()
+
+        birth = request.data.get("birth", None)
+        if birth:
+            current_date = datetime.now()
+
+            date_format = "%Y-%m-%d"
+            user_birth = datetime.strptime(birth, date_format)
+
+            date_diff = current_date - user_birth
+
+            user_age = date_diff.days / 365.25
+
+            user.age = user_age
+            user.save()
 
         response = Response(
             {
