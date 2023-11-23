@@ -460,31 +460,20 @@ def ticket_delete(request, seat_pk):
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def delete_all(request):
-    seats = request.data['seats']
     user = request.user
     
-    check_user = ticket.user_id
 
-    if user.id == check_user:
-        if request.method == 'DELETE':
-            for s in seats:
-                ticket = Ticket.objects.get(seat_id=s)
-                if not ticket.check:
-                    ticket.delete()
-            return Response(
-                {
-                    "message": "delete success"
-                },
-                status = status.HTTP_204_NO_CONTENT
-            )
-
-    else:
+    if request.method == 'DELETE':
+        for ticket in Ticket.objects.filter(user=user):
+            if not ticket.check:
+                ticket.delete()
         return Response(
             {
-                "message": "diffrent user"
+                "message": "delete success"
             },
-            status = status.HTTP_400_BAD_REQUEST
-        )
+            status = status.HTTP_204_NO_CONTENT
+            )
+
 
 # 결제 요청
 @api_view(['POST'])
