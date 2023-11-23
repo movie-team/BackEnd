@@ -204,7 +204,7 @@ def user_recommend(request):
 @permission_classes([AllowAny,])
 def review(request, movie_pk):
     movie = get_object_or_404(Movie, id=movie_pk)
-    reviews = movie.review_set.all()
+    reviews = movie.reviews.all()
     serializer = ReviewSerializer(reviews, many=True)
     return Response(serializer.data)
 
