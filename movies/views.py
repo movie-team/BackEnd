@@ -347,7 +347,7 @@ def worldcup(request):
         genres = Genre.objects.values('id')
         vector = { genre['id']: { 'wins': 0, 'matches': 0 } for genre in genres}
         # 총 승리수 / 총 매치수로 벡터를 설정
-        for k, v in request.data.items():
+        for k, v in request.data['val'].items():
             movie = get_object_or_404(Movie, id=k)
             movie_genres = [genre['id'] for genre in movie.genres.values('id')]
             v = int(v)
@@ -355,6 +355,7 @@ def worldcup(request):
                 vector[genre]['wins'] = v
                 if v == 4:
                     vector[genre]['matches'] = v
+                    winner_movie = movie
                 else:
                     vector[genre]['matches'] = v + 1
         for k, v in vector.items():
@@ -390,8 +391,10 @@ def worldcup(request):
                 continue
             movies_list.append(get_object_or_404(Movie, id=id))
             count += 1
+        winner_serializer = MovieSerializer(winner_movie)
         serializer = MovieSerializer(movies_list, many=True)
-        return Response(serializer.data)
+        return Response({ 'recommend': serializer.data,
+                         'winner': winner_serializer.data})
 
 # 상영관 상세
 @api_view(['GET'])
