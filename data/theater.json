@@ -5,8 +5,8 @@
   "fields": {
     "movie": 34308,
     "num": 1,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "10:00:00",
     "end": "12:47:00"
   }
@@ -17,8 +17,8 @@
   "fields": {
     "movie": 34308,
     "num": 1,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "13:10:00",
     "end": "15:57:00"
   }
@@ -29,8 +29,8 @@
   "fields": {
     "movie": 34308,
     "num": 1,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "16:20:00",
     "end": "19:07:00"
   }
@@ -41,8 +41,8 @@
   "fields": {
     "movie": 299054,
     "num": 1,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "19:30:00",
     "end": "22:17:00"
   }
@@ -53,8 +53,8 @@
   "fields": {
     "movie": 459003,
     "num": 2,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "15:05:00",
     "end": "17:52:00"
   }
@@ -65,8 +65,8 @@
   "fields": {
     "movie": 507089,
     "num": 3,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "10:45:00",
     "end": "12:58:00"
   }
@@ -77,8 +77,8 @@
   "fields": {
     "movie": 507089,
     "num": 3,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "13:20:00",
     "end": "15:33:00"
   }
@@ -89,7 +89,7 @@
   "fields": {
     "movie": 507089,
     "num": 3,
-    "max_seat": 64,
+    "max_seat": 36,
     "rest_seat": 64,
     "start": "15:55:00",
     "end": "18:08:00"
@@ -101,8 +101,8 @@
   "fields": {
     "movie": 507089,
     "num": 3,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "18:30:00",
     "end": "20:43:00"
   }
@@ -113,8 +113,8 @@
   "fields": {
     "movie": 609681,
     "num": 3,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "21:05:00",
     "end": "23:18:00"
   }
@@ -125,8 +125,8 @@
   "fields": {
     "movie": 661931,
     "num": 5,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "12:20:00",
     "end": "14:33:00"
   }
@@ -137,8 +137,8 @@
   "fields": {
     "movie": 661931,
     "num": 5,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "17:15:00",
     "end": "19:28:00"
   }
@@ -149,8 +149,8 @@
   "fields": {
     "movie": 741600,
     "num": 4,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "10:00:00",
     "end": "11:55:00"
   }
@@ -161,8 +161,8 @@
   "fields": {
     "movie": 741600,
     "num": 4,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "12:15:00",
     "end": "14:10:00"
   }
@@ -173,8 +173,8 @@
   "fields": {
     "movie": 741600,
     "num": 4,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "14:30:00",
     "end": "16:25:00"
   }
@@ -185,8 +185,8 @@
   "fields": {
     "movie": 807172,
     "num": 4,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "16:45:00",
     "end": "18:40:00"
   }
@@ -197,8 +197,8 @@
   "fields": {
     "movie": 818415,
     "num": 4,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "19:00:00",
     "end": "20:55:00"
   }
@@ -209,8 +209,8 @@
   "fields": {
     "movie": 840326,
     "num": 4,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "21:15:00",
     "end": "23:10:00"
   }
@@ -221,8 +221,8 @@
   "fields": {
     "movie": 843633,
     "num": 2,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "10:25:00",
     "end": "12:24:00"
   }
@@ -233,8 +233,8 @@
   "fields": {
     "movie": 843633,
     "num": 2,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "12:45:00",
     "end": "14:44:00"
   }
@@ -245,8 +245,8 @@
   "fields": {
     "movie": 843633,
     "num": 2,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "18:40:00",
     "end": "20:39:00"
   }
@@ -257,8 +257,8 @@
   "fields": {
     "movie": 872954,
     "num": 6,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "15:05:00",
     "end": "17:04:00"
   }
@@ -269,8 +269,8 @@
   "fields": {
     "movie": 843633,
     "num": 6,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "17:25:00",
     "end": "19:24:00"
   }
@@ -281,8 +281,8 @@
   "fields": {
     "movie": 893723,
     "num": 6,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "19:45:00",
     "end": "21:44:00"
   }
@@ -293,8 +293,8 @@
   "fields": {
     "movie": 900667,
     "num": 7,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "14:10:00",
     "end": "16:52:00"
   }
@@ -305,8 +305,8 @@
   "fields": {
     "movie": 893723,
     "num": 7,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "19:25:00",
     "end": "22:07:00"
   }
@@ -317,8 +317,8 @@
   "fields": {
     "movie": 913824,
     "num": 5,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "14:55:00",
     "end": "16:47:00"
   }
@@ -329,8 +329,8 @@
   "fields": {
     "movie": 893723,
     "num": 7,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "09:50:00",
     "end": "11:42:00"
   }
@@ -341,8 +341,8 @@
   "fields": {
     "movie": 942199,
     "num": 7,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "12:00:00",
     "end": "13:52:00"
   }
@@ -353,8 +353,8 @@
   "fields": {
     "movie": 943822,
     "num": 7,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "17:15:00",
     "end": "19:07:00"
   }
@@ -365,8 +365,8 @@
   "fields": {
     "movie": 950891,
     "num": 6,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "13:00:00",
     "end": "14:44:00"
   }
@@ -377,8 +377,8 @@
   "fields": {
     "movie": 954388,
     "num": 5,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "19:50:00",
     "end": "21:52:00"
   }
@@ -389,8 +389,8 @@
   "fields": {
     "movie": 972435,
     "num": 6,
-    "max_seat": 64,
-    "rest_seat": 64,
+    "max_seat": 36,
+    "rest_seat": 36,
     "start": "10:55:00",
     "end": "12:38:00"
   }
