@@ -90,7 +90,7 @@
     "movie": 507089,
     "num": 3,
     "max_seat": 36,
-    "rest_seat": 64,
+    "rest_seat": 36,
     "start": "15:55:00",
     "end": "18:08:00"
   }
