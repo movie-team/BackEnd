@@ -348,7 +348,7 @@ def worldcup(request):
         genres = Genre.objects.values('id')
         vector = { genre['id']: { 'wins': 0, 'matches': 0 } for genre in genres}
         # 총 승리수 / 총 매치수로 벡터를 설정
-        for k, v in request.data.items():
+        for k, v in request.data['val'].items():
             movie = get_object_or_404(Movie, id=k)
             movie_genres = [genre['id'] for genre in movie.genres.values('id')]
             v = int(v)
@@ -601,6 +601,8 @@ def payCancel(request):
             }
             res = requests.post(url, headers=headers, data=data)
             response.append(res.json())
+            ticket.seat.check = False
+            ticket.seat.save()
             ticket.delete()
             
 
