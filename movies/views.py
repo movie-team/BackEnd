@@ -316,7 +316,7 @@ def review_likes(request, review_pk):
         # print(request.data['review_likes'] == str(likes.review_likes))
 
         # 취소하는 경우
-        if request.data['review_likes'] == str(likes.review_likes):
+        if request.data['review_likes'] == likes.review_likes:
             likes.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
         # 바꾸는 경우
@@ -354,7 +354,7 @@ def worldcup(request):
             v = int(v)
             for genre in movie_genres:
                 vector[genre]['wins'] = v
-                if v == 4:
+                if v >= 4:
                     vector[genre]['matches'] = v
                 else:
                     vector[genre]['matches'] = v + 1
