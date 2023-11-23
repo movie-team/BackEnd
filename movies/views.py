@@ -469,8 +469,8 @@ def delete_all(request):
         if request.method == 'DELETE':
             for s in seats:
                 ticket = Ticket.objects.get(seat_id=s)
-
-                ticket.delete()
+                if not ticket.check:
+                    ticket.delete()
             return Response(
                 {
                     "message": "delete success"
