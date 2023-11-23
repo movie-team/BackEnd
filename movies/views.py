@@ -58,7 +58,7 @@ def genre_movie(request, genre_pk):
 @api_view(['GET',])
 @permission_classes([AllowAny,])
 def popular_movie(request):
-    movies = get_list_or_404(Movie.objects.order_by('-popularity'))
+    movies = get_list_or_404(Movie.objects.order_by('-popularity'))[:10]
     serializer = MovieSerializer(movies, many=True)
     return Response(serializer.data)
             
