@@ -621,7 +621,7 @@ def payment(request):
     response = {}
     for ticket in ticekts:
         payment = ticket.payment_set.all()
-        response[f'{ticket.id}'] = payment.id
+        response[f'{ticket.id}'] = payment[0].id
     return Response(response, status=status.HTTP_200_OK)
 
 
