@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from django.shortcuts import get_object_or_404, get_list_or_404
@@ -537,7 +537,7 @@ def ticket_pay(request):
 @permission_classes([AllowAny])
 def success(request):
     pg_token = request.GET.get('pg_token')
-    return Response({'pg_token': pg_token}, status=status.HTTP_200_OK)
+    return redirect(f'{SOCIAL_OUTH_CONFIG["LOGOUT_REDIRECT_URI"]}tickets/pay?pg_token={pg_token}')
 
 # 결제 승인
 @api_view(['POST'])
