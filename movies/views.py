@@ -406,28 +406,34 @@ def theater_detail(request, theater_pk):
 
 # 티켓 생성
 # req body에 좌석 번호 필요
-@api_view(['POST'])
+@api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def ticket_create(request):
-    user = request.user
-    seats = request.data.get('seat', [])
+    if request.method == 'GET':
+        tickets = Ticket.objects.filter(user=request.user, check=False)
+        serializer = TicketSerializer(tickets, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    elif request.method == 'POST':
 
-    with transaction.atomic():
-        tickets = []
-        for seat in seats:
-            seat_instance = Seat.objects.get(pk=seat)
-            if seat_instance.check:
-                return Response({'message': 'already reserved'}, status=status.HTTP_400_BAD_REQUEST)
-            data = {'seat': seat_instance, 'user': user}
-            serializer = TicketSerializer(data=data)
-            if serializer.is_valid():
-                ticket = serializer.save(seat=seat_instance, user=user)
-                ticket_serializer = TicketSerializer(ticket)
-                tickets.append(ticket_serializer.data)
-            else:
-                return Response({'message': 'Invalid request. Check your data.'}, status=status.HTTP_400_BAD_REQUEST)
+        user = request.user
+        seats = request.data.get('seat', [])
 
-    return Response({'tickets': tickets, 'message': 'Tickets created successfully'}, status=status.HTTP_201_CREATED)
+        with transaction.atomic():
+            tickets = []
+            for seat in seats:
+                seat_instance = Seat.objects.get(pk=seat)
+                if seat_instance.check:
+                    return Response({'message': 'already reserved'}, status=status.HTTP_400_BAD_REQUEST)
+                data = {'seat': seat_instance, 'user': user}
+                serializer = TicketSerializer(data=data)
+                if serializer.is_valid():
+                    ticket = serializer.save(seat=seat_instance, user=user)
+                    ticket_serializer = TicketSerializer(ticket)
+                    tickets.append(ticket_serializer.data)
+                else:
+                    return Response({'message': 'Invalid request. Check your data.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        return Response({'tickets': tickets, 'message': 'Tickets created successfully'}, status=status.HTTP_201_CREATED)
 
 # 티켓 좌석별 삭제
 @api_view(['DELETE'])
