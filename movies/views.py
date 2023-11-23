@@ -618,10 +618,10 @@ def payCancel(request):
 @permission_classes([IsAuthenticated])
 def payment(request):
     ticekts = Ticket.objects.filter(user=request.user, check=True)
-    response = []
+    response = {}
     for ticket in ticekts:
         payment = ticket.payment_set.all()
-        response.append(payment.tid)
+        response[f'{ticket.id}'] = payment.tid
     return Response(response, status=status.HTTP_200_OK)
 
 
