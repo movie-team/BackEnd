@@ -29,18 +29,22 @@ class MovieSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class TicketSerializer(serializers.ModelSerializer):
-    seat = SeatSerializer(read_only=True)
-    class Meta:
-        model = Ticket
-        fields = '__all__'
-        read_only_fields = ('seat', 'user',)
-
 class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Payment
         fields = '__all__'
         read_only_fields = ('ticket', )
+
+
+class TicketSerializer(serializers.ModelSerializer):
+    seat = SeatSerializer(read_only=True)
+    payment_set = PaymentSerializer(read_only=True)
+    class Meta:
+        model = Ticket
+        fields = '__all__'
+        read_only_fields = ('seat', 'user',)
+
+
 
 
 class ReviewLikesSerializer(serializers.ModelSerializer):
