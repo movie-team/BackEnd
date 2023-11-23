@@ -38,7 +38,6 @@ class PaymentSerializer(serializers.ModelSerializer):
 
 class TicketSerializer(serializers.ModelSerializer):
     seat = SeatSerializer(read_only=True)
-    payment_set = PaymentSerializer(read_only=True)
     class Meta:
         model = Ticket
         fields = '__all__'
