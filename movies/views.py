@@ -485,7 +485,7 @@ def delete_all(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def ticket_pay(request):
-    tickets = request.user.ticket_set.all()
+    tickets = Ticket.objects.get(user=request.user, check=False)
     seat_set = []
     cnt = 0
     for ticket in tickets:
