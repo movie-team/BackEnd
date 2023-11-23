@@ -9,6 +9,12 @@ class SeatSerializer(serializers.ModelSerializer):
 
 class TheaterSerializer(serializers.ModelSerializer):
     seat_set = SeatSerializer(many=True, read_only=True)
+    class MovieSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = Movie
+            field = '__all__'
+
+    movie = MovieSerializer(read_only=True)
     class Meta:
         model = Theater
         fields = '__all__'
