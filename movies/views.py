@@ -600,7 +600,7 @@ def payCancel(request):
             response.append(res.json())
             ticket.seat.check = False
             ticket.seat.save()
-            ticket.seat.theater.rest_seat -= 1
+            ticket.seat.theater.rest_seat += 1
             ticket.seat.theater.save()
             ticket.delete()
             
