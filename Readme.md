@@ -25,6 +25,59 @@
 6. 영화 추천 알고리즘 구현
 7. 영화 이상형 월드컵 게임 구현
 
+<br/>
+
+## 시연 영상
+1. 일반 회원가입
+![회원가입](https://github.com/movie-team/BackEnd/assets/116432941/10b76b4e-4a98-4303-9712-59b491bd5479)
+
+2. 카카오 회원가입
+![카카오 로그인](https://github.com/movie-team/BackEnd/assets/116432941/11728757-d8b3-43b8-a2c9-502f3a6f8e90)
+
+3. 로그인/로그아웃
+![로그인, 로그아웃](https://github.com/movie-team/BackEnd/assets/116432941/cb65ea41-eac8-485c-88d6-0dcab8a6711e)
+
+4. 회원 탈퇴
+![회원 탈퇴](https://github.com/movie-team/BackEnd/assets/116432941/ff58de87-1185-4002-b8b9-4acb3ffe7500)
+
+5. 회원 정보 수정
+![회원정보 수정](https://github.com/movie-team/BackEnd/assets/116432941/ea9cbd52-ee9c-4f54-88df-97183e60faad)
+
+6. 비밀번호 변경
+![비밀번호 변경](https://github.com/movie-team/BackEnd/assets/116432941/c88848d0-67c7-4db7-b6f9-9811dbcaa2de)
+
+7. 비밀번호 찾기
+![비밀번호 찾기](https://github.com/movie-team/BackEnd/assets/116432941/b57a2a13-abc6-42aa-8c87-56d2d3933889)
+
+8. 영화 조회
+![영화 조회](https://github.com/movie-team/BackEnd/assets/116432941/eaf9313c-b6ee-4bc9-80da-6dd05a9bb0a5)
+
+9. 영화 상세 조회
+![영화 상세 조회](https://github.com/movie-team/BackEnd/assets/116432941/f85f7b57-7c53-489a-8991-e345efd4b4fe)
+
+10. 리뷰 작성
+![리뷰](https://github.com/movie-team/BackEnd/assets/116432941/45a4e5a6-25eb-4d69-81c0-2c875ec29f7a)
+
+11. 추천 알고리즘
+![추천 알고리즘](https://github.com/movie-team/BackEnd/assets/116432941/ad87fc20-7563-41ff-88b4-4d44fa32512a)
+
+12. 영화 이상형 월드컵
+![영화 월드컵](https://github.com/movie-team/BackEnd/assets/116432941/6998f264-7371-416e-9dfb-7d067a8ed307)
+
+13. 상영관 정보
+![상영관 정보](https://github.com/movie-team/BackEnd/assets/116432941/c39d0e81-d076-41f7-a7ed-087ec1b31da3)
+
+14. 티켓 생성
+![티켓 생성](https://github.com/movie-team/BackEnd/assets/116432941/59a7fe43-4206-4223-9fcc-1c12306e176d)
+
+15. 티켓 결제
+![티켓 결제](https://github.com/movie-team/BackEnd/assets/116432941/d494c31e-bf3f-46ce-b66c-18ccc98dea21)
+
+![티켓 결제 확인](https://github.com/movie-team/BackEnd/assets/116432941/c95dc2c0-9784-4a4c-8977-2bb6210cc988)
+
+16. 티켓 결제 취소
+![티켓 결제 취소](https://github.com/movie-team/BackEnd/assets/116432941/e3b6b489-ecd6-487b-b171-b45447f267de)
+
 
 <br/>
 
