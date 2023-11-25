@@ -45,6 +45,4 @@ urlpatterns = [
     path('cancel/', views.payCancel),
     path('payment/', views.payment)
 
-    # 삭제 예정
-    # path('add/genres/', views.add_genres, name='add_genres'),
 ]
