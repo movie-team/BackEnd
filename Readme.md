@@ -6,10 +6,12 @@
  <tr>
     <td align="center"><a href="https://github.com/sirlyun"><img src="https://avatars.githubusercontent.com/sirlyun" width="130px;" alt=""></a></td>
     <td align="center"><a href="https://github.com/tooyul"><img src="https://avatars.githubusercontent.com/tooyul" width="130px;" alt=""></a></td>
+
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/sirlyun"><b>sirlyun</b></a></td>
     <td align="center"><a href="https://github.com/tooyul"><b>tooyul</b></a></td>
+
   </tr>
 </table>
 
@@ -31,7 +33,7 @@
 1. 일반 회원가입
 <br/>
 
-![회원가입](https://github.com/movie-team/BackEnd/assets/116432941/10b76b4e-4a98-4303-9712-59b491bd5479)
+
 
 2. 카카오 회원가입
 <br/>
