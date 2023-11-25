@@ -1,0 +1,1595 @@
+[
+{
+    "model": "movies.movie",
+    "pk": 34308,
+    "fields": {
+        "adult": false,
+        "title": "모딜리아니",
+        "original_title": "Modigliani",
+        "overview": "1919년 파리, 뜨겁고 파괴적이었던 세기의 예술가 ‘모딜리아니’는 술과 마약에 중독되어 방탕하고 동료 예술과들과 종잡을 수 없는 기행을 일삼는다. “당신을 영혼까지 알게 되면, 그때 눈동자를 그릴게요” 어느 날, ‘모딜리아니’는 아름다운 ‘잔’에게 매료되어 운명적인 사랑에 빠진다. ‘잔’은 ‘모딜리아니’에게 영감을 주는 뮤즈로 그는 더욱 작품 활동에 몰두하게 된다. 하지만 아이를 낳은 ‘잔’은 이어지는 궁핍한 생활에 지쳐가고, ‘피카소’를 찾아가 전시회에 ‘모딜리아니’의 그림을 걸어달라고 부탁하면서 사이가 좋지 않았던 그들의 갈등은 더욱 심해진다. ‘모딜리아니’는 약물과 알코올 중독 증세로 건강마저 악화되면서 점점 엉망진창이 된다. 그는 파리에서 매년 개최되는 상금이 걸린 미술 경연대회에 작품을 내기로 결심하고, 애증의 라이벌 ‘피카소’까지 참가한다는 소식에 파리가 들썩이기 시작하는데…",
+        "popularity": 8.716,
+        "poster": "/gWQLJFK4Z0KRBZqgiVLT5nU3TIk.jpg",
+        "release_date": "2023-10-19",
+        "vote_average": 7.0,
+        "vote_count": 179,
+        "created_at": "2023-11-14",
+        "genres": [
+            18
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 84334,
+    "fields": {
+        "adult": false,
+        "title": "서칭 포 슈가맨",
+        "original_title": "Searching for Sugar Man",
+        "overview": "미국에선 ZERO, 남아공에선 HERO?!  팝 역사상 가장 신비로운 가수, ‘슈가맨’의 놀라운 이야기!  ● 본고장 미국: 음반 판매 6장, 아무도 알아주지 않는 비운의 가수!  ● 반대편 남아공: 밀리언셀러 히트가수, ‘엘비스’보다 유명한 슈퍼스타!  70년대 초, 우연히 남아공으로 흘러 들어온 ‘슈가맨’의 앨범은 수십 년간 가장 큰 사랑을 받으며 최고의 히트를 기록한다.  하지만 ‘슈가맨’은 단 두 장의 앨범만 남기고 사라져버린 신비의 가수!  전설의 ‘슈가맨’을 둘러싸고 갖가지 소문만 무성한 가운데,  두 명의 열성 팬이 진실을 밝히고자 그의 흔적을 찾기 시작한다.  그러나 단서라고는 오직 그의 노래 가사뿐!  기발한 추적 끝에 ‘슈가맨’에 대한 수수께끼를 풀었다고 생각한 순간,  그들은 상상하지도 못했던 놀라운 사실과 마주하게 되는데...!  지금부터 ‘슈가맨’의 리얼 기적이 시작됩니다!",
+        "popularity": 10.235,
+        "poster": "/2UlEwjiNud7V2aB2ghbkRbBjaPA.jpg",
+        "release_date": "2012-10-11",
+        "vote_average": 7.9,
+        "vote_count": 838,
+        "created_at": "2023-11-14",
+        "genres": [
+            99,
+            10402
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 91073,
+    "fields": {
+        "adult": false,
+        "title": "만추",
+        "original_title": "만추",
+        "overview": "수인번호 2537번 애나. 7년 째 수감 중, 어머니의 부고로 3일 간의 휴가가 허락된다. 장례식에 가기 위해 탄 시애틀 행 버스, 쫓기듯 차에 탄 훈이 차비를 빌린다. 사랑이 필요한 여자들에게 에스코트 서비스를 하는 그는, 누군가로부터 도망치는 중이다. 훈은 돈을 갚고 찾아가겠다며 억지로 시계를 채워주지만 애나는 무뚝뚝하게 돌아선다. 7년 만에 만난 가족도 시애틀의 거리도, 자기만 빼 놓고 모든 것이 변해 버린 것 같아 낯설기만 한 애나. 돌아가 버릴까? 발길을 돌린 터미널에서 훈을 다시 만난다. 그리고 장난처럼 시작된 둘의 하루. 시애틀을 잘 아는 척 안내하는 훈과 함께, 애나는 처음으로 편안함을 느낀다. 이름도 몰랐던 애나와 훈. 호기심이던 훈의 눈빛이 진지해지고 표정 없던 애나의 얼굴에 희미한 미소가 떠오를 때쯤, 누군가 훈을 찾아 오고 애나가 돌아가야 할 시간도 다가오는데...",
+        "popularity": 8.326,
+        "poster": "/nZjvwQ4bwPW7bBVCCQKUDWwk8Jm.jpg",
+        "release_date": "2011-02-17",
+        "vote_average": 7.0,
+        "vote_count": 55,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            10749
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 299054,
+    "fields": {
+        "adult": false,
+        "title": "익스펜더블 4",
+        "original_title": "Expend4bles",
+        "overview": "테러 단체에게 핵미사일이 탈취되어 3차 세계대전이 발발할 위기의 상황에 ‘리’(제이슨 스타뎀)를 새로운 리더로 맞은 무적의 팀 익스펜더블이 작전에 투입되는데...",
+        "popularity": 1719.337,
+        "poster": "/dWR8OTRCcYDbBmd8GKsyJT73kU2.jpg",
+        "release_date": "2023-10-18",
+        "vote_average": 6.475,
+        "vote_count": 683,
+        "created_at": "2023-11-14",
+        "genres": [
+            12,
+            28,
+            53
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 459003,
+    "fields": {
+        "adult": false,
+        "title": "마브카 : 숲의 노래",
+        "original_title": "Мавка: Лісова пісня",
+        "overview": "오랜 전쟁의 끝, 서로의 문을 닫아 버린 마법의 숲과 인간 세상. 숲의 정령이자 대자연의 새로운 수호자, 마브카는 어느 날 순수한 마음을 지닌 인간 청년 루카스와 사랑에 빠진다. 하지만 악당 킬리나는 사랑에 빠진 마브카의 마음을 이용해 숲을 파괴하고 숲의 심장을 차지하려는 음모를 꾸미는데…",
+        "popularity": 509.589,
+        "poster": "/3I9xCIGaT3xVINYSxjHrlqv0XWQ.jpg",
+        "release_date": "2023-10-18",
+        "vote_average": 7.282,
+        "vote_count": 489,
+        "created_at": "2023-11-14",
+        "genres": [
+            12,
+            14,
+            16,
+            10751
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 466420,
+    "fields": {
+        "adult": false,
+        "title": "플라워 킬링 문",
+        "original_title": "Killers of the Flower Moon",
+        "overview": "1920년대 오클라호마주 오세이지 부족 땅에서 석유가 발견된 후, 부족 사람들이 한 명씩 죽어 나가자 FBI가 미스터리를 풀기 위해 나선다.",
+        "popularity": 231.849,
+        "poster": "/6jByCqeQXEu3RR5qvlTCBamJQED.jpg",
+        "release_date": "2023-10-19",
+        "vote_average": 7.729,
+        "vote_count": 901,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            36,
+            80
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 507089,
+    "fields": {
+        "adult": false,
+        "title": "프레디의 피자가게",
+        "original_title": "Five Nights at Freddy's",
+        "overview": "80년대에 아이들이 실종되고 폐업한지 오래된 프레디의 피자가게 그곳의 야간 경비 알바를 하게 된 ‘마이크'는 캄캄한 어둠만이 존재하는 줄 알았던 피자가게에서 살아 움직이는 피자가게 마스코트 '프레디와 친구들’을 목격한다. 어딘가 기괴하고 섬뜩한 프레디와 친구들이 실체를 드러내기 시작하는데...",
+        "popularity": 2054.608,
+        "poster": "/h3hhfWdBhdb2JLMZprQ1IvBe90h.jpg",
+        "release_date": "2023-11-15",
+        "vote_average": 8.0,
+        "vote_count": 2118,
+        "created_at": "2023-11-14",
+        "genres": [
+            27,
+            9648
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 508883,
+    "fields": {
+        "adult": false,
+        "title": "그대들은 어떻게 살 것인가",
+        "original_title": "君たちはどう生きるか",
+        "overview": "화재로 어머니를 잃은 11살 소년 ‘마히토’는 아버지와 함께 어머니의 고향으로 간다. 어머니에 대한 그리움과 새로운 보금자리에 적응하느라 힘들어하던 ‘마히토’ 앞에 정체를 알 수 없는 왜가리 한 마리가 나타나고, 저택에서 일하는 일곱 할멈으로부터 왜가리가 살고 있는 탑에 대한 신비로운 이야기를 듣게 된다. 그러던 어느 날, ‘마히토’는 사라져버린 새엄마 ‘나츠코’를 찾기 위해 탑으로 들어가고, 왜가리가 안내하는 대로 이세계(異世界)의 문을 통과하는데…!",
+        "popularity": 85.469,
+        "poster": "/kmoScy628A6JWv8mmd2ofrYv16T.jpg",
+        "release_date": "2023-10-25",
+        "vote_average": 7.3,
+        "vote_count": 140,
+        "created_at": "2023-11-14",
+        "genres": [
+            12,
+            14,
+            16,
+            18
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 522925,
+    "fields": {
+        "adult": false,
+        "title": "달리랜드",
+        "original_title": "Dalíland",
+        "overview": "달리의 예술 작품을 본능적으로 이해하며 제각기 다른 달리의 서명 수집, TV쇼 출연까지 챙겨보는 달리의 광팬이자 달리의 갤러리에서 일하는 제임스.  20년간 달리 부부가 겨울마다 묵는 뉴욕 세인트 레지스 호텔 1610호에 방문하며 우연한 기회로 달리의 조수를 제안받고 달리의 세계로 들어서게 된다. 매일 이어지는 화려한 파티와 그 속에서 만나는 각양각색의 인물들, 그리고 달리의 예술 활동의 근원이라 할 수 있는 그의 뮤즈 갈라를 통해 천재 예술가 달리의 진짜 얼굴을 보게 되는데! 길게 뻗은 콧수염, 녹아내리는 시계… 당신이 궁금했던 달리의 모든 것 ‘웰컴 투 달리랜드’!",
+        "popularity": 13.324,
+        "poster": "/vhIfmWeQErfTjX7csUaRM6F2G8i.jpg",
+        "release_date": "2023-10-18",
+        "vote_average": 6.7,
+        "vote_count": 30,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            36
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 573164,
+    "fields": {
+        "adult": false,
+        "title": "빌리와 용감한 녀석들: 황금 달걀 구조대",
+        "original_title": "Un rescate de huevitos",
+        "overview": "황금 달걀 ‘맥스’와 ‘울리’ 남매의 아빠가 된 ‘빌리’ 아빠가 되었다는 기쁨도 잠시! 만찬 행사 경매를 위해 재료를 찾던 마피아들에게 황금 달걀 남매가 납치되자 ‘빌리’와 달걀 특공대는 뒤를 쫓아 아프리카 콩고로 향한다. 수많은 장애물과 한치 앞도 알 수 없는 위험이 넘치지만 아이들을 구하기 위해 구조대를 결성한 그들! 과연 ‘빌리’는 경매가 시작되기 전에 ‘맥스’와 ‘울리’ 남매를 구하고 평화로운 목장으로 돌아 갈 수 있을까? 이제부터 황금 달걀 구출 대작전이 시작된다!",
+        "popularity": 21.002,
+        "poster": "/AoYTeMbecA0JtibC4Hue6BGKkTF.jpg",
+        "release_date": "2023-10-26",
+        "vote_average": 7.835,
+        "vote_count": 366,
+        "created_at": "2023-11-14",
+        "genres": [
+            12,
+            16,
+            35,
+            10751
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 609681,
+    "fields": {
+        "adult": false,
+        "title": "더 마블스",
+        "original_title": "The Marvels",
+        "overview": "강력한 힘으로 은하계를 수호하는 최강 히어로 캡틴 마블 캐럴 댄버스. 캡틴 마블의 오랜 친구의 딸이자, 빛의 파장을 조작하는 히어로 모니카 램보. 최애 히어로 캡틴 마블의 열렬한 팬인 미즈 마블 카말라 칸. 캡틴 마블에 대한 복수를 꿈꾸는 냉혹한 크리족 리더 다르-벤의 영향으로 세 명의 히어로는 능력을 사용할 때마다 서로의 위치가 뒤바뀌게 된다. 뜻하지 않게 우주와 지구를 넘나들게 되는 예측 불가하고 통제 불가한 상황 속, 다르-벤은 지구를 포함해 캡틴 마블이 고향이라고 부르는 수많은 행성을 모두 파멸시키려 하고, 이를 저지하기 위해 모인 팀 마블스는 하나로 힘을 모으는데…",
+        "popularity": 1080.763,
+        "poster": "/oPcZLwtrHIGHRvLoBbNBc2KppEU.jpg",
+        "release_date": "2023-11-08",
+        "vote_average": 6.572,
+        "vote_count": 319,
+        "created_at": "2023-11-14",
+        "genres": [
+            12,
+            28,
+            878
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 661931,
+    "fields": {
+        "adult": false,
+        "title": "더 도터",
+        "original_title": "La hija",
+        "overview": "소년원에 수감된 14살 소녀 ‘이리네’는 임신을 하게 되고 소년원 직원인 ‘하비에르’의 도움으로 소년원을 탈출한다. 아이를 가질 수 없었던 ‘하비에르’와 그의 아내 ‘아델라’는 외지고 험한 산속에 있는 자신들의 집으로 그녀를 데려가 보살핀다. 그녀가 편히 지낼 수 있도록 비밀스러운 거래를 제안하는 부부는 아이가 태어날 날을 손꼽아 기다리며 지극정성으로 보살핀다. 자신의 아이를 주는 대가로 탈출과 보살핌을 받아온 ‘이리네’는 출산이 다가오면서 아이에게 모성애를 느끼게 되고, 아이의 아빠인 ‘미구엘’과 뱃속의 아이까지 함께 할 날들을 기다리며 ‘하비에르’ 부부에게서 도망갈 계획을 세우는데..",
+        "popularity": 3.203,
+        "poster": "/jwS5YrMbslOpkIld7NUTq50h2Kz.jpg",
+        "release_date": "2023-10-19",
+        "vote_average": 6.056,
+        "vote_count": 27,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            53
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 695721,
+    "fields": {
+        "adult": false,
+        "title": "헝거게임: 노래하는 새와 뱀의 발라드",
+        "original_title": "The Hunger Games: The Ballad of Songbirds & Snakes",
+        "overview": "반란의 불씨를 잠재우기 위해 시작된 잔인한 서바이벌 헝거게임. 헝거게임 10회를 맞아 ‘멘토제’가 도입되고 ‘스노우’는 12구역의 소녀 ‘루시 그레이’의 멘토가 된다. 그는 몰락한 가문의 영광을 되찾기 위해 ‘루시 그레이’를 헝거게임에서 우승 시키려 수단과 방법을 가리지 않는데…",
+        "popularity": 247.512,
+        "poster": "/9f9YsmXoy9ghqZKIVuKHkmGGZCY.jpg",
+        "release_date": "2023-11-15",
+        "vote_average": 7.9,
+        "vote_count": 8,
+        "created_at": "2023-11-14",
+        "genres": [
+            12,
+            28,
+            878
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 714651,
+    "fields": {
+        "adult": false,
+        "title": "소년들",
+        "original_title": "소년들",
+        "overview": "1999년 시골 소읍의 한 슈퍼마켓에 강도 치사 사건이 벌어진다. 경찰은 세 명의 소년들을 진범으로 지목, 빠르게 수사를 종결한다. 얼마 뒤 새로 부임한 황준철 반장은 경찰 고위직 최우성과 무리들이 성과를 앞세워 이 사건을 조작했다는 확신을 갖게 된다. 그는 특유의 끈질기고 강직한 수사력으로 재수사와 재심을 시도한다.",
+        "popularity": 7.524,
+        "poster": "/iRg0VFGfoQ4aQeDZu5uOBTSrFs.jpg",
+        "release_date": "2023-11-01",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            80
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 741600,
+    "fields": {
+        "adult": false,
+        "title": "원 모어 찬스",
+        "original_title": "別叫我\"賭神\"",
+        "overview": "빚에 허덕이며 매일 카지노에 출근 도장을 찍는 왕년의 도신 ‘광휘’에게 오래전 곁을 떠난 여자친구가 찾아와 그의 아들이라며 한 달간 ‘아양’을 돌봐 달라고 부탁한다. 도박 빚 때문에 한 푼이 아쉬운 ‘광휘’는 양육비로 내민 5만 달러의 달콤한 제안을 수락하게 된다.하늘에서 뚝 떨어진 아들 ‘아양’과 한 달 살이를 시작한 ‘광휘’. 청소도 기가 막히게 잘하고, 뽑는 카드 족족 돈을 따게 만들어주는 아들과 철없는 아빠 ‘광휘’는 티격태격하며 점점 정이 들어가는데… 약속한 한 달이 되어 이별을 준비하는 그때 ‘아양’의 엄마가 위중한 상태라는 연락을 받게 되고, ‘광휘’는 자신의 과거를 지우고 아들 ‘아양’을 잘 돌보겠다고 결심하게 된다.  평생을 가진 것 없이 살았던 그에게 찾아온 기적 같은 선물! 인생 2회차, 새로운 판이 시작됐다!",
+        "popularity": 5.048,
+        "poster": "/v7fSQLsnKQFEI5HAcVqZDwXaQ9Y.jpg",
+        "release_date": "2023-11-01",
+        "vote_average": 5.5,
+        "vote_count": 6,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            10751
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 799710,
+    "fields": {
+        "adult": false,
+        "title": "더 와일드: 야수들의 전쟁",
+        "original_title": "더 와일드: 야수들의 전쟁",
+        "overview": "불법 사설 도박장에서 경기 중 상대를 죽인 죄로 징역 8년을 선고받은 전직 복싱 선수 우철. 모범수로 사면된 우철은 조직으로 돌아오라는 도식의 제안을 거절하고, 과거를 잊은 채 평범하게 살기로 결심한다. 하지만 우철은 도식을 비롯해 비리 경찰 정곤과 마약 브로커 각수까지 인간 이하의 짐승들과 필연적으로 얽히며 야수들의 전쟁 속에 뛰어들게 되는데…",
+        "popularity": 19.648,
+        "poster": "/sm9ETmNPR25kBhRAL1vB6IxvTf8.jpg",
+        "release_date": "2023-11-15",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            28,
+            80
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 800158,
+    "fields": {
+        "adult": false,
+        "title": "더 킬러",
+        "original_title": "The Killer",
+        "overview": "결정적 순간에 아슬아슬하게 타깃을 놓친 암살자. 사적인 감정은 없다면서도, 이 응징을 위해 국제적인 추격전에 뛰어든다. 그 여정에서 의뢰인들, 그리고 그 자신과의 싸움이 시작된다.",
+        "popularity": 377.657,
+        "poster": "/8yX4Bt1qTUETuVyWgqyqlFM1nzw.jpg",
+        "release_date": "2023-10-25",
+        "vote_average": 6.895,
+        "vote_count": 464,
+        "created_at": "2023-11-14",
+        "genres": [
+            53,
+            80
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 807172,
+    "fields": {
+        "adult": false,
+        "title": "엑소시스트: 믿는 자",
+        "original_title": "The Exorcist: Believer",
+        "overview": "한날한시에 동시에 사라졌던 앤젤라와 캐서린.  기억이 전부 사라진 채 상처투성이 몸으로 돌아온 두 아이는  이상증세를 보이며 날이 갈수록 섬뜩하게 변해간다. 마침내 두 아이의 몸을 동시에 차지한 악마가 존재를 드러내고, 한 명을 살리면 한 명이 죽는다는 충격적인 사실이 밝혀지는데…",
+        "popularity": 670.783,
+        "poster": "/gekQTgjZkPhpglvP1ZdTHBwi7xO.jpg",
+        "release_date": "2023-10-18",
+        "vote_average": 6.189,
+        "vote_count": 548,
+        "created_at": "2023-11-14",
+        "genres": [
+            27
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 818415,
+    "fields": {
+        "adult": false,
+        "title": "미션 스카이",
+        "original_title": "Nebo",
+        "overview": "러시아 공군 조종사 소시니코프 중령은 팀과 함께 테러리스트 분쟁으로 시끄러운 시리아로 가는 작전에 자원하고, 내심 그가 전역하길 바랐던 아내와 사이가 틀어지지만 화해한다. 곧 도착한 시리아에서 사관학교 동기인 린코프 대령을 만나고, 오래전 버스에서 아내를 처음 만나고 건달 일당과 마주한 과거를 떠올린다. 한편, 러시아 작전 부대는 시리아 테러리스트 단체의 우두머리인 아부 파라즈를 사로잡아 이동식 로켓 발사 장치에 대해 정보를 얻고, 중령의 팀은 이를 제거하기 위해 튀르키예 국경 부근으로 향한다. 하지만 이는 아부 파라즈와 손을 잡은 미국인 닉 팔머의 함정이었는데…",
+        "popularity": 19.113,
+        "poster": "/MLPDx1aHL35TtwbzbMnqbp813S.jpg",
+        "release_date": "2023-11-02",
+        "vote_average": 8.5,
+        "vote_count": 47,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            10752
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 840326,
+    "fields": {
+        "adult": false,
+        "title": "시수",
+        "original_title": "Sisu",
+        "overview": "라플란드의 황야 깊은 곳에서 금을 찾던 아타미 코피는 나치 순찰대를 우연히 만나게 되고, 파괴되고 채굴된 라플란드 황야를 가로지르는 숨막히는 추격전이 시작된다.",
+        "popularity": 173.709,
+        "poster": "/xnrs7mEfnDwW7EbMJ1YJrQQXf4E.jpg",
+        "release_date": "2023-10-25",
+        "vote_average": 7.535,
+        "vote_count": 1457,
+        "created_at": "2023-11-14",
+        "genres": [
+            28,
+            10752
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 843633,
+    "fields": {
+        "adult": false,
+        "title": "브루스 윌리스의 라스트 미션: 데이 투 다이",
+        "original_title": "White Elephant",
+        "overview": "단 한 번의 실패 없이 생애 모든 미션을 성공한 킬러 ‘게이브’(마이클 루커) 사랑하는 아내의 죽음 이후 그녀와의 약속을 지키기 위해 은퇴를 결심하던 그에게 부동산 재벌이자 절친한 친구 ‘아놀드’(브루스 윌리스)는 마지막 의뢰를 지시한다. 그러나 이를 완수하고 후계자 ‘카를로’와 함께 복귀하던 중 잠복한 형사들을 마주하게 되고, 목격자가 된 이들을 제거하기 위한 사투를 벌인다. 한편, 격전의 전투 속에서 ‘게이브’는 마지막 의뢰 속 숨겨진 진실을 알게 되고, 뒤쫓던 여형사 ‘바네사’와 함께 역으로 조직을 말살하기 위한 작전을 펼치는데…",
+        "popularity": 29.366,
+        "poster": "/aljO2O1SP21GziM2Gc34jnSjac3.jpg",
+        "release_date": "2023-11-15",
+        "vote_average": 6.158,
+        "vote_count": 130,
+        "created_at": "2023-11-14",
+        "genres": [
+            28,
+            53,
+            80
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 846517,
+    "fields": {
+        "adult": false,
+        "title": "세이 예스 어게인",
+        "original_title": "再說一次我願意",
+        "overview": "너에게 첫눈에 반한 지 2225일째, 두근두근 설렘 가득 대망의 날이 밝았다!  프러포즈 D-DAY를 맞이한 ‘루크’는 ‘샤오차이’가 감동할 모습을 기대하며 분주한 하루를 보낸다. ☑ 마음을 전달할 반지 맞추기 ☑ 프러포즈를 도와줄 친구들과 사전 모임 ☑ 멋지게 꽃 단장하기 ☑ 여친 도착 전 리허설은 필수 마침내 오늘의 주인공 ‘샤오차이’가 도착하고 모든 게 완벽하다 생각한 순간, ‘루크’의 고백은 청천벽력 같은 거절과 함께 암전?! 그리고 다시, 프러포즈날의 아침이 밝았다?!",
+        "popularity": 1.583,
+        "poster": "/jzSxpGpSfbIdVb9AFl3QWPYLKc7.jpg",
+        "release_date": "2023-10-18",
+        "vote_average": 5.5,
+        "vote_count": 2,
+        "created_at": "2023-11-14",
+        "genres": [
+            10749
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 854152,
+    "fields": {
+        "adult": false,
+        "title": "이누부!",
+        "original_title": "犬部！",
+        "overview": "아오모리현 도와다시에 한 괴짜가 있었다. 하나이 소타, 22세 수의대생이다. 집에는 보호 동물이 빼곡하며 눈앞의 생명을 구하겠다는 생각으로 보호 활동을 하고 있다. 어느 날 소타는 한 실험견을 구하면서, 동기들과 동물 보호 활동 동아리인 '이누부'를 설립한다. 그로부터 16년 후. 수의사가 된 소타의 체포 소식을 듣고 개업의로서, 연구자로서, 유기동물센터 소장으로서 각각의 추억으로 부원들이 한 자리에 모이게 된다.",
+        "popularity": 1.657,
+        "poster": "/ogM5BcsZ6mboPcMonk8rLDi781r.jpg",
+        "release_date": "2023-10-16",
+        "vote_average": 3.0,
+        "vote_count": 1,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            10751
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 872954,
+    "fields": {
+        "adult": false,
+        "title": "올드 웨이: 분노의 추격자",
+        "original_title": "The Old Way",
+        "overview": "냉혈한 킬러로 명성을 떨쳤던 콜턴 브릭스는 잔혹했던 과거를 청산하고 사랑하는 가족과 평범하게 살아간다. 하지만 평화도 잠시, 그가 집을 비운 사이 과거의 악연 제임스 맥칼리스터가 찾아오고 집으로 돌아온 브릭스는 잔인하게 살해된 아내를 발견한다. 복수를 다짐하며 제임스 맥카리스터 무리를 뒤쫓으려는 브릭스에게 그의 어린 딸 브룩이 자신도 함께 데려가 달라고 요청한다. 브릭스는 브룩에게 총을 다루는 법을 알려주고 함께 복수의 여정을 떠나게 되는데…",
+        "popularity": 26.328,
+        "poster": "/vK1D5RsNkxeeR17EdvA6p4I4Z0W.jpg",
+        "release_date": "2023-10-26",
+        "vote_average": 5.868,
+        "vote_count": 129,
+        "created_at": "2023-11-14",
+        "genres": [
+            37
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 887870,
+    "fields": {
+        "adult": false,
+        "title": "블루 자이언트",
+        "original_title": "BLUE GIANT",
+        "overview": "세계 최고의 재즈 플레이어가 되겠다는 열정과 테너 색소폰만을 가슴에 품고 도쿄로 무작정 상경한 열여덟 소년 '다이'. 언제나 혼자서만 연습하던 그는 같은 꿈을 지닌 천재 피아니스트 '사와베'와 초보 드러머 '타마다'를 만나 밴드 'JASS'를 결성하고, 일본 최고의 재즈 클럽에서의 공연을 목표로 치열하고 격렬한 무대를 준비한다.",
+        "popularity": 10.573,
+        "poster": "/5ntHgYKnv70nHOPaqsW4ozKRKY8.jpg",
+        "release_date": "2023-10-18",
+        "vote_average": 9.0,
+        "vote_count": 6,
+        "created_at": "2023-11-14",
+        "genres": [
+            16,
+            18,
+            10402
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 893723,
+    "fields": {
+        "adult": false,
+        "title": "퍼피 구조대: 더 마이티 무비",
+        "original_title": "PAW Patrol: The Mighty Movie",
+        "overview": "신비한 힘을 가진 유성이 어드벤처 시티에 떨어진 날, 퍼피 구조대는 유성에서 나온 크리스탈 덕분에 초능력을 가진 ‘퍼피 히어로즈’로 변신한다. 하지만 악당 ‘험딩어 시장’과 미치광이 과학자 ‘빅토리아’는 초능력의 원천인 크리스탈을 빼앗아 어드벤처 시티를 지배하려 하는데..! 작고 약하게 태어났지만 오랫동안 큰 꿈을 키워 온 ‘스카이’와 퍼피 히어로즈는 주니어 구조대원들과 함께 어드벤처 시티를 지켜낼 수 있을까?",
+        "popularity": 634.683,
+        "poster": "/62CEuwp287mbVarn3f2KcSAsrj1.jpg",
+        "release_date": "2023-10-06",
+        "vote_average": 7.026,
+        "vote_count": 152,
+        "created_at": "2023-11-14",
+        "genres": [
+            16,
+            28,
+            878,
+            10751
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 897160,
+    "fields": {
+        "adult": false,
+        "title": "용감한 시민",
+        "original_title": "용감한 시민",
+        "overview": "불의는 못 본 척, 성질은 없는 척, 주먹은 약한 척 먹고 살기 위해 조용히 살아 온 기간제 교사 소시민. 법도 경찰도 무서울 것 하나 없는 안하무인 절대권력 한수강의 선을 넘는 행동을 목격하게 된다. 그의 계속되는 악행을 도저히 참을 수 없었던 그녀, 정체를 숨긴 채 통쾌한 한 방을 날리기로 마음 먹는데…",
+        "popularity": 21.792,
+        "poster": "/tc36Keiizp1mRkhKPNq6tcjCDUg.jpg",
+        "release_date": "2023-10-25",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            28,
+            35
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 900667,
+    "fields": {
+        "adult": false,
+        "title": "원피스 필름 레드",
+        "original_title": "ONE PIECE FILM RED",
+        "overview": "오직 목소리 하나로 전 세계를 사로잡은 디바 ‘우타’.  그녀가 모습을 드러내는 첫 라이브 콘서트가 음악의 섬 ‘엘레지아’에서 열리고  ‘루피’가 이끄는 밀짚모자 해적단과 함께 수많은 ‘우타’ 팬들로 공연장은 가득 찬다.  그리고 이 콘서트를 둘러싼 해적들과 해군들의 수상한 움직임이 시작되는데…  드디어 전세계가 애타게 기다리던 ‘우타’의 등장과 함께 노래가 울려 퍼지고,  그녀가 ‘샹크스의 딸’이라는 충격적인 사실이 드러난다.  ‘루피’, ‘우타’, ‘샹크스’, 세 사람의 과거가 그녀의 노랫소리와 함께 밝혀진다! 여기에서",
+        "popularity": 165.562,
+        "poster": "/q9Ul66mQDGpAvqUrTZdSMSzym5w.jpg",
+        "release_date": "2022-11-30",
+        "vote_average": 7.34,
+        "vote_count": 772,
+        "created_at": "2023-11-14",
+        "genres": [
+            12,
+            14,
+            16,
+            28
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 902533,
+    "fields": {
+        "adult": false,
+        "title": "데스 노티스",
+        "original_title": "暗杀风暴",
+        "overview": "경찰 뤄페이는 다커가 벌인 폭발 사건으로 인해 약혼녀 멍윈과 친구 위안즈방을 동시에 잃고 자책에 빠져 한직을 전전한다. 10년 후, 우연히 다커의 새로운 살인 현장을 목격한 뤄페이, 그러나 이번에도 다시 놓치고 만다. 이후, 다커가 남긴 사망 통지서가 차례대로 발견되며 10년 전과 똑같은 수법의 연쇄 살인이 시작된다. 뤄페이는 약혼녀와 친구를 죽인 진짜 범인을 잡기 위해 특별 수사팀에 합류하지만, 수사를 할수록 드러나는 진실에 혼란스러워 하는데….",
+        "popularity": 6.484,
+        "poster": "/qPjomuDMfu1RiqXp8Em5lO9P9KQ.jpg",
+        "release_date": "2023-11-14",
+        "vote_average": 6.1,
+        "vote_count": 8,
+        "created_at": "2023-11-14",
+        "genres": [
+            80,
+            9648
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 913824,
+    "fields": {
+        "adult": false,
+        "title": "프리 철수 리",
+        "original_title": "Free Chol Soo Lee",
+        "overview": "탕! 탕! 탕! 1973년 6월 3일, 미국 샌프란시스코 차이나타운 거리 한복판에서 중국인 갱단이 총격을 받고 사망한다. 5일 후, 한 동양인 청년이 살인 용의자로 긴급 체포된다. 이름 ‘철수 리’, 21살의 한인 이민자였다. 동양인 외모를 구별 못하는 백인 목격자들의 증언으로 종신형을 선고받은 이철수는 곧장 캘리포니아에서 가장 폭력적인 교도소에 수감된다. 그대로 묻힐 뻔했던 사건은 한 기자의 심층 보도로 다시 수면 위로 떠오른다. 한인 최초의 미국 주류 신문사 기자였던 이경원은 차이나타운 취재 중 우연히 이철수 사건을 접하고, 엉터리 재판 과정을 폭로한다. 이철수의 억울한 사연이 알려지며 한인 이민 사회와 종교계가 들끓고, 재심을 요구하는 구명 운동이 시작된다. ‘프리 철수 리’ 운동이 아시안아메리칸 사회를 뒤흔들며 빠르게 번져가던 중, 교도소 안 이철수는 갱의 공격으로부터 자신을 지키려다 진짜 살인을 저지르게 되는데…. 반전에 반전을 거듭한 10년의 재판, 그리고 아무도 예상하지 못했던 이철수의 나머지 삶의 반전! 2023년, 모두의 기대를 배반하고 충격적인 감동을 선사할, 당신의 인생 영화가 될 최고의 다큐멘터리!",
+        "popularity": 2.362,
+        "poster": "/40IwTtEOYDCMLXKuC4ronJJwJFm.jpg",
+        "release_date": "2023-10-18",
+        "vote_average": 7.333,
+        "vote_count": 9,
+        "created_at": "2023-11-14",
+        "genres": [
+            99
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 941045,
+    "fields": {
+        "adult": false,
+        "title": "화사한 그녀",
+        "original_title": "화사한 그녀",
+        "overview": "인생 역전 한방을 꿈꾸는 화사한 작전꾼 지혜. 매번 허당한 실력으로 허탕만 치던 그녀에게 600억이라는 일생일대의 기회가 찾아왔다. 실패는 사치다!라는 모토 아래 영혼까지 끌어 모은 마지막 작전을 시작하는데…",
+        "popularity": 4.465,
+        "poster": "/ed11pkcHGkfXlWG0chGadAfuWEW.jpg",
+        "release_date": "2023-10-11",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            35
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 942199,
+    "fields": {
+        "adult": false,
+        "title": "시뮬런트",
+        "original_title": "Simulant",
+        "overview": "AI는 인간과 공존하기 위해 네 가지 원칙을 반드시 준수한다. ‘첫째, 인간을 절대 해치지 않는다’ ‘둘째, 스스로 프로그램을 수정하거나 복제할 수 없다’ ‘셋째, 법을 위반하지 않는다’ ‘넷째, 주인의 명령에 무조건 복종한다’ 그러나 의문의 해킹을 통해 인간의 통제를 벗어나 스스로 사고하게 된 AI들의 이탈이 이어지고, 그들을 쫓는 특수요원, 그리고 비밀의 키를 쥔 해커의 쫓고 쫓기는 추격전이 시작된다.",
+        "popularity": 30.329,
+        "poster": "/l2vYulanIYHpwJud1cxn0aot5mI.jpg",
+        "release_date": "2023-11-02",
+        "vote_average": 5.901,
+        "vote_count": 116,
+        "created_at": "2023-11-14",
+        "genres": [
+            53,
+            878
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 943822,
+    "fields": {
+        "adult": false,
+        "title": "더 챔피언",
+        "original_title": "Prizefighter: The Life of Jem Belcher",
+        "overview": "복싱 역사를 새로 쓴 전설의 복싱 스타 ‘젬 벨처’, 마지막이 될지도 모르는 위대한 경기를 시작한다!",
+        "popularity": 56.979,
+        "poster": "/j4qMuoEieZrb4LFZLQ918BkzCyG.jpg",
+        "release_date": "2023-11-15",
+        "vote_average": 6.332,
+        "vote_count": 158,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            36
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 950849,
+    "fields": {
+        "adult": false,
+        "title": "앵그리 애니",
+        "original_title": "Annie Colère",
+        "overview": "1974년 프랑스 교외의 한 작은 마을.  두 아이를 키우는 워킹맘 애니는 원치 않는 임신을 하게 된다. 다행히 MLAC(임신중지와 피임의 자유를 위한 운동)의 도움으로 일상으로 돌아온 애니. 하지만, 우연한 사고를 계기로 MLAC 활동에 동참하기 시작하고 침묵으로 일관했던 지난날을 자책하며 본격적으로 목소리를 높이는데…",
+        "popularity": 14.097,
+        "poster": "/kJKdCbmlTxc4l0SB8oKKSLilgd3.jpg",
+        "release_date": "2023-11-01",
+        "vote_average": 7.866,
+        "vote_count": 97,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            35
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 950891,
+    "fields": {
+        "adult": false,
+        "title": "세일즈 걸",
+        "original_title": "Худалдагч Охин",
+        "overview": "갓 스무 살 소녀 ‘사룰’, 아무도 알려주지 않았던 세상에 눈을 뜨다! 사람과 어울리는 것을 버거워하던 ‘사룰’은 별로 친하지도 않은 과 동기의 부탁을 거절하지 못해 성인용품 샵에서 아르바이트를 하게 된다. 난생처음 본 19금의 세계에서 허우적대던 그녀는 사장님과 함께 일하게 되고 속을 알 수 없는 독특한 사장님 ‘카티야’는 업무시간 외에도 ‘사룰’과 함께 시간을 보내며 진정한 어른들의 세계를 알려주기 시작하는데 …",
+        "popularity": 18.865,
+        "poster": "/sLvGsP6aufu9ufJBYW6uvzHGFF6.jpg",
+        "release_date": "2023-11-15",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            18
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 954388,
+    "fields": {
+        "adult": false,
+        "title": "퀵샌드",
+        "original_title": "Arenas Mortales",
+        "overview": "컨퍼런스 참석을 위해 콜롬비아에 도착한 이혼 위기의 부부 ‘소피아’ & ‘조쉬’는 컨퍼런스 시작 전 막간을 이용해 초아치 숲으로 하이킹을 떠나지만 이내 곧 폭풍을 만난다. 설상가상으로 갑작스러운 강도를 만나 미지의 위험이 도사리는 열대 우림 ‘라스 아레나스’로 들어가게되고, 폭풍우 때문에 질퍽해진 토양으로 인해 살아서는 결코 탈출할 수 없는 진흙 구덩이 ‘퀵샌드’에 빠지고 마는데…",
+        "popularity": 174.03,
+        "poster": "/nGThQiFyH30IE3FV0DDwIiA3bv6.jpg",
+        "release_date": "2023-11-01",
+        "vote_average": 6.615,
+        "vote_count": 39,
+        "created_at": "2023-11-14",
+        "genres": [
+            27,
+            53,
+            9648
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 961381,
+    "fields": {
+        "adult": false,
+        "title": "우당탕탕 경찰 음악대",
+        "original_title": "異動辞令は音楽隊！",
+        "overview": "부하 직원에게 엄격하고, 범인 체포를 위해서라면 수단을 가리지 않는 수사 1과의 베테랑 형사·나루세 츠카사. 노인들을 노린 아피싱 사건을 수사하는 과정에서 영장도 발부받지 않고 무리한 수사를 반복한 결과, 홍보과 내부의 음악대로 부서 이동이 내려지게 된다. 의도치 않게 음악대를 방문한 나루세, 그곳에는 패기 없는 대원들 뿐인데…",
+        "popularity": 2.093,
+        "poster": "/faZWqLOMeBaZ8TrAk9oVCklW3yU.jpg",
+        "release_date": "2023-11-01",
+        "vote_average": 6.0,
+        "vote_count": 6,
+        "created_at": "2023-11-14",
+        "genres": [
+            28
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 972435,
+    "fields": {
+        "adult": false,
+        "title": "너와 나",
+        "original_title": "너와 나",
+        "overview": "수학여행 전날, 샘은 그녀의 가장 친한 친구 하은이 죽는 불길한 꿈을 꾼다. 두려움에 휩싸인 샘은 최근 자전거 사고로 병원에 입원한 하은에게 달려가 함께 수학여행을 가자고 한다. 두 소녀는 여행을 위한 돈을 벌기 위해 하은의 캠코더를 팔기로 결심한다. 캠코더를 팔러 가는 길, 샘은 자신이 느끼는 하은에 대해 감정과 하은의 마음이 다를지도 모른다는 깊은 불안을 느낀다. 그녀는 하은을 둘러싼 사람들에게 질투심을 보이고 결국 그녀를 지치게 만든다. 둘이 크게 다툰 후, 하은은 사라지고 샘은 그녀를 찾아 헤매게 된다.",
+        "popularity": 3.404,
+        "poster": "/knxEfQXXbm0aPG4nTPU7MaCn6A0.jpg",
+        "release_date": "2023-10-25",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            10749
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 977152,
+    "fields": {
+        "adult": false,
+        "title": "오픈 더 도어",
+        "original_title": "오픈 더 도어",
+        "overview": "홀로 집에서 술잔을 기울이던 문석에게 처남인 치훈이 찾아온다. 함께 술자리를 이어가는데, 5년 전 강도사건으로 엄마를 떠나보낸 생각에 울분이 터진 치훈. 누나에 대한 이야기로 이어지며 서로의 감정은 극에 다다르고 결국 하지 말아야 할 말을 내뱉고 만 문석. 혼란에 휩싸인 문석과 치훈은 이제 선택을 해야만 한다.",
+        "popularity": 3.404,
+        "poster": "/xDu3xzCxeNulKq6tX8lelaqaXlc.jpg",
+        "release_date": "2023-10-25",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            53,
+            9648
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 977179,
+    "fields": {
+        "adult": false,
+        "title": "유앤미앤미",
+        "original_title": "เธอกับฉันกับฉัน",
+        "overview": "‘유'와 ‘미'는 하루하루의 모든 순간을 함께하며 모든 것을 나누는 일란성쌍둥이 소녀들이다. 어느 날 ‘미'가 ‘유'를 대신해 수학 시험을 보러 갔다가 ‘마크’라는 소년에게 연필을 빌리게 되는데 둘은 서로에게 두근거림을 느끼게 된다. ‘유'와 ‘미‘는 시골 할머니 집에서 여름방학을 보내게 되고 ‘유'는 혼자 전통악기 수업을 들으러 갔다가 우연히 자신을 ‘미’로 오해하고 자신에게 말을 거는 소년 ‘마크’를 만난다. ‘유’는 ‘마크’에게 한눈에 반해 그에게 시험장에서 만난 게 자신이 아니라고 털어놓지 못하고, ‘미’는 ‘마크’에게 반해버린 ‘유’를 보며 ‘마크’를 향한 자신의 마음을 애써 감춘다.  그렇게 평생 모든 걸 함께 나누며 살 것 같았던 쌍둥이들에게 나눌 수 없는 첫사랑이 찾아온다.",
+        "popularity": 7.72,
+        "poster": "/6qdaQ7l9ZKRnOKKFxEoiuX1tJkk.jpg",
+        "release_date": "2023-10-25",
+        "vote_average": 6.3,
+        "vote_count": 14,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            10749
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 983004,
+    "fields": {
+        "adult": false,
+        "title": "너를 부르는 시간",
+        "original_title": "暗恋·橘生淮南",
+        "overview": "집안이면 집안, 외모면 외모, 심지어 공부와 운동까지 모든 것이 완벽한 남자 ‘성화이난’은 학창시절 ‘뤄즈’에게 동경의 대상이었다. 비록 아버지의 죽음을 둘러싼 집안 간 법정 다툼이 있긴 했지만, 뤄즈는 성화이난을 짝사랑했다. 하지만 옥상에서 나누는 비밀스런 필담으로 쌓아 나가던 사랑은 비 오는 날 산산이 부서지고, 뤄즈는 학업에 전념하기로 결심한다. 그렇게 꿈에 그리던 대학에 진학한 뤄즈는 마치 운명처럼 다시 성화이난과 마주친다. 오해와 비밀, 어두운 과거를 뚫고 두 사람은 서로 사랑할 수 있을까?",
+        "popularity": 1.544,
+        "poster": "/bz96VsrFyinhucjhrLu2uzPYXgO.jpg",
+        "release_date": "2023-11-15",
+        "vote_average": 6.4,
+        "vote_count": 5,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            10749
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 987072,
+    "fields": {
+        "adult": false,
+        "title": "뉴 노멀",
+        "original_title": "뉴 노멀",
+        "overview": "어쩌면 흔하다 할 일상과 공간 속에 숨겨진 예기치 않은 위험과 공포의 정체를 그려가며 좀처럼 결말을 예측키 어려운 ‘한 끗 다른 서스펜스’의 진수를 선사한다. 더불어 일상 속 존재들을 연기한 최지우, 이유미, 최민호, 표지훈, 정동원, 하다인 등 쟁쟁한 배우들의 조합 역시 이제까지 만나지 못했던 존재감으로 영화의 서스펜스를 증폭시킨다. 유례없는 혼돈의 시대를 통과하며 모든 삶의 모습과 관계에 있어 새로운 정의가 요구되는 ‘뉴 노멀’의 시대, 일상 속의 서스펜스를 촘촘하게 직조해 내는 정범식 감독이 제안하는 새로운 현재, 새로운 일상에 대한 통찰력 가득한 예언서.",
+        "popularity": 12.385,
+        "poster": "/13sbA719uJ1eEsvW3zTjWe8WI6I.jpg",
+        "release_date": "2023-11-08",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            27,
+            35,
+            53
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 987505,
+    "fields": {
+        "adult": false,
+        "title": "붉은 장미의 추억",
+        "original_title": "붉은 장미의 추억",
+        "overview": "50여년 전 작고한 감독 노필의 영화 \"붉은 장미의 추억\"(1962) 대본으로 낭독극을 준비하던 연극 배우들은 공연 바로 전날, 코로나-19로 인해 공연이 취소되고, 비대면 영상 기록으로 대체된다는 소식을 듣게 된다. 낙심한 연출가는 연습에 오질 않고 배우끼리 최종 리허설을 시작하지만, 제대로 진행될 리가 없다. 그 와중에 조연출은 리허설을 구경하던 남자를 예술감독으로 오해하고, 그와 함께 작품을 만들어가는데...",
+        "popularity": 2.61,
+        "poster": "/3UF0HY1biyRsLwB3Rq5OnS1Sr7a.jpg",
+        "release_date": "2023-11-02",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            18
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 999087,
+    "fields": {
+        "adult": false,
+        "title": "여귀교: 저주를 부르는 게임",
+        "original_title": "女鬼橋2：怨鬼樓",
+        "overview": "1. 나홀로 숨바꼭질  2. 구석놀이 3. 엘리베이터 의식 퀘스트가 계속될수록, 현실과 게임의 경계가 무너지고 예상치 못한 기묘한 일들이 벌어지는데...!",
+        "popularity": 8.818,
+        "poster": "/6ZmlKGYCQyoSzFh5zHxhVr51eT0.jpg",
+        "release_date": "2023-11-15",
+        "vote_average": 7.0,
+        "vote_count": 1,
+        "created_at": "2023-11-14",
+        "genres": [
+            27
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1006031,
+    "fields": {
+        "adult": false,
+        "title": "독친",
+        "original_title": "독친",
+        "overview": "집안도 좋고 공부도 잘하는 완벽한 아이 유리가 어느 날 죽은 채로 발견된다. 형사는 자살에 가능성을 두지만, 유리의 엄마 혜영은 예나와 기범 때문에 유리가 죽었다고 주장한다. 한때 유리의 단짝 친구였던 아이돌 연습생 예나와 유리에게 유독 신경 써주었던 담임 선생님 기범. 서로 다른 주장으로 수사는 난항을 겪고, 수사가 진행될수록 혜영으로 인해 유리의 마음에 균열 가고 있던 것이 드러난다. 최선을 다해 딸을 사랑했다고 믿었던 혜영은 죽음에 얽힌 진실을 풀어낼 수 있을까?",
+        "popularity": 2.759,
+        "poster": "/Ary2DCWXriUDyykn6VL4PNjekg5.jpg",
+        "release_date": "2023-11-01",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            53,
+            9648
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1008042,
+    "fields": {
+        "adult": false,
+        "title": "톡 투 미",
+        "original_title": "Talk to Me",
+        "overview": "실시간트렌드 #90초빙의챌린지 #넘사벽스릴 #주작아님  STEP 1. 촛불을 켜고 저승의 문을 연다.  STEP 2. 몸을 묶고 ‘죽은 자의 손’을 잡는다.  STEP 3. “내게 말해”라고 속삭인다.  STEP 4. 나타난 귀신에게 “널 들여보낸다”라고 말하면 빙의 완료.  ※ 경고 ※ 단, 90초 안에 깨울 것. 반드시 촛불을 꺼 문을 닫을 것. SNS에서 핫한 빙의 챌린지에 중독된 '미아'와 친구들. 위험한 게임을 이어가던 중 친구 '라일리'가 '미아'의 죽은 엄마에게 빙의되자 '미아'는 이성을 잃고 마의 90초를 넘기고 마는데! 죽음보다 끔찍하게, 당신을 무자비하게 뒤흔들 공포가 시작된다! #ㅌㅌㅁ #ㄷㄷㄷ",
+        "popularity": 437.208,
+        "poster": "/bYxNkZpRAygeo1Kbo79KJOn2Qjr.jpg",
+        "release_date": "2023-11-01",
+        "vote_average": 7.191,
+        "vote_count": 1726,
+        "created_at": "2023-11-14",
+        "genres": [
+            27,
+            53
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1013056,
+    "fields": {
+        "adult": false,
+        "title": "버텨내고 존재하기",
+        "original_title": "버텨내고 존재하기",
+        "overview": "광주극장은 1933년 조선인이 세운 호남지역 최초의 극장으로, 1935년 개관하여 현재까지 같은 자리에서 영화를 상영 중인 단관극장이다. 음악인 최고은이 바라 본 광주스러움을 나누고자 초대한 일곱 뮤지션이 광주극장에 방문하여 각자의 '버텨내고 존재하기'에 대해 말하고 노래한다. 더불어 1990년대부터 오늘까지 광주극장의 손간판을 그리고 있는 박태규 화백의 이야기도 담겨있다.",
+        "popularity": 1.845,
+        "poster": "/wG3OEezu9L243AP9igmSu1GPZJB.jpg",
+        "release_date": "2023-11-01",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            99
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1017168,
+    "fields": {
+        "adult": false,
+        "title": "나의 피투성이 연인",
+        "original_title": "나의 피투성이 연인",
+        "overview": "주목받는 젊은 작가 재이는 신작 출간을 앞두고 있다. 재이의 동거인이자 애인인 건우는 보습 학원 영어 강사로 일하며 묵묵하게 재이를 보조하고 있다. 두 사람은 모두 서로를 아끼고 있으며 이대로 행복하다. 하지만 갑자기 예정하지 않았던 아이가 생기면서 두 사람의 삶에 크나큰 변화와 균열이 생기기 시작한다. 재이는 임신과 출간 작업으로 예민해지고 건우는 위험을 감수하며 학원을 차린다.",
+        "popularity": 17.403,
+        "poster": "/g8Es6KKRa17A36Tgv39KwaDYBLS.jpg",
+        "release_date": "2023-11-15",
+        "vote_average": 5.5,
+        "vote_count": 1,
+        "created_at": "2023-11-14",
+        "genres": [
+            18
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1019809,
+    "fields": {
+        "adult": false,
+        "title": "괴인",
+        "original_title": "괴인",
+        "overview": "목수 일을 하는 기홍은 작은 인테리어 공사들을 맡아 생계를 유지한다. 최근에는 세 들어 살게 된 집의 젊은 주인 내외와 친해지게 되고 어울리는 시간이 많아진다. 그 즈음 사소하지만 이상한 일이 기홍에게 일어난다. <괴인>은 어려운 장면이 한 군데도 없는데, 설명하자면 어렵다. 모든 인물은 예상에서 조금씩 비켜나 있다. 한가로움 속에 위태로운 격류가 자리하고, 한없이 신중한 가운데 능청스러운 유머가 등장하며, 저 좁고 긴 골목과 통로의 사이 공간은 사람과 사람 사이의 애매한 관계와 거리감을 떠올리게 한다.",
+        "popularity": 5.471,
+        "poster": "/AmT8f1yFvv5C6JMHWu7mQtk5RfC.jpg",
+        "release_date": "2023-11-08",
+        "vote_average": 9.0,
+        "vote_count": 1,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            9648
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1021691,
+    "fields": {
+        "adult": false,
+        "title": "5시부터 7시까지의 주희",
+        "original_title": "5시부터 7시까지의 주희",
+        "overview": "연극과 교수인 주희는 병원에서 악성 종양 가능성이 있다는 진단을 받는다. 주희는 학교로 돌아가 신변을 정리하려 하고 이상하게도 그녀의 연구실에 많은 이들이 찾아온다. 그사이 연극 연출가인 주희의 남편 호진의 이야기가 교차된다. 그런데 두 이야기가 교차하는 동안 영화엔 점점 심상치 않은 기류가 흐르고, ‘5시부터 7시까지의’ 시간축만 남긴 채 영화는 모든 경계를 몽롱하게 만들며 매혹의 장을 펼친다.",
+        "popularity": 5.727,
+        "poster": "/zFJMZfXKmSqaYsuWgeSbPi5Iiwc.jpg",
+        "release_date": "2023-11-08",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            18
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1021777,
+    "fields": {
+        "adult": false,
+        "title": "두 사람을 위한 식탁",
+        "original_title": "두 사람을 위한 식탁",
+        "overview": "섭식장애로 고통받는 딸과 딸의 병에 무력한 엄마, 모녀관계의 깊고 깊은 연원을 파고든다. 2007년 15살 채영은 거식증 진단을 받고 폐쇄병동에 입원한다. 엄마 상옥은 막연한 죄책감에 딸의 병이 어디서 온 것인지를 되짚지만 알 길이 없다. 10년 뒤 엄마와 딸의 대화가 시작된다. 채영의 일기와 그림, 보이스 오버에 의지하여 감독은 할머니-어머니-딸, 삼대로 이어진 모녀관계의 갈등과 고통의 내력을 탐문한다.",
+        "popularity": 1.518,
+        "poster": "/k8A3LyQwctIu5KWFqyBsa50LJA7.jpg",
+        "release_date": "2023-10-25",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            99
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1022018,
+    "fields": {
+        "adult": false,
+        "title": "페이오프",
+        "original_title": "페이오프",
+        "overview": "소설 「임꺽정」이 크게 성공하면서 출판사 관계자와 북에 있는 작가의 유족들이 저작권 문제를 해결하기 위해 만난다. 그 남·북 왕래는 걱정과 환대의 마음과 함께 정치, 경제, 문화, 각종 영역이 응축된 또 하나의 소설 같은 이야기가 된다.​",
+        "popularity": 0.975,
+        "poster": "/3p3mhrw8uTZZkdfhXZWHdqeqQ1c.jpg",
+        "release_date": "2023-10-11",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            99
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1024127,
+    "fields": {
+        "adult": false,
+        "title": "킹 오브 킬러스",
+        "original_title": "King of Killers",
+        "overview": "세계 최고의 킬러들 앞으로 초대장이 도착한다 한 곳에 모인 킬러들은 킬러들의 왕을 암살하고 최고의 킬러를 가리는 시합에 초청된 것 생존 게임이 시작되면, 단 한 놈만 살아남는다! 역대급 킬러 서바이벌을 만난다! 최후의 승자를 확인하라!",
+        "popularity": 26.798,
+        "poster": "/5afJkpvjo8vE85SFb3HWAHrfhcf.jpg",
+        "release_date": "2023-10-05",
+        "vote_average": 6.827,
+        "vote_count": 81,
+        "created_at": "2023-11-14",
+        "genres": [
+            28,
+            53
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1028684,
+    "fields": {
+        "adult": false,
+        "title": "화란",
+        "original_title": "화란",
+        "overview": "희망도 미래도 없는 동네. 이곳에서 태어나 다른 곳은 가본 적 없는 18살 소년 연규는 반복되는 새아버지의 폭력 속에서 돈을 모아 엄마와 같이 네덜란드로 떠나는 것이 유일한 희망이다. 이곳에서 나고 자라 지금은 조직의 중간 보스가 된 치건. 일찌감치 세상은 지옥이란 걸 깨닫고 자신만의 방식으로 살아간다. 어느 날 동생 하얀을 지키기 위해 싸움을 하게 된 연규. 합의금이 절실한 연규에게 치건이 도움을 주고 이를 계기로 연규는 치건의 조직에서 새로운 삶을 시작한다. 무섭고 서툴지만 친형 같은 치건을 따르며 조금씩 적응해 가는 연규. 치건의 신뢰를 받으며, 조직에서 살아남기 위해 점점 위험한 상황에 빠져들기 시작하는데…",
+        "popularity": 6.569,
+        "poster": "/1cCi5Y4mBkpvtbxhDJPIRccCQrP.jpg",
+        "release_date": "2023-10-11",
+        "vote_average": 8.0,
+        "vote_count": 1,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            80
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1031242,
+    "fields": {
+        "adult": false,
+        "title": "느티나무 아래",
+        "original_title": "느티나무 아래",
+        "overview": "충북 괴산에 자리잡고 있는 우리씨앗농장, 여기는 한국 재래종, 토종 씨앗(우리씨앗)을 채종하고 나눔을 실천하고 있는 곳이다. 갓끈동부, 밭벼, 자주감자, 구억배추 등 200여 개의 토종 씨앗이 자연적 상태에서 자라고, 순환된다. 농장에는 70대 늙은 농부와 30~40대 청년 농부들이 함께 일하고 있다. 겨울에서 겨울까지 밭을 갈고, 논을 넘나든다. 기후 위기로 생태계가 무너져 가고, 대량생산-대량소비의 쳇바퀴 속에서 농부와 토종 씨앗은 어떻게 생존하며, 자신들의 자리를 지켜나갈 수 있을까!”",
+        "popularity": 14.836,
+        "poster": "/pi0nZaLF4TVgXOZlqLu6t6o6pNL.jpg",
+        "release_date": "2023-11-15",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            99
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1037348,
+    "fields": {
+        "adult": false,
+        "title": "나의 행복한 결혼",
+        "original_title": "わたしの幸せな結婚",
+        "overview": "사이모리 가문의 이능을 이어받지 못해 집안의 미움을 받던 ‘미요’는 쿠도 가문의 당주이자 냉정한 이능력자 ‘키요카’와 갑작스러운 정략결혼을 하게 된다. 원하지 않은 정략결혼으로 ‘미요’를 냉대하던 ‘키요카’는 이전의 약혼자들과는 다른 그녀의 모습에 점차 빠져들게 되고, ‘미요’ 역시 무자비한 줄로만 알았던 ‘키요카’의 다정한 모습에 자꾸 설레기 시작한다. 그렇게 ‘키요카’와 ‘미요’가 서로의 마음을 알아가던 중 ‘미요’는 자신에게 숨겨진 능력이 있다는 것을 깨닫게 되고, 그녀의 이능은 두 사람의 행복한 결혼을 방해하게 되는데…",
+        "popularity": 22.524,
+        "poster": "/7NsnLIuztqLgjoKema2TwKhsBRh.jpg",
+        "release_date": "2023-10-11",
+        "vote_average": 7.2,
+        "vote_count": 14,
+        "created_at": "2023-11-14",
+        "genres": [
+            14,
+            18,
+            10749
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1046809,
+    "fields": {
+        "adult": false,
+        "title": "만분의 일초",
+        "original_title": "만분의 일초",
+        "overview": "대한민국 검도 국가대표 최종 선발 라인업에 오른 재우는 그의 삶을 송두리째 뒤흔든 황태수에게 드디어 검을 겨눌 수 있게 된다. 하지만 그날에 여전히 머물러있는 재우의 검은 목적을 잃은 채 허공을 가르고, 그 검은 끝내 황태수가 아닌 재우 자신에게로 향한다.",
+        "popularity": 18.561,
+        "poster": "/psImbOLzoeBDvqEjw52Fo7bWcvj.jpg",
+        "release_date": "2023-11-15",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            28,
+            53
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1066298,
+    "fields": {
+        "adult": false,
+        "title": "만강홍: 사라진 밀서",
+        "original_title": "满江红",
+        "overview": "송나라 재상 진회의 주둔지에서 금나라의 사신이 살해 당한다.  범인은 황제에게 바칠 밀서를 훔쳐 사라진 상황. 진회는 범행을 부인하는 유력 용의자 장다에게 목숨을 미끼로 밀서의 행방을 찾으라 명한다. 각기 다른 목적으로 밀서를 찾아야만 하는 6인! 주어진 시간은 단 2시간 뿐! 반드시 밀서를 차지해야만 한다!",
+        "popularity": 15.491,
+        "poster": "/zNQbQhbzzp6bubs5lv3S4mfo1SM.jpg",
+        "release_date": "2023-10-11",
+        "vote_average": 5.8,
+        "vote_count": 101,
+        "created_at": "2023-11-14",
+        "genres": [
+            35,
+            36,
+            53,
+            9648
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1075813,
+    "fields": {
+        "adult": false,
+        "title": "녹야",
+        "original_title": "绿夜",
+        "overview": "인천 여객항 보안검색대에서 근무하는 이방인 진샤. 낯선 타지에서 쳇바퀴 같은 삶을 살아가던 그녀 앞에 자신과 달리 자유로워 보이는 초록머리 여자가 나타난다. 운명처럼 이끌리게 된 진샤와 초록머리 여자는 이내 돌이킬 수 없는 사건에 휘말리게 되고, 두 사람은 예측하기 어려운 긴 밤을 마주하는데…",
+        "popularity": 57.195,
+        "poster": "/yRVhskwWg2WyQMEMGB3oZQqTqPZ.jpg",
+        "release_date": "2023-11-01",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            18
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1077310,
+    "fields": {
+        "adult": false,
+        "title": "기억해, 우리가 사랑한 시간",
+        "original_title": "不能流泪的悲伤",
+        "overview": "어느 날, 집 앞에 도착한 카세트 테이프 한 장. 그 속엔 네가 보낸 우리의 이야기가 남겨져 있었다. 느닷없는 고백, 어쩌다 첫키스, 그렇게 시작된 우리의 평범한 연애. 고교시절, 나의 세상은 온통 너뿐이었지만 스무살, 우리는 또 다른 세상 밖으로 나가야만 했다. 어느날 내 앞에서 사라져 버린 너. 서로를 놓아버린 우리. 테이프 속에 담긴 추억은 잊으려 할수록 더욱 선명해지고 나는 무작정 너를 찾아나서기 시작한다.",
+        "popularity": 5.958,
+        "poster": "/suyMUwDd4xsAfaAsGJItoYfgK76.jpg",
+        "release_date": "2023-10-11",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            35,
+            10749
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1079196,
+    "fields": {
+        "adult": false,
+        "title": "봉태리",
+        "original_title": "봉태리",
+        "overview": "망해가는 제약회사의 사장은 나도 자연인이다 프로그램에 출연해 신약을 홍보한다는 기가 막힌 플랜을 만든다. 7년째 연애 중인 소영과의 결혼을 위해 내 집 마련이 인생 최대의 목표인 일우는 본인의 청약 대출을 위해 회사 존속이 중요하다. 게다가 연봉 200%까지 올려준다는 솔깃한 제안에 결국 그는 가짜 자연인이 되어 산골 봉태리로 들어가게 된다. 평생 경찰의 꿈만 쫓으며 위풍당당하게 캥거루족 삶을 살고 있는 봉숙은 세상 곳곳에 숨어있는 바퀴벌레같은 범죄자들을 다 잡아버리겠다는 의지가 무색하게 5년째 경찰공무원 시험에서 낙방을 하고 있다. 어느 날 봉숙의 부모는 모든 경제적 지원 중단을 선언하고, 봉숙은 가짜 청년농부가 되어 시험 자금을 벌어보겠다는 속셈으로 외할아버지가 살고 계신 산골 봉태리로 내려가게 된다. 그리고 봉태리에서 일어나는 의문의 신발도난사건. 봉숙은 신발도난사건의 유력한 용의자로 일우를 지목하고, 일우는 이런 봉숙이 가짜 자연인을 색출하러 온 진짜 경찰이라고 오해한다. 쫓고 쫓기는 가운데 봉숙은 범인 후보 일우에게 묘한 감정을 느끼게 되는데...",
+        "popularity": 1.053,
+        "poster": "/mJDvgZKboCjj8vUisZxoNNmZRts.jpg",
+        "release_date": "2023-10-11",
+        "vote_average": 5.0,
+        "vote_count": 1,
+        "created_at": "2023-11-14",
+        "genres": [
+            14,
+            35,
+            10749
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1086626,
+    "fields": {
+        "adult": false,
+        "title": "믿을 수 있는 사람",
+        "original_title": "믿을 수 있는 사람",
+        "overview": "한영은 중국에서 살았을 때 배운 중국어를 활용하여 중국어 관광통역안내사 자격증을 취득하고 가이드가 된다. 아직 익숙지 않은 환경에 적응해 가며 실적도 제법 쌓지만 함께 온 동생 인혁의 행방은 알 수가 없고 사드 배치로 중국인 관광객까지 줄어드는 등 한영의 삶은 시대의 흐름과 함께 계속적으로 변화를 맞이한다.",
+        "popularity": 2.083,
+        "poster": "/yhwzXIgApNTK2Y676oPkb79isBE.jpg",
+        "release_date": "2023-10-18",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            18
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1099951,
+    "fields": {
+        "adult": false,
+        "title": "너를 줍다",
+        "original_title": "너를 줍다",
+        "overview": "사랑에 배신 당한 지수는 타인의 쓰레기를 뒤지면 그 사람의 진짜 모습을 알 수 있다고 믿는다. 어느 날, 최선을 다해서 깔끔하게 버린 쓰레기가 눈에 띈다. 옆집 남자 우재의 것이다. 지수는 그가 궁금하다. 지수는 쓰레기 정보로 그에게 접근하는 데 성공한다. 우재와의 만남이 거듭되면서 그의 밝고 따뜻함, 그리고 상처들. 지수는 점차 마음이 열리기 시작한다.",
+        "popularity": 5.411,
+        "poster": "/4dbSyYeOCYceOLs5ebvFufYU5qY.jpg",
+        "release_date": "2023-11-08",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            18
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1109534,
+    "fields": {
+        "adult": false,
+        "title": "다이브: 100 피트 추락",
+        "original_title": "The Dive",
+        "overview": "외딴섬으로 다이빙을 떠난 자매 ‘드류’와 ‘메이’ 아름다운 바다 풍경에 감탄하던 것도 잠시, 산사태로 인해 거대한 바위와 물속으로 굴러떨어지고 바위는 두 사람을 깊은 바다 수면 속으로 끌고 들어간다. 수심 28m 추락, 생존 제한 시간 단 20분. 깊어질수록 턱 끝까지 차오르는 압도적 공포!",
+        "popularity": 57.662,
+        "poster": "/gzqSFsFOIsEYFZxMVdgwZGyEGKT.jpg",
+        "release_date": "2023-11-08",
+        "vote_average": 6.094,
+        "vote_count": 53,
+        "created_at": "2023-11-14",
+        "genres": [
+            53
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1114775,
+    "fields": {
+        "adult": false,
+        "title": "우리의 하루",
+        "original_title": "우리의 하루",
+        "overview": "한때 배우로 일했던 상원(김민희)은 지금 선배 정수(송선미)의 거처에 머무르는 중이다. 어느 오후, 배우가 되고 싶다는 여자가 찾아와 상원의 이야기를 듣고자 한다. 시인 홍의주(기주봉)는 심장이 안 좋아져서 술 담배를 끊은 상태다. 젊은 감독이 시인에 대한 다큐멘터리를 찍기 위해 그의 집에 와 있다. 마침 시인을 동경해온 한 남자가 방문해 그에게 여러 질문을 던진다.",
+        "popularity": 1.965,
+        "poster": "/712BOyadfS8Dt56ymxEyahlqYOQ.jpg",
+        "release_date": "2023-10-19",
+        "vote_average": 7.0,
+        "vote_count": 3,
+        "created_at": "2023-11-14",
+        "genres": [
+            18
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1115577,
+    "fields": {
+        "adult": false,
+        "title": "키리에의 노래",
+        "original_title": "キリエのうた",
+        "overview": "말을 잃고 노래로 소통하는 길거리 뮤지션 ‘키리에’(아이나 디 엔드). 꿈도 이름도 잃고 방황하는 ‘잇코’(히로세 스즈). 사랑을 잃고 기다리는 ‘나츠히코’(마츠무라 호쿠토). 차갑고 냉정한 세상, 함께 견뎌낼 수 있을까?",
+        "popularity": 5.614,
+        "poster": "/aokJ2xbM8zU1gjGNUiCr101K7nx.jpg",
+        "release_date": "2023-11-01",
+        "vote_average": 8.0,
+        "vote_count": 3,
+        "created_at": "2023-11-14",
+        "genres": [
+            18,
+            10402
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1125324,
+    "fields": {
+        "adult": false,
+        "title": "고인돌",
+        "original_title": "고인돌",
+        "overview": "영화 <고인돌>은 기원전 2333년 한반도 최초 부족국가 고조선 설립 직전의 이야기다. 고인돌 문화가 융성한 시대, 태양부족과 달 부족이 지석강을 경계로 적대관계에 놓여 있다. 태양부족장 딸 사스미와 달 부족장 아들 바우쩍은 사냥터에서 만나 운명적인 사랑에 빠진다. 그러나 그들의 사랑은 부족 간 전쟁으로 비화되고... 바우쩍은 사스미를 지키기 위해 달 부족장이 쏜 화살을 대신 맞고 죽는다. 아비가 아들을 죽인 상황이 된 것이다. 그리고 현재 고대인 바우쩍과 사스미는 성이 다른 남녀로 태어나 고고학 박사와 여고생의 신분으로 다시 만나는데...",
+        "popularity": 0.893,
+        "poster": "/xjoeTGzcz2kag1ebzHjHivG1HuV.jpg",
+        "release_date": "2023-10-19",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": []
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1130899,
+    "fields": {
+        "adult": false,
+        "title": "사나: 저주의 아이",
+        "original_title": "ミンナのウタ",
+        "overview": "방송국 창고에서 발견된 오래된 카세트테이프. 그 안에 담긴 정체불명의 허밍 소리를 들은 방송국 관계자들이 실종되기 시작하고, 인기 아이돌 ‘제너레이션즈’ 마저 테이프를 접한 후 저주 같은 공포에 시달린다. 급기야 콘서트를 앞두고 멤버가 실종되는 사태에 이르는데… 매니저는 상황을 해결하기 위해 급히 탐정을 고용하고 테이프에 얽힌 한 소녀의 미스터리한 사연을 마주한다. 모든 것은 카세트테이프에서 시작됐다! 재생하는 순간, 봉인된 ‘저주의 멜로디’가 깨어난다!",
+        "popularity": 3.303,
+        "poster": "/w20soUVMn9nYeNs9zfEuMfjhk25.jpg",
+        "release_date": "2023-10-04",
+        "vote_average": 7.7,
+        "vote_count": 3,
+        "created_at": "2023-11-14",
+        "genres": [
+            27,
+            9648
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1135965,
+    "fields": {
+        "adult": false,
+        "title": "비투비 타임 : 비투게더 더 무비",
+        "original_title": "비투비 타임 : 비투게더 더 무비",
+        "overview": "2022년 겨울, 우리의 멜로디가 올림픽 공원을 가득 채웠다. 4년 만에 완전체로 돌아온 비투비의 10주년 콘서트, 그 무대 위에서 펼쳐졌던 지난 9년 간의 꿈같던 이야기들이 2023년 겨울 한 편의 영화로 찾아온다. 영화관에 들어오는 순간부터 영화가 끝나는 순간까지 비투비 멤버들과 함께 영화를 관람하게 되는 특별한 콘셉트부터 콘서트 비하인드와 멤버들의 솔직한 인터뷰까지, 이 모든 것들을 오로지 영화에서만 만나볼 수 있다! 함께 했던 과거, 함께하는 지금, 그리고 함께할 앞으로까지, 아주 특별한 시간여행을 선물해 줄 <비투비 타임: 비투게더 더 무비>가 2023년 11월, 스크린에서 펼쳐진다!",
+        "popularity": 18.813,
+        "poster": "/vEyBNft4rUWspLrTz95gfwypHpb.jpg",
+        "release_date": "2023-11-15",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            99,
+            10402
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1148154,
+    "fields": {
+        "adult": false,
+        "title": "마이 샤이니 월드",
+        "original_title": "마이 샤이니 월드",
+        "overview": "2008년 데뷔곡 < 누난 너무 예뻐(Replay) >를 시작으로 < 줄리엣 (Juliette) >, < Ring Ding Dong >, < Sherlock•셜록 (Clue + Note) >, < View >, < 1 of 1 >, < Don’t Call Me > 그리고, 2023년 < HARD >까지 수많은 히트곡으로 대한민국을 대표하며 최정상의 자리를 지켜온 그룹 샤이니. 최고의 퍼포먼스로 돌아온 그들의 여섯 번째 콘서트 ‘SHINee WORLD VI [PERFECT ILLUMINATION]' 그리고 앞서 모두를 열광하게 한 다섯 번의 콘서트 ‘SHINee WORLD’.  샤이니와 그들의 팬 ‘샤이니월드’가 함께 호흡한 뜨거웠던 무대 실황부터 샤이니가 걸어온 지난 15년 간의 여정을 팬들의 시선으로 따라가는 감동의 순간까지! 열정적인 콘서트 무대와 그동안 들을 수 없었던 활동 비하인드 스토리. 아티스트와 팬, 서로의 세상을 비춘 이들의 꿈같은 시간 여행이 시작된다!",
+        "popularity": 2.902,
+        "poster": "/u5BJbD1NqVAjFOejZbfdPV8AcS9.jpg",
+        "release_date": "2023-11-03",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            99,
+            10402
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1160164,
+    "fields": {
+        "adult": false,
+        "title": "테일러 스위프트: 디 에라스 투어",
+        "original_title": "TAYLOR SWIFT | THE ERAS TOUR",
+        "overview": "이 문화적 현상이 대형 스크린에서 계속됩니다! 역사에 남을 숨 막히는 장면을 영화처럼 감상하며 일생일대의 콘서트 영화 체험에 푹 빠져보세요",
+        "popularity": 89.882,
+        "poster": "/pm6cudRCaKofVRDQBTgl5kzejK1.jpg",
+        "release_date": "2023-11-03",
+        "vote_average": 8.219,
+        "vote_count": 64,
+        "created_at": "2023-11-14",
+        "genres": [
+            10402
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1168166,
+    "fields": {
+        "adult": false,
+        "title": "괴담만찬",
+        "original_title": "괴담만찬",
+        "overview": "욕망에 눈먼 이들이 겪는 죽음보다 더한 공포를 그린 <괴담만찬>은 댄스 챌린지, 입시, 모텔, 헬스장, 연구실, 먹방 등 1020 Zalpha 세대들에게 익숙한 소재에 얽힌 괴담들을 담은 영화",
+        "popularity": 21.689,
+        "poster": "/jkhDNfiVg9QPelVtZvyw4IphWQs.jpg",
+        "release_date": "2023-10-18",
+        "vote_average": 3.0,
+        "vote_count": 2,
+        "created_at": "2023-11-14",
+        "genres": [
+            27
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1174346,
+    "fields": {
+        "adult": false,
+        "title": "약속",
+        "original_title": "약속",
+        "overview": "아홉 살 소년 시우는 밤이 되면 세상을 떠난 엄마가 그리워 눈물을 흘리곤 한다. 그럴 때마다 시우의 아빠 민병훈은 아들을 감싸 안으며 마음을 다독인다. 사랑하는 이를 잃은 부자는 슬픔과 고독, 그리움으로 사무친 시간을 보낼 수밖에 없지만 둘이 함께하는 순간만은 따뜻하고 강하다.",
+        "popularity": 2.05,
+        "poster": "/cmw6brdxkbGlD3npwWFvLihwSZb.jpg",
+        "release_date": "2023-11-01",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            99
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1189526,
+    "fields": {
+        "adult": false,
+        "title": "The Fact Music Awards",
+        "original_title": "The Fact Music Awards",
+        "overview": "",
+        "popularity": 0.669,
+        "poster": "/lbF23G8R3l2yHhzUzeGjeO8qe7b.jpg",
+        "release_date": "2023-10-10",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            10402
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1189848,
+    "fields": {
+        "adult": false,
+        "title": "바람 따라 만나리 : 김호중의 계절",
+        "original_title": "바람 따라 만나리 : 김호중의 계절",
+        "overview": "3개월간 전국 6개 도시에서 10만 아리스와 함께했던 김호중의 첫 전국 투어 콘서트, 아리스트라! 제대 후 일년간 쉬지 않고 달려온 김호중이 지친 몸과 마음을 달래기 위해 떠난 여행. 대규모 오케스트라와 김호중의 천상의 목소리, 그리고 아리스의 환호가 공연장을 가득 채웠던 감동적인 콘서트 장면과 고군산도의 눈부신 풍경을 따라 여행하는 김호중의 행복한 순간이 스크린X 파노라마 뷰로 펼쳐진다.",
+        "popularity": 1.165,
+        "poster": "/tA6rPSrTCqE8urUDUOB1LTB31J3.jpg",
+        "release_date": "2023-10-17",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            99,
+            10402
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1191370,
+    "fields": {
+        "adult": false,
+        "title": "어른 김장하",
+        "original_title": "어른 김장하",
+        "overview": "경남 진주의 어느 한약방, 그곳에는 60년 동안 한약방을 지킨 한약사 김장하 선생이 있다. 전 재산을 사회에 환원하고도 인터뷰 한 번 하지 않고 많은 이들을 도우면서도 자신의 옷 한 벌 허투루 사지 않는 사람.",
+        "popularity": 14.862,
+        "poster": "/bZMCj9cd20G50PvrfgMouacmOGX.jpg",
+        "release_date": "2023-11-15",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            99
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1196844,
+    "fields": {
+        "adult": false,
+        "title": "백지영 콘서트 인 시네마",
+        "original_title": "백지영 콘서트 인 시네마",
+        "overview": "데뷔 25주년을 앞둔 레전더리 감성 아티스트 백지영의 최근 전국 투어 콘서트 ‘Go Baek(고백)’. '선택', ‘부담’, ‘Dash’, ‘내 귀에 캔디’ 등 추억 소환 댄스곡은 물론 ‘사랑 안해’, '총 맞은 것처럼', '잊지 말아요' 등 메가 히트 발라드곡 그리고 그녀의 유쾌하고 진솔한 ‘Go Baek(고백)’을 더한 공연 실황 영화. 이제 그 뜨거운 시간이 스크린에 펼쳐진다!",
+        "popularity": 6.634,
+        "poster": null,
+        "release_date": "2023-11-10",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            99,
+            10402
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1197426,
+    "fields": {
+        "adult": false,
+        "title": "물귀신",
+        "original_title": "물귀신",
+        "overview": "혼자 엄마를 기다리다 억울하게 죽은 어린아이의 악령이 동생 수아를 덮치면서 그녀와 가족들은 긴 시간 고통받는다. 영험한 무당이었던 엄마 금정이 오행의 기운 중 상생과 상극을 이용해 물귀신에게서 벗어나게 하고자 노력했지만 결국 수아는 차갑고 깊은 물속으로 사라지고, 남은 가족들의 삶은 무너진다. 그러던 어느 날, 가영은 갑작스럽게 사라진 엄마를 찾기 위해 수아를 삼켰던 저수지로 향하게 되고, 그곳에서 의문의 사체를 발견하면서 가영은 죽은 동생의 모습을 한 끔찍한 수살귀에 쫓기게 되는데…",
+        "popularity": 9.019,
+        "poster": "/bP5Fl2PZqNV7oc01x4NNkUw5UVj.jpg",
+        "release_date": "2023-11-09",
+        "vote_average": 4.0,
+        "vote_count": 2,
+        "created_at": "2023-11-14",
+        "genres": [
+            27,
+            9648
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1202397,
+    "fields": {
+        "adult": false,
+        "title": "오답미술관",
+        "original_title": "오답미술관",
+        "overview": "",
+        "popularity": 2.13,
+        "poster": null,
+        "release_date": "2023-11-03",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": [
+            18
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1203703,
+    "fields": {
+        "adult": false,
+        "title": "A.C.E FAN CONCERT [OVERTURN]",
+        "original_title": "A.C.E FAN CONCERT [OVERTURN]",
+        "overview": "",
+        "popularity": 2.744,
+        "poster": "/nOOEci9dGdBo4z6Nwl36rbUX7hq.jpg",
+        "release_date": "2023-11-11",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "created_at": "2023-11-14",
+        "genres": []
+    }
+}
+]
