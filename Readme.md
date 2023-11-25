@@ -33,7 +33,7 @@
 1. 일반 회원가입
 <br/>
 
-
+![회원가입](https://github.com/movie-team/BackEnd/assets/116432941/10b76b4e-4a98-4303-9712-59b491bd5479)
 
 2. 카카오 회원가입
 <br/>
